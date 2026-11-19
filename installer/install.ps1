@@ -104,6 +104,7 @@ Write-Host "  Path of Building: $pob"
 Write-Host ""
 
 $srcKR = Join-Path $patchRoot "KR"
+if (-not (Test-Path (Join-Path $srcKR "init.lua"))) { $srcKR = Join-Path $patchRoot "src\KR" }
 if (-not (Test-Path $srcKR)) {
     Write-Host "  [실패] KR 폴더가 없습니다. 압축을 제대로 풀었는지 확인하세요." -ForegroundColor Red
     Read-Host "  종료하려면 Enter"
