@@ -1,0 +1,20 @@
+# 빌드 산출물
+app/bin/
+app/obj/
+app/out/
+app/payload/
+out/
+dist/
+*.user
+
+# 데이터 수집 캐시 (poedb 원본 HTML/JSON, 폰트 원본)
+cache/
+tools/cache/
+
+# 파이썬
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db

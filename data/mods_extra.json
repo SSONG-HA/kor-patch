@@ -1,0 +1,11 @@
+{
+  "Gain a Power Charge after Spending a total of # Mana": "총 %1의 마나를 소모한 후 권능 충전 획득",
+  "Has # Socket": "%1개의 소켓 보유",
+  "#% of Cold and Lightning Damage from Hits taken as Fire Damage": "피격으로 받는 냉기 및 번개 피해의 %1%를 화염 피해로 전환",
+  "#% of Non-Chaos Damage taken bypasses Energy Shield": "받는 비-카오스 피해의 %1%가 에너지 보호막을 무시",
+  "#% of Chaos Damage taken does not bypass Energy Shield": "받는 카오스 피해의 %1%가 에너지 보호막을 무시하지 않음",
+  "#% increased Experience Gain of Gems": "젬 경험치 획득 %1% 증가",
+  "#% to Quality of all Skill Gems": "모든 스킬 젬의 품질 +%1%",
+  "Regenerate # Mana per Second per Power Charge": "권능 충전 하나당 초당 마나 %1 재생",
+  "#% increased Cast Speed per Power Charge": "권능 충전 하나당 시전 속도 %1% 증가"
+}
