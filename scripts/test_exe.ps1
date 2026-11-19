@@ -128,19 +128,37 @@ Assert ($code -eq 0) "--shortcut 종료 코드 0 (실제 $code)"
 $lnkInFolder = Join-Path $pob "Path of Building (한글).lnk"
 $lnkInMenu = Join-Path ([Environment]::GetFolderPath('Programs')) "Path of Building (한글).lnk"
 $lnkOnDesktop = Join-Path ([Environment]::GetFolderPath('Desktop')) "Path of Building (한글).lnk"
-Assert (Test-Path $lnkInFolder) "PoB 폴더 안에 바로가기 생성"
-Assert (Test-Path $lnkInMenu) "시작 메뉴에 바로가기 생성"
-Assert (-not (Test-Path $lnkOnDesktop)) "바탕화면에는 만들지 않음 (기본값)"
+Assert (Test-Path -LiteralPath $lnkInFolder) "PoB 폴더 안에 바로가기 생성"
+Assert (Test-Path -LiteralPath $lnkInMenu) "시작 메뉴에 바로가기 생성"
+Assert (-not (Test-Path -LiteralPath $lnkOnDesktop)) "바탕화면에는 만들지 않음 (기본값)"
+
+# 바로가기 내용은 Shell.Application 으로 읽는다.
+# (WScript.Shell 은 내부에서 ANSI 로 바꾸다가 한글 파일 이름에서 빈 값을 돌려준다 — 바로가기 자체 문제가 아니다.)
+$shellApp = New-Object -ComObject Shell.Application
+foreach ($pair in @(@{ Name = 'PoB 폴더'; Path = $lnkInFolder }, @{ Name = '시작 메뉴'; Path = $lnkInMenu })) {
+    $lnk = $pair.Path
+    $bytes = [System.IO.File]::ReadAllBytes($lnk)
+    Assert ($bytes.Length -gt 76) "$($pair.Name) 바로가기 파일 크기 76바이트 초과 (실제 $($bytes.Length))"
+    $flags = [BitConverter]::ToUInt32($bytes, 20)
+    Assert (($flags -band 0x02) -ne 0) "$($pair.Name) 바로가기에 링크 정보(HasLinkInfo) 포함 (flags=0x$('{0:X8}' -f $flags))"
+
+    $item = $shellApp.NameSpace((Split-Path -Parent $lnk)).ParseName((Split-Path -Leaf $lnk))
+    Assert ($null -ne $item) "$($pair.Name) 바로가기를 셸이 읽음"
+    $link = $item.GetLink()
+    $target = "$($link.Path)"
+    $linkArguments = "$($link.Arguments)"
+    Write-Host "  [$($pair.Name)] 대상 '$target' / 인수 '$linkArguments'"
+    Assert ($target -like "*PoB-KR-Patcher.exe") "$($pair.Name) 바로가기 대상이 런처 (실제 '$target')"
+    Assert (Test-Path -LiteralPath $target) "$($pair.Name) 바로가기 대상 파일이 실제로 있음"
+    Assert ($linkArguments.Contains("--launch")) "$($pair.Name) 바로가기 인수에 --launch 포함 (실제 '$linkArguments')"
+}
 
 $ws = New-Object -ComObject WScript.Shell
-$sc = $ws.CreateShortcut($lnkInMenu)
-Assert ($sc.TargetPath -like "*PoB-KR-Patcher.exe") "바로가기 대상이 런처 (실제 '$($sc.TargetPath)')"
-Assert (Test-Path $sc.TargetPath) "바로가기 대상 파일이 실제로 있음"
-Assert ($sc.Arguments.Contains("--launch")) "바로가기 인수에 --launch 포함 (실제 '$($sc.Arguments)')"
+Write-Host "  [참고] WScript.Shell 읽기: '$($ws.CreateShortcut($lnkInMenu).TargetPath)' (한글 이름에서는 비는 것이 정상)"
 
 $code = Invoke-Exe @("--shortcut", "--dir", $pob, "--desktop")
 Assert ($code -eq 0) "--shortcut --desktop 종료 코드 0 (실제 $code)"
-Assert (Test-Path $lnkOnDesktop) "바탕화면 바로가기 생성 (옵션)"
+Assert (Test-Path -LiteralPath $lnkOnDesktop) "바탕화면 바로가기 생성 (옵션)"
 
 Write-Host ""
 Write-Host "== ⑨ --launch --no-start (PoB 업데이트로 지워진 로더 재삽입) =="
