@@ -201,15 +201,9 @@ namespace PoBKR
         // 메서드 순서가 COM vtable 순서와 같아야 한다. 중간에 빼거나 순서를 바꾸면 안 된다.
 
         [ComImport]
-        [Guid("00021401-0000-0000-C000-000000000046")]
-        private class ShellLinkCoClass
-        {
-        }
-
-        [ComImport]
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         [Guid("000214F9-0000-0000-C000-000000000046")]
-        private interface IShellLinkW
+        internal interface IShellLinkW
         {
             void GetPath([Out, MarshalAs(UnmanagedType.LPWStr)] System.Text.StringBuilder pszFile, int cch, IntPtr pfd, uint fFlags);
             void GetIDList(out IntPtr ppidl);
@@ -234,7 +228,7 @@ namespace PoBKR
         [ComImport]
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
         [Guid("0000010b-0000-0000-C000-000000000046")]
-        private interface IPersistFile
+        internal interface IPersistFile
         {
             void GetClassID(out Guid pClassID);
             [PreserveSig] int IsDirty();
@@ -243,5 +237,12 @@ namespace PoBKR
             void SaveCompleted([MarshalAs(UnmanagedType.LPWStr)] string pszFileName);
             void GetCurFile(out IntPtr ppszFileName);
         }
+    }
+
+    /// <summary>ShellLink COM 클래스 (CLSID_ShellLink). new 로 만들면 COM 개체가 생성된다.</summary>
+    [ComImport]
+    [Guid("00021401-0000-0000-C000-000000000046")]
+    internal class ShellLinkCoClass
+    {
     }
 }
