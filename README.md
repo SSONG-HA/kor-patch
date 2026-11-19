@@ -12,12 +12,33 @@ Path of Building Community Fork 를 **인게임 한국어 명칭**으로 보여 
 2. 실행하고 **[한글 패치 적용 / 업데이트]** 를 누릅니다.
    - Path of Building 폴더는 자동으로 찾습니다. (포터블 폴더, `%LOCALAPPDATA%\Programs\Path of Building Community`, `C:\Program Files\...` 등)
    - 찾지 못하면 폴더 선택 창이 뜨고, 고른 폴더에 `Modules\Main.lua` 가 있으면 바로 진행합니다.
-3. Path of Building 을 실행합니다. 게임 안에서 **F2** 를 누르면 한글/영문 표시가 즉시 바뀝니다.
+   - 패치가 끝나면 **`Path of Building (한글)`** 바로가기가 **PoB 폴더 안**과 **시작 메뉴**에 생깁니다. (바탕화면은 `바탕화면에도 바로가기 만들기` 를 체크했을 때만)
+3. **`Path of Building (한글)`** 아이콘으로 실행합니다. (윈도우 키를 누르고 `Path of Building` 을 검색해도 됩니다)
+   - 실행할 때마다 최신 한글 패치를 확인·적용한 뒤 PoB 가 열립니다.
+   - 게임 안에서 **F2** 를 누르면 한글/영문 표시가 즉시 바뀝니다.
 
 영문으로 되돌리려면 같은 창에서 **[영문 원본으로 복구]** 를 누릅니다.
 (원본 `Modules\Main.lua` 는 `KR\_설치기록\Main.lua.orig` 에 백업됩니다.)
 
 > PoB 가 실행 중이면 파일이 잠겨 있으므로, 프로그램이 먼저 알려 주고 중단합니다. PoB 를 닫고 다시 실행하세요.
+
+## 바로가기 · 자동 업데이트
+
+**`Path of Building (한글)`** 바로가기는 **PoB 폴더 안**과 **시작 메뉴**(`%APPDATA%\Microsoft\Windows\Start Menu\Programs`)에 만들어집니다.
+사람마다 PoB 를 두는 위치가 다르므로 바탕화면은 선택 사항(기본 꺼짐)으로 두었습니다.
+
+- 바로가기는 `%LOCALAPPDATA%\PoB-KR-Patcher\PoB-KR-Patcher.exe --launch "<PoB 폴더>"` 를 실행합니다.
+  런처 사본을 그 경로에 두므로, 내려받은 exe 를 지우거나 옮겨도 바로가기는 계속 동작합니다.
+- 바로가기로 실행하면 창 없이(1초 넘게 걸릴 때만 작은 알림) 다음을 처리하고 런처는 즉시 종료합니다.
+  1. 새 릴리스 확인 — `latest.json` 을 **3~4초 제한**으로만 봅니다. 느리거나 오프라인이면 기다리지 않고 넘어갑니다.
+  2. 새 데이터가 있으면 `KR-data.zip` 을 받아 검증(sha256) 후 적용
+  3. `Modules\Main.lua` 의 한글 로더가 지워졌으면(PoB 자체 업데이트) 즉시 다시 삽입
+  4. PoB 실행
+- **PoB 본체(`Path of Building.exe`)를 직접 실행할 때도** `KR\init.lua` 가 조용히 따라갑니다.
+  - 6시간에 한 번, `PoB-KR-Patcher.exe --bg-update` 를 최소화 상태로 띄워 최신 `KR-data.zip` 을 `KR\_update\` 에 미리 받아 둡니다. PoB 로딩은 막지 않습니다. (이때 콘솔 창이 아주 잠깐 깜빡일 수 있습니다)
+  - 다음 PoB 실행 때 `KR\init.lua` 가 **데이터를 읽기 전에** `--apply-staged` 로 반영합니다. 세션 도중에 쓰던 파일을 갈아치우지 않습니다.
+  - PoB 가 꺼져 있을 때 `--bg-update` 가 돌면 그 자리에서 바로 적용합니다.
+  - 자동 확인을 끄려면 `KR\config.lua` 에서 `autoUpdate = false` 로 두세요.
 
 ## 시즌 자동 업데이트
 
@@ -75,10 +96,14 @@ pwsh -NoProfile -File scripts/test_exe.ps1 -Exe .\out\PoB-KR-Patcher.exe
 명령줄 모드도 있습니다. (자동화·문제 확인용)
 
 ```
+PoB-KR-Patcher.exe --launch ["C:\...\Path of Building"] [--no-update] [--no-start]
 PoB-KR-Patcher.exe --apply [--dir "C:\...\Path of Building"] [--no-update] [--force]
 PoB-KR-Patcher.exe --restore [--dir ...]
+PoB-KR-Patcher.exe --shortcut [--desktop]   # 시작 메뉴 + PoB 폴더(+바탕화면) 바로가기 생성
 PoB-KR-Patcher.exe --check        # 최신 릴리스 확인
 PoB-KR-Patcher.exe --info         # 내장 데이터 / 설치 상태
+PoB-KR-Patcher.exe --bg-update    # 뒤에서 최신 패치 미리 받기 (PoB 실행 중에도 안전)
+PoB-KR-Patcher.exe --apply-staged # 미리 받아 둔 패치를 지금 반영
 ```
 
 ## 데이터 다시 만들기 (시즌 갱신을 직접 할 때)

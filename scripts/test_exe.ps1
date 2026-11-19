@@ -3,6 +3,7 @@
 
   가짜 Path of Building 폴더를 만들어 실제 exe 로
     ① 정보 출력 ② 적용 ③ 재적용(중복 없음) ④ 복구 ⑤ 복구 후 재적용
+      ⑥ 잘못된 폴더 ⑦ 릴리스 확인 ⑧ 바로가기(PoB 폴더·시작 메뉴·바탕화면 옵션) ⑨ --launch 재패치 ⑩ 스테이징 반영
   을 검사한다. 하나라도 실패하면 예외로 워크플로우를 멈춘다.
 #>
 param(
@@ -118,6 +119,55 @@ Write-Host ""
 Write-Host "== ⑦ --check (네트워크, 실패해도 테스트는 통과) =="
 $code = Invoke-Exe @("--check")
 Write-Host "  --check 종료 코드 $code (릴리스가 아직 없으면 1)"
+
+Write-Host ""
+Write-Host "== ⑧ --shortcut (PoB 폴더 + 시작 메뉴) =="
+$code = Invoke-Exe @("--shortcut", "--dir", $pob)
+Assert ($code -eq 0) "--shortcut 종료 코드 0 (실제 $code)"
+
+$lnkInFolder = Join-Path $pob "Path of Building (한글).lnk"
+$lnkInMenu = Join-Path ([Environment]::GetFolderPath('Programs')) "Path of Building (한글).lnk"
+$lnkOnDesktop = Join-Path ([Environment]::GetFolderPath('Desktop')) "Path of Building (한글).lnk"
+Assert (Test-Path $lnkInFolder) "PoB 폴더 안에 바로가기 생성"
+Assert (Test-Path $lnkInMenu) "시작 메뉴에 바로가기 생성"
+Assert (-not (Test-Path $lnkOnDesktop)) "바탕화면에는 만들지 않음 (기본값)"
+
+$ws = New-Object -ComObject WScript.Shell
+$sc = $ws.CreateShortcut($lnkInMenu)
+Assert ($sc.TargetPath -like "*PoB-KR-Patcher.exe") "바로가기 대상이 런처 (실제 '$($sc.TargetPath)')"
+Assert (Test-Path $sc.TargetPath) "바로가기 대상 파일이 실제로 있음"
+Assert ($sc.Arguments.Contains("--launch")) "바로가기 인수에 --launch 포함 (실제 '$($sc.Arguments)')"
+
+$code = Invoke-Exe @("--shortcut", "--dir", $pob, "--desktop")
+Assert ($code -eq 0) "--shortcut --desktop 종료 코드 0 (실제 $code)"
+Assert (Test-Path $lnkOnDesktop) "바탕화면 바로가기 생성 (옵션)"
+
+Write-Host ""
+Write-Host "== ⑨ --launch --no-start (PoB 업데이트로 지워진 로더 재삽입) =="
+[System.IO.File]::WriteAllText($mainLua, $origText, $utf8)
+$fakeExe = Join-Path $pob "Path of Building.exe"
+[System.IO.File]::WriteAllText($fakeExe, "", $utf8)
+$code = Invoke-Exe @("--launch", $pob, "--no-start", "--no-update")
+Assert ($code -eq 0) "--launch --no-start 종료 코드 0 (실제 $code)"
+$launchText = Read-Text $mainLua
+Assert ($launchText.StartsWith("-- [PoB-KR]")) "로더가 다시 삽입됨"
+Assert (([regex]::Matches($launchText, [regex]::Escape("-- [PoB-KR]"))).Count -eq 1) "재삽입 후에도 로더 표식 1개"
+Assert ($launchText.Contains("local build = 1")) "원본 내용 보존"
+Remove-Item $fakeExe -Force
+
+Write-Host ""
+Write-Host "== ⑩ --apply-staged (미리 받아 둔 패치 반영) =="
+$stageRoot = Join-Path $pob "KR\_update"
+$stageData = Join-Path $stageRoot "data\Data"
+New-Item -ItemType Directory -Force -Path $stageData | Out-Null
+[System.IO.File]::WriteAllText((Join-Path $stageData "exact.lua"), "return { ['테스트'] = '테스트' }`r`n", $utf8)
+[System.IO.File]::WriteAllText((Join-Path $stageRoot "pending.txt"), "9.9.9 (staged test)`r`n", $utf8)
+$code = Invoke-Exe @("--apply-staged", "--dir", $pob)
+Assert ($code -eq 0) "--apply-staged 종료 코드 0 (실제 $code)"
+Assert ((Read-Text (Join-Path $pob "KR\Data\exact.lua")).Contains("테스트")) "스테이징 데이터가 KR 에 반영됨"
+Assert ((Read-Text (Join-Path $pob "KR\version.txt")).StartsWith("9.9.9")) "KR\version.txt 갱신"
+Assert (-not (Test-Path (Join-Path $stageRoot "pending.txt"))) "pending.txt 정리"
+Assert (-not (Test-Path (Join-Path $stageRoot "data"))) "스테이징 폴더 정리"
 
 Write-Host ""
 Write-Host "모든 exe 테스트 통과 ($expectedVersion)"

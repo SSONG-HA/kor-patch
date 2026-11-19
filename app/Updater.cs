@@ -61,11 +61,18 @@ namespace PoBKR
             return null;
         }
 
-        private static ReleaseInfo TryLatestJson(Action<string> log)
+        /// <summary>짧은 시간 안에 latest.json 만 확인한다 (API 대체 경로 없음). 실패하면 null.</summary>
+        public static ReleaseInfo GetLatestQuiet(int timeoutSeconds)
+        {
+            return TryLatestJson(null, timeoutSeconds);
+        }
+
+        private static ReleaseInfo TryLatestJson(Action<string> log, int timeoutSeconds = 12)
         {
             try
             {
-                using (var client = NewClient(12))
+                if (timeoutSeconds <= 0) timeoutSeconds = 12;
+                using (var client = NewClient(timeoutSeconds))
                 {
                     var text = client.GetStringAsync(AppInfo.LatestJsonUrl).GetAwaiter().GetResult();
                     var d = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(text);

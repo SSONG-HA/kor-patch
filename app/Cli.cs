@@ -11,6 +11,8 @@ namespace PoBKR
         public bool Restore;
         public bool Check;
         public bool Info;
+        public bool Shortcut;
+        public bool Desktop;
         public bool Help;
         public bool NoUpdate;
         public bool Force;
@@ -18,7 +20,7 @@ namespace PoBKR
 
         public bool IsCommand
         {
-            get { return Apply || Restore || Check || Info || Help; }
+            get { return Apply || Restore || Check || Info || Shortcut || Help; }
         }
     }
 
@@ -37,6 +39,8 @@ namespace PoBKR
                     case "--restore": o.Restore = true; break;
                     case "--check": o.Check = true; break;
                     case "--info": o.Info = true; break;
+                    case "--shortcut": o.Shortcut = true; break;
+                    case "--desktop": o.Desktop = true; break;
                     case "--no-update": o.NoUpdate = true; break;
                     case "--force": o.Force = true; break;
                     case "--help":
@@ -61,8 +65,10 @@ namespace PoBKR
             Console.WriteLine("PoB 한글 패처 " + AppInfo.AppVersion + " — " + AppInfo.ProjectUrl);
             Console.WriteLine();
             Console.WriteLine("  (인수 없이 실행)      화면(GUI)으로 실행 — 더블클릭과 같습니다");
+            Console.WriteLine("  --launch [폴더]       한글 패치를 확인·적용한 뒤 Path of Building 실행 (창 없음)");
             Console.WriteLine("  --apply [--dir 폴더]  한글 패치 적용/재적용");
             Console.WriteLine("  --restore [--dir 폴더] 영문 원본으로 복구");
+            Console.WriteLine("  --shortcut [--desktop] 시작 메뉴·PoB 폴더(+바탕화면)에 'Path of Building (한글)' 바로가기 생성");
             Console.WriteLine("  --check               최신 릴리스(시즌 데이터) 확인");
             Console.WriteLine("  --info                내장 데이터/설치 상태 출력");
             Console.WriteLine("  --no-update           최신 시즌 데이터 확인 없이 내장 데이터만 사용");
@@ -90,6 +96,7 @@ namespace PoBKR
             if (o.Help) { PrintHelp(); return 0; }
             if (o.Info) return Info(o);
             if (o.Check) return Check();
+            if (o.Shortcut) return MakeShortcut(o);
             if (o.Restore) return Restore(o);
             if (o.Apply) return Apply(o);
             PrintHelp();
@@ -145,6 +152,25 @@ namespace PoBKR
                 Say("→ 내장 데이터(" + AppInfo.Embedded.Version + ")보다 최신입니다.");
             else
                 Say("→ 내장 데이터(" + AppInfo.Embedded.Version + ")가 최신입니다.");
+            return 0;
+        }
+
+        private static int MakeShortcut(CliOptions o)
+        {
+            string target;
+            if (!ResolveTarget(o, out target)) return 2;
+            Say("Path of Building: " + target);
+
+            var r = Shortcut.Create(target, o.Desktop);
+            if (!r.Ok)
+            {
+                Say("[실패] 바로가기를 만들지 못했습니다: " + r.Error);
+                return 1;
+            }
+            foreach (var p in r.Paths) Say("바로가기: " + p);
+            Say("실행 파일: " + r.TargetExe);
+            Say("인수     : " + r.Arguments);
+            if (!string.IsNullOrEmpty(r.Error)) Say("[안내] " + r.Error);
             return 0;
         }
 

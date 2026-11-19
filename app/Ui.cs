@@ -16,8 +16,10 @@ namespace PoBKR
         private Button _btnApply;
         private Button _btnCheck;
         private Button _btnRestore;
+        private Button _btnLaunch;
         private Button _btnBrowse;
         private CheckBox _auto;
+        private CheckBox _shortcut;
         private Label _status;
         private ProgressBar _bar;
         private bool _busy;
@@ -33,8 +35,8 @@ namespace PoBKR
         {
             Text = "PoB 한글 패처 (PoB-KR-Patcher)";
             Font = new Font("Malgun Gothic", 9f);
-            ClientSize = new Size(660, 566);
-            MinimumSize = new Size(560, 480);
+            ClientSize = new Size(660, 596);
+            MinimumSize = new Size(560, 540);
             StartPosition = FormStartPosition.CenterScreen;
             MaximizeBox = false;
 
@@ -108,10 +110,33 @@ namespace PoBKR
             _btnRestore.Click += OnRestore;
             Controls.Add(_btnRestore);
 
+            _btnLaunch = new Button
+            {
+                Text = "한글 PoB 바로 실행 ▶",
+                Location = new Point(16, 190),
+                Size = new Size(232, 32)
+            };
+            _btnLaunch.Click += OnLaunch;
+            Controls.Add(_btnLaunch);
+
+            _shortcut = new CheckBox
+            {
+                Text = "바탕화면에도 바로가기 만들기",
+                Location = new Point(258, 196),
+                Size = new Size(370, 22),
+                Checked = _settings.CreateShortcut
+            };
+            _shortcut.CheckedChanged += delegate
+            {
+                _settings.CreateShortcut = _shortcut.Checked;
+                _settings.Save();
+            };
+            Controls.Add(_shortcut);
+
             _auto = new CheckBox
             {
                 Text = "최신 시즌 데이터를 자동으로 확인합니다 (인터넷 필요)",
-                Location = new Point(18, 192),
+                Location = new Point(18, 232),
                 Size = new Size(560, 22),
                 Checked = _settings.AutoCheck
             };
@@ -125,7 +150,7 @@ namespace PoBKR
             var logLabel = new Label
             {
                 Text = "진행 상황",
-                Location = new Point(16, 218),
+                Location = new Point(16, 258),
                 Size = new Size(200, 18),
                 ForeColor = Color.FromArgb(90, 90, 90)
             };
@@ -133,8 +158,8 @@ namespace PoBKR
 
             _log = new TextBox
             {
-                Location = new Point(16, 238),
-                Size = new Size(628, 258),
+                Location = new Point(16, 278),
+                Size = new Size(628, 248),
                 Multiline = true,
                 ReadOnly = true,
                 ScrollBars = ScrollBars.Vertical,
@@ -145,7 +170,7 @@ namespace PoBKR
 
             _bar = new ProgressBar
             {
-                Location = new Point(16, 502),
+                Location = new Point(16, 532),
                 Size = new Size(628, 12),
                 Style = ProgressBarStyle.Blocks,
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom
@@ -155,7 +180,7 @@ namespace PoBKR
             _status = new Label
             {
                 Text = "준비됨",
-                Location = new Point(16, 520),
+                Location = new Point(16, 550),
                 Size = new Size(430, 20),
                 ForeColor = Color.FromArgb(60, 60, 60),
                 Anchor = AnchorStyles.Left | AnchorStyles.Bottom
@@ -165,7 +190,7 @@ namespace PoBKR
             var link = new LinkLabel
             {
                 Text = "GitHub 저장소 (릴리스·사용법)",
-                Location = new Point(452, 520),
+                Location = new Point(452, 550),
                 Size = new Size(192, 20),
                 TextAlign = ContentAlignment.TopRight,
                 Anchor = AnchorStyles.Right | AnchorStyles.Bottom
@@ -179,7 +204,8 @@ namespace PoBKR
         private void OnFormLoad(object sender, EventArgs e)
         {
             Log("PoB 한글 패처 v" + AppInfo.AppVersion + " — 내장 데이터 " + AppInfo.Embedded.Pretty);
-            Log("사용법: [한글 패치 적용] 누르면 끝입니다. 게임 안에서 F2 로 한/영 전환.");
+            Log("사용법: [한글 패치 적용] 을 한 번 누르면 끝입니다. 게임 안에서 F2 로 한/영 전환.");
+            Log("패치하면 PoB 폴더와 시작 메뉴에 'Path of Building (한글)' 바로가기가 생깁니다.");
 
             var target = "";
             if (!string.IsNullOrEmpty(_initialTarget) && Installer.IsPoB(_initialTarget))
@@ -265,6 +291,7 @@ namespace PoBKR
             _btnApply.Enabled = !busy;
             _btnCheck.Enabled = !busy;
             _btnRestore.Enabled = !busy;
+            _btnLaunch.Enabled = !busy;
             _btnBrowse.Enabled = !busy;
             _bar.Style = busy ? ProgressBarStyle.Marquee : ProgressBarStyle.Blocks;
             _bar.MarqueeAnimationSpeed = busy ? 30 : 0;
@@ -385,7 +412,8 @@ namespace PoBKR
                         rel = null;
                     }
                 }
-                await Task.Run(delegate { ApplyFlow(target, rel); });
+                var applied = await Task.Run(delegate { return ApplyFlow(target, rel); });
+                if (applied != null && applied.Ok) AnnounceApply(target);
             }
             catch (Exception ex)
             {
@@ -399,7 +427,7 @@ namespace PoBKR
         }
 
         /// <summary>패치 적용 흐름. 배경 스레드에서 실행된다. rel 이 있으면 그 시즌 데이터를 먼저 받는다.</summary>
-        private void ApplyFlow(string target, ReleaseInfo rel)
+        private ApplyResult ApplyFlow(string target, ReleaseInfo rel)
         {
             var embed = AppInfo.Embedded;
             var installed = Installer.InstalledVersion(target);
@@ -434,7 +462,7 @@ namespace PoBKR
             {
                 Log("설치된 데이터(" + installed + ")가 더 최신입니다. 덮어쓰지 않았습니다.");
                 Status("이미 최신입니다");
-                return;
+                return null;
             }
 
             Log("한글 데이터와 폰트를 복사하는 중...");
@@ -444,18 +472,85 @@ namespace PoBKR
                 Log("[실패] " + r.Error);
                 Status("패치 실패");
                 Info("패치에 실패했습니다.\n\n" + r.Error);
-                return;
+                return r;
             }
 
             Log("한글 패치 완료: " + r.VersionText);
             if (r.AlreadyPatched) Log("Modules\\Main.lua 는 이미 패치되어 있었습니다 (데이터만 갱신).");
             if (r.BackedUp) Log("원본 백업: KR\\_설치기록\\Main.lua.orig");
             Status("패치 완료 (" + r.VersionText + ")");
-            Info("한글 패치가 끝났습니다. (" + r.VersionText + ")\n\n"
-                + "· Path of Building 을 실행하세요.\n"
-                + "· 게임 안에서 F2 키를 누르면 한글/영문 표시가 즉시 바뀝니다.\n"
-                + "· PoB 를 업데이트한 뒤에는 이 프로그램을 다시 한 번 실행하면 됩니다.\n"
-                + "· 영문으로 되돌리려면 [영문 원본으로 복구] 를 누르세요.");
+            return r;
+        }
+
+        /// <summary>패치가 끝난 뒤: 바로가기 생성(UI 스레드) + 안내 창.</summary>
+        private void AnnounceApply(string target)
+        {
+            var text = new System.Text.StringBuilder();
+            text.Append("한글 패치가 끝났습니다.\n\n");
+
+            var sc = Shortcut.Create(target, _settings.CreateShortcut);
+            if (sc.Ok)
+            {
+                text.Append("· 바로가기를 만들었습니다.\n");
+                foreach (var p in sc.Paths)
+                {
+                    text.Append("   " + p + "\n");
+                    Log("바로가기: " + p);
+                }
+                text.Append("\n· 이 아이콘(또는 윈도우 키 검색에서 \"Path of Building (한글)\")으로 실행하면\n");
+                text.Append("  매번 최신 한글 패치를 확인·적용한 뒤 PoB 가 열립니다.\n\n");
+                Status("패치 완료 — 바로가기 생성됨");
+            }
+            else
+            {
+                Log("바로가기를 만들지 못했습니다: " + sc.Error);
+            }
+
+            text.Append("· PoB 를 직접 실행해도 다음 실행 때 최신 패치를 미리 받아 둡니다.\n");
+            text.Append("· 게임 안에서 F2 를 누르면 한글/영문 표시가 즉시 바뀝니다.\n");
+            text.Append("· 영문으로 되돌리려면 [영문 원본으로 복구] 를 누르세요.");
+            Info(text.ToString());
+        }
+
+        /// <summary>한글 PoB 바로 실행 (런처와 같은 흐름: 확인 → 재패치 → 실행).</summary>
+        private async void OnLaunch(object sender, EventArgs e)
+        {
+            if (_busy) return;
+            var target = ResolveTarget();
+            if (target == null) return;
+            if (Installer.IsPoBRunning())
+            {
+                Info("Path of Building 이 이미 실행 중입니다.");
+                return;
+            }
+
+            SetBusy(true);
+            Status("한글 PoB 실행 준비 중...");
+            LaunchResult result = null;
+            try
+            {
+                var opts = new LaunchOptions { NoUpdate = !_settings.AutoCheck };
+                result = await Task.Run(delegate { return Launcher.Maintain(opts, target, Log); });
+            }
+            catch (Exception ex)
+            {
+                Log("[오류] " + ex.Message);
+            }
+            finally
+            {
+                SetBusy(false);
+            }
+
+            if (result == null) return;
+            if (result.Patched) Log("한글 패치 갱신: " + result.VersionText);
+            if (!string.IsNullOrEmpty(result.Error)) Log("[안내] " + result.Error);
+            if (!result.Ok)
+            {
+                Info("Path of Building 을 실행할 수 없습니다.\n\n" + result.Error);
+                return;
+            }
+            Status("Path of Building 실행");
+            Launcher.StartPoB(result);
         }
 
         private async void OnCheck(object sender, EventArgs e)
@@ -491,7 +586,8 @@ namespace PoBKR
                 if (!Confirm(ask)) { Status("취소되었습니다"); return; }
 
                 SetBusy(true);
-                await Task.Run(delegate { ApplyFlow(target, rel); });
+                var applied = await Task.Run(delegate { return ApplyFlow(target, rel); });
+                if (applied != null && applied.Ok) AnnounceApply(target);
             }
             catch (Exception ex)
             {

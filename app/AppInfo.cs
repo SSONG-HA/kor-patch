@@ -34,7 +34,9 @@ namespace PoBKR
     internal sealed class Settings
     {
         public bool AutoCheck = true;
+        public bool CreateShortcut;
         public string LastTarget = "";
+        public string IgnoredNewer = "";
 
         private static string Dir
         {
@@ -57,7 +59,9 @@ namespace PoBKR
                     var d = new JavaScriptSerializer().Deserialize<Dictionary<string, object>>(json);
                     var s = new Settings();
                     if (d.ContainsKey("autoCheck")) s.AutoCheck = Convert.ToBoolean(d["autoCheck"], CultureInfo.InvariantCulture);
+                    if (d.ContainsKey("createShortcut")) s.CreateShortcut = Convert.ToBoolean(d["createShortcut"], CultureInfo.InvariantCulture);
                     if (d.ContainsKey("lastTarget")) s.LastTarget = Convert.ToString(d["lastTarget"], CultureInfo.InvariantCulture) ?? "";
+                    if (d.ContainsKey("ignoredNewer")) s.IgnoredNewer = Convert.ToString(d["ignoredNewer"], CultureInfo.InvariantCulture) ?? "";
                     return s;
                 }
             }
@@ -76,7 +80,9 @@ namespace PoBKR
                 var d = new Dictionary<string, object>
                 {
                     { "autoCheck", AutoCheck },
-                    { "lastTarget", LastTarget ?? "" }
+                    { "createShortcut", CreateShortcut },
+                    { "lastTarget", LastTarget ?? "" },
+                    { "ignoredNewer", IgnoredNewer ?? "" }
                 };
                 var json = new JavaScriptSerializer().Serialize(d);
                 File.WriteAllText(PathFile, json, new UTF8Encoding(false));

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -121,7 +122,7 @@ namespace PoBKR
             return null;
         }
 
-        private static string Clean(string dir)
+        public static string Clean(string dir)
         {
             try
             {
@@ -130,6 +131,176 @@ namespace PoBKR
             catch
             {
                 return dir;
+            }
+        }
+
+        /// <summary>PoB 폴더의 실행 파일 (Path of Building.exe / PathOfBuildingCommunity.exe 등).</summary>
+        public static string FindPoBExe(string pobDir)
+        {
+            if (string.IsNullOrEmpty(pobDir)) return null;
+            try
+            {
+                if (!Directory.Exists(pobDir)) return null;
+                var names = new[]
+                {
+                    "Path of Building.exe",
+                    "PathOfBuilding.exe",
+                    "Path of Building Community.exe",
+                    "PathOfBuildingCommunity.exe",
+                    "Path of Building (Community Fork).exe"
+                };
+                foreach (var name in names)
+                {
+                    var p = Path.Combine(pobDir, name);
+                    if (File.Exists(p)) return p;
+                }
+                string best = null;
+                foreach (var f in Directory.GetFiles(pobDir, "*.exe", SearchOption.TopDirectoryOnly))
+                {
+                    var name = Path.GetFileNameWithoutExtension(f) ?? "";
+                    if (name.IndexOf("unins", StringComparison.OrdinalIgnoreCase) >= 0) continue;
+                    if (name.IndexOf("updat", StringComparison.OrdinalIgnoreCase) >= 0) continue;
+                    if (name.IndexOf("Path of Building", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                        name.IndexOf("PathOfBuilding", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        best = f;
+                        break;
+                    }
+                }
+                return best;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>지금 실행 중인 Path of Building 의 폴더. 찾지 못하면 null.</summary>
+        public static string FindRunningPoBFolder()
+        {
+            foreach (var name in new[] { "Path of Building", "PathOfBuilding", "PathOfBuildingCommunity" })
+            {
+                Process[] procs = null;
+                try
+                {
+                    procs = Process.GetProcessesByName(name);
+                }
+                catch
+                {
+                    procs = null;
+                }
+                if (procs == null) continue;
+                try
+                {
+                    foreach (var p in procs)
+                    {
+                        try
+                        {
+                            var file = p.MainModule == null ? "" : p.MainModule.FileName;
+                            if (string.IsNullOrEmpty(file)) continue;
+                            var dir = Path.GetDirectoryName(file);
+                            if (IsPoB(dir)) return Clean(dir);
+                            var parent = ParentOrNull(dir);
+                            if (IsPoB(parent)) return Clean(parent);
+                        }
+                        catch
+                        {
+                        }
+                    }
+                }
+                finally
+                {
+                    foreach (var p in procs) p.Dispose();
+                }
+            }
+            return null;
+        }
+
+        /// <summary>Modules\Main.lua 의 마지막 수정 시각 (없으면 DateTime.MinValue).</summary>
+        public static DateTime MainLuaTime(string pobDir)
+        {
+            if (string.IsNullOrEmpty(pobDir)) return DateTime.MinValue;
+            try
+            {
+                var path = MainLuaPath(pobDir);
+                return File.Exists(path) ? File.GetLastWriteTimeUtc(path) : DateTime.MinValue;
+            }
+            catch
+            {
+                return DateTime.MinValue;
+            }
+        }
+
+        /// <summary>설치 위치·바탕화면·다운로드 등에서 찾은 PoB 폴더 목록 (Main.lua 가 최신인 순).</summary>
+        public static List<string> FindPoBCandidates(int depth)
+        {
+            var found = new List<string>();
+            var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var roaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            var standard = new[]
+            {
+                AppInfo.ExeDir,
+                ParentOrNull(AppInfo.ExeDir),
+                Environment.CurrentDirectory,
+                Path.Combine(local, "Programs", "Path of Building Community"),
+                Path.Combine(local, "Programs", "Path of Building"),
+                @"C:\Program Files\Path of Building Community",
+                @"C:\Program Files\Path of Building",
+                @"C:\Program Files (x86)\Path of Building Community",
+                @"C:\Program Files (x86)\Path of Building",
+                Path.Combine(roaming, "Path of Building")
+            };
+            foreach (var s in standard)
+            {
+                if (string.IsNullOrEmpty(s)) continue;
+                if (IsPoB(s) && seen.Add(Clean(s))) found.Add(Clean(s));
+            }
+
+            var bases = new[]
+            {
+                Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
+            };
+            foreach (var b in bases)
+            {
+                if (string.IsNullOrEmpty(b)) continue;
+                CollectCandidates(b, depth, seen, found);
+            }
+
+            found.Sort(delegate(string a, string b) { return MainLuaTime(b).CompareTo(MainLuaTime(a)); });
+            return found;
+        }
+
+        private static void CollectCandidates(string baseDir, int depth, HashSet<string> seen, List<string> found)
+        {
+            if (string.IsNullOrEmpty(baseDir) || depth <= 0) return;
+            string[] subs;
+            try
+            {
+                if (!Directory.Exists(baseDir)) return;
+                subs = Directory.GetDirectories(baseDir);
+            }
+            catch
+            {
+                return;
+            }
+            foreach (var s in subs)
+            {
+                if (!IsPoB(s)) continue;
+                var c = Clean(s);
+                if (seen.Add(c)) found.Add(c);
+            }
+            foreach (var s in subs)
+            {
+                var name = Path.GetFileName(s) ?? "";
+                if (name.IndexOf("path of building", StringComparison.OrdinalIgnoreCase) < 0 &&
+                    name.IndexOf("PathOfBuilding", StringComparison.OrdinalIgnoreCase) < 0)
+                {
+                    continue;
+                }
+                CollectCandidates(s, depth - 1, seen, found);
             }
         }
 
@@ -245,7 +416,14 @@ namespace PoBKR
         {
             var kr = KrDir(pobDir);
             Directory.CreateDirectory(kr);
-            var krFull = Path.GetFullPath(kr).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+            return ExtractZipTo(zip, kr);
+        }
+
+        /// <summary>zip 을 지정한 폴더에 푼다.</summary>
+        public static int ExtractZipTo(byte[] zip, string destDir)
+        {
+            Directory.CreateDirectory(destDir);
+            var krFull = Path.GetFullPath(destDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
             var count = 0;
             using (var ms = new MemoryStream(zip, false))
             using (var archive = new ZipArchive(ms, ZipArchiveMode.Read))
@@ -254,7 +432,7 @@ namespace PoBKR
                 {
                     if (string.IsNullOrEmpty(entry.Name) && entry.FullName.EndsWith("/", StringComparison.Ordinal)) continue;
                     var rel = entry.FullName.Replace('/', Path.DirectorySeparatorChar);
-                    var dest = Path.GetFullPath(Path.Combine(kr, rel));
+                    var dest = Path.GetFullPath(Path.Combine(destDir, rel));
                     if (!dest.StartsWith(krFull, StringComparison.OrdinalIgnoreCase))
                         throw new InvalidDataException("압축 파일 안에 잘못된 경로가 있습니다: " + entry.FullName);
                     var dir = Path.GetDirectoryName(dest);
@@ -303,6 +481,7 @@ namespace PoBKR
 
                 result.Ok = HasMarker(pobDir);
                 if (!result.Ok) result.Error = "Modules\\Main.lua 수정을 확인하지 못했습니다.";
+                if (result.Ok) OnPatched(pobDir, AppInfo.VersionLine(data));
                 return result;
             }
             catch (UnauthorizedAccessException ex)
@@ -320,6 +499,171 @@ namespace PoBKR
                 result.Error = ex.Message;
                 return result;
             }
+        }
+
+        /// <summary>패치 성공 후: 마지막 폴더 저장, 런처 사본 준비(자동 업데이트용), 미리 받아 둔 업데이트 정리.</summary>
+        private static void OnPatched(string pobDir, string versionLine)
+        {
+            try
+            {
+                var settings = Settings.Load();
+                if (!string.Equals(settings.LastTarget, pobDir, StringComparison.OrdinalIgnoreCase))
+                {
+                    settings.LastTarget = pobDir;
+                    settings.Save();
+                }
+            }
+            catch
+            {
+            }
+            // KR\init.lua 가 자동 업데이트를 부를 때 쓰는 고정 경로 확보
+            Shortcut.EnsureLauncherCopy();
+            ClearStaged(pobDir);
+        }
+
+        /// <summary>Modules\Main.lua 가 PoB 업데이트로 덮어써졌을 때 로더만 다시 넣는다 (KR 데이터는 그대로).</summary>
+        public static bool EnsureLoader(string pobDir)
+        {
+            try
+            {
+                if (!IsPoB(pobDir)) return false;
+                var mainPath = MainLuaPath(pobDir);
+                var content = ReadText(mainPath);
+                if (content.IndexOf(AppInfo.Marker, StringComparison.Ordinal) >= 0) return true;
+
+                var backupDir = Path.Combine(KrDir(pobDir), "_설치기록");
+                var backupPath = Path.Combine(backupDir, "Main.lua.orig");
+                Directory.CreateDirectory(backupDir);
+                if (!File.Exists(backupPath)) File.Copy(mainPath, backupPath, true);
+                WriteText(mainPath, AppInfo.Loader + content);
+                return HasMarker(pobDir);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // ── 미리 받아 두기(스테이징) ──────────────────────────────────────────
+        // PoB 가 실행 중일 때는 살아 있는 KR 파일을 건드리지 않고 KR\_update 에 넣어 둔다.
+        // 다음 PoB 실행 때 init.lua 가 (데이터를 읽기 전에) 이 폴더를 반영한다.
+
+        public static string UpdateDir(string pobDir)
+        {
+            return Path.Combine(KrDir(pobDir), "_update");
+        }
+
+        private static string PendingFile(string pobDir)
+        {
+            return Path.Combine(UpdateDir(pobDir), "pending.txt");
+        }
+
+        public static bool HasPending(string pobDir)
+        {
+            try
+            {
+                return File.Exists(PendingFile(pobDir));
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>내려받은 payload 를 KR\_update\data 에 풀고 pending.txt 를 남긴다.</summary>
+        public static bool Stage(string pobDir, byte[] payload, string versionLine)
+        {
+            try
+            {
+                if (!IsPoB(pobDir)) return false;
+                ClearStaged(pobDir);
+                var stageRoot = Path.Combine(UpdateDir(pobDir), "data");
+                ExtractZipTo(payload, stageRoot);
+                File.WriteAllText(PendingFile(pobDir), versionLine + "\r\n", AppInfo.Utf8NoBom);
+                return HasPending(pobDir);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>KR\_update\data 를 KR 로 옮긴다. PoB 가 실행 중이 아니거나, 시작 직후(데이터 로드 전)에만 호출한다.</summary>
+        public static bool ApplyStaged(string pobDir, out string versionLine)
+        {
+            versionLine = "";
+            try
+            {
+                if (!IsPoB(pobDir) || !HasPending(pobDir)) return false;
+                var pending = File.ReadAllText(PendingFile(pobDir), Encoding.UTF8).Trim();
+                var stageRoot = Path.Combine(UpdateDir(pobDir), "data");
+                var kr = KrDir(pobDir);
+                if (!Directory.Exists(stageRoot))
+                {
+                    // 받아 둔 파일이 없으면 pending 만 남기지 않는다 (다음에 다시 받는다).
+                    ClearStaged(pobDir);
+                    return false;
+                }
+                var count = 0;
+                foreach (var src in Directory.GetFiles(stageRoot, "*", SearchOption.AllDirectories))
+                {
+                    var rel = src.Substring(stageRoot.Length).TrimStart(Path.DirectorySeparatorChar);
+                    var dest = Path.Combine(kr, rel);
+                    var dir = Path.GetDirectoryName(dest);
+                    if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
+                    File.Copy(src, dest, true);
+                    count++;
+                }
+                if (count == 0) return false;
+                if (pending.Length > 0)
+                    File.WriteAllText(Path.Combine(kr, "version.txt"), pending + "\r\n", AppInfo.Utf8NoBom);
+                versionLine = pending;
+                ClearStaged(pobDir);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>스테이징 폴더를 비운다 (lastcheck.txt 는 남긴다).</summary>
+        public static void ClearStaged(string pobDir)
+        {
+            try
+            {
+                var dir = UpdateDir(pobDir);
+                if (!Directory.Exists(dir)) return;
+                var data = Path.Combine(dir, "data");
+                if (Directory.Exists(data)) Directory.Delete(data, true);
+                var pending = PendingFile(pobDir);
+                if (File.Exists(pending)) File.Delete(pending);
+            }
+            catch
+            {
+            }
+        }
+
+        private static string LastCheckFile(string pobDir)
+        {
+            return Path.Combine(UpdateDir(pobDir), "lastcheck.txt");
+        }
+
+        public static void WriteLastCheck(string pobDir, long unixSeconds)
+        {
+            try
+            {
+                Directory.CreateDirectory(UpdateDir(pobDir));
+                File.WriteAllText(LastCheckFile(pobDir), unixSeconds.ToString(CultureInfo.InvariantCulture) + "\r\n", AppInfo.Utf8NoBom);
+            }
+            catch
+            {
+            }
+        }
+
+        public static long NowUnix()
+        {
+            return (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
         }
 
         public static RestoreResult Restore(string pobDir)

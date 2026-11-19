@@ -5,8 +5,52 @@
 if KR_PATCHER_LOADED then return end
 KR_PATCHER_LOADED = true
 
+-- ── 자동 업데이트 ────────────────────────────────────────────────────────────
+-- PoB 본체(Path of Building.exe)를 직접 실행해도 최신 한글 패치를 따라가게 한다.
+--   ① 지난번에 미리 받아 둔 패치가 있으면 데이터를 읽기 전에 반영한다. (KR/_update → KR, 로컬 복사만)
+--   ② 6시간에 한 번, 뒤에서 최신 패치를 확인해 KR/_update 에 받아 둔다. (PoB 로딩을 막지 않는다)
+-- PoB 는 자기 폴더를 작업 디렉터리로 실행되므로 여기서는 상대 경로만 쓴다.
+-- (한글 사용자 이름이 들어간 절대 경로는 cmd.exe 를 거치면 깨지므로 %LOCALAPPDATA% 확장에 맡긴다)
+do
+	local hasIo = type(io) == "table" and type(io.open) == "function"
+	local hasExec = type(os) == "table" and type(os.execute) == "function"
+	-- config.lua 에 autoUpdate = false 를 두면 이 블록을 통째로 건너뛴다.
+	local cfgOk, cfg = pcall(dofile, ((_G.KR_ROOT or "KR") .. "/config.lua"))
+	local auto = not (cfgOk and type(cfg) == "table" and cfg.autoUpdate == false)
+	if auto and hasIo and hasExec then
+		local launcher = '"%LOCALAPPDATA%\\PoB-KR-Patcher\\PoB-KR-Patcher.exe"'
+		local root = _G.KR_ROOT or "KR"
+
+		-- 작업 디렉토리가 PoB 폴더가 아닐 수도 있으므로 상대 경로와 KR_ROOT 둘 다 시도한다.
+		local function readLine(rel)
+			local paths = { "KR/" .. rel, root .. "/" .. rel }
+			for i = 1, #paths do
+				local f = io.open(paths[i], "r")
+				if f then
+					local line = f:read("*l")
+					f:close()
+					return line
+				end
+			end
+			return nil
+		end
+
+		-- ① 미리 받아 둔 패치 반영 (동기: 데이터를 읽기 전에 끝나야 한다)
+		if readLine("_update/pending.txt") then
+			pcall(os.execute, 'start /wait /min "" ' .. launcher .. ' --apply-staged --quiet')
+		end
+
+		-- ② 주기적 확인 (비동기: 기다리지 않는다)
+		local last = tonumber(readLine("_update/lastcheck.txt") or "") or 0
+		local now = os.time and os.time() or 0
+		if now > 0 and now - last >= 6 * 3600 then
+			pcall(os.execute, 'start /min "" ' .. launcher .. ' --bg-update')
+		end
+	end
+end
+
 local KR = {
-	version = "1.0.0",
+	version = "1.1.0",
 	enabled = true,
 	stats = { draw = 0, korean = 0, miss = 0 },
 }
