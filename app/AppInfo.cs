@@ -91,14 +91,14 @@ namespace PoBKR
     internal static class AppInfo
     {
         public const string Owner = "SSONG-HA";
-        public const string Repo = "PoB-KR-Patcher";
-        public const string ProjectUrl = "https://github.com/SSONG-HA/PoB-KR-Patcher";
+        public const string Repo = "kor-patch";
+        public const string ProjectUrl = "https://github.com/SSONG-HA/kor-patch";
 
         public const string LatestJsonUrl =
-            "https://github.com/SSONG-HA/PoB-KR-Patcher/releases/latest/download/latest.json";
+            "https://github.com/SSONG-HA/kor-patch/releases/latest/download/latest.json";
 
         public const string ApiLatestUrl =
-            "https://api.github.com/repos/SSONG-HA/PoB-KR-Patcher/releases/latest";
+            "https://api.github.com/repos/SSONG-HA/kor-patch/releases/latest";
 
         /// <summary>Modules\Main.lua 에 들어가는 표식 (install.ps1 과 동일).</summary>
         public const string Marker = "-- [PoB-KR]";

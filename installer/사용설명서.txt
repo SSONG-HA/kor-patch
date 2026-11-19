@@ -37,4 +37,4 @@ Path of Building Community Fork 를 인게임 한국어 명칭으로 보여 주�
 
 ■ 문의 / 받기
 
-  https://github.com/SSONG-HA/PoB-KR-Patcher
+  https://github.com/SSONG-HA/kor-patch

@@ -4,7 +4,7 @@ Path of Building Community Fork 를 **인게임 한국어 명칭**으로 보여 
 설치 파일 없이 **실행 파일(`PoB-KR-Patcher.exe`) 하나**로 동작하고, 시즌이 바뀌면 스스로 새 데이터를 받아 갱신합니다.
 
 - 대상: PoE1 3.30 / Path of Building Community Fork 2.68.1 (PoB 업데이트 후 다시 실행하면 됩니다)
-- 내려받기: **https://github.com/SSONG-HA/PoB-KR-Patcher/releases/latest**
+- 내려받기: **https://github.com/SSONG-HA/kor-patch/releases/latest**
 
 ## 사용법 (3단계)
 
@@ -21,7 +21,7 @@ Path of Building Community Fork 를 **인게임 한국어 명칭**으로 보여 
 
 ## 시즌 자동 업데이트
 
-- 실행할 때마다 `https://github.com/SSONG-HA/PoB-KR-Patcher/releases/latest/download/latest.json` 을 확인합니다.
+- 실행할 때마다 `https://github.com/SSONG-HA/kor-patch/releases/latest/download/latest.json` 을 확인합니다.
 - 새 시즌 데이터가 있으면 (버전 비교) **내려받아 검증(sha256) 후 적용**할지 물어봅니다.
 - 데이터만 바뀐 경우에는 exe 를 다시 받지 않아도 됩니다. 새 exe 가 필요하면 같은 창에서 안내합니다.
 - 인터넷이 없으면 exe 에 들어 있는 데이터로 그대로 패치합니다. (확인 상자는 `[최신 시즌 데이터를 자동으로 확인합니다]` 로 끌 수 있습니다)
