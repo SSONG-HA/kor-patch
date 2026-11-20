@@ -6151,6 +6151,78 @@
 "kr": "동작 속도가 기본 수치 %1% 밑으로 내려가지 않음",
 "n": 1
 },
+"AddedSmallPassiveSkillsalsogrant:#%increasedDamage": {
+"kr": "추가되는 소형 패시브 스킬이 주는 피해 %1% 증가",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#%increasedManaRegenerationRate": {
+"kr": "추가되는 소형 패시브 스킬이 마나 재생 속도 %1% 증가",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#%toChaosResistance": {
+"kr": "추가되는 소형 패시브 스킬이 카오스 저항 %1% 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#%toColdResistance": {
+"kr": "추가되는 소형 패시브 스킬이 냉기 저항 %1% 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#%toFireResistance": {
+"kr": "추가되는 소형 패시브 스킬이 화염 저항 %1% 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#%toLightningResistance": {
+"kr": "추가되는 소형 패시브 스킬이 번개 저항 %1% 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#%toallElementalResistances": {
+"kr": "추가되는 소형 패시브 스킬이 원소 저항 %1% 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toAllAttributes": {
+"kr": "추가되는 소형 패시브 스킬이 모든 능력치 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toArmour": {
+"kr": "추가되는 소형 패시브 스킬이 방어도 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toDexterity": {
+"kr": "추가되는 소형 패시브 스킬이 민첩 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toEvasion": {
+"kr": "추가되는 소형 패시브 스킬이 회피 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toIntelligence": {
+"kr": "추가되는 소형 패시브 스킬이 지능 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toMaximumEnergyShield": {
+"kr": "추가되는 소형 패시브 스킬이 에너지 보호막 최대치 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toMaximumLife": {
+"kr": "추가되는 소형 패시브 스킬이 최대 생명력 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toMaximumMana": {
+"kr": "추가되는 소형 패시브 스킬이 최대 마나 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:#toStrength": {
+"kr": "추가되는 소형 패시브 스킬이 힘 %1 부여",
+"n": 1
+},
+"AddedSmallPassiveSkillsalsogrant:Regenerate#%ofLifeperSecond": {
+"kr": "추가되는 소형 패시브 스킬이 1초마다 생명력의 %1%만큼 재생",
+"n": 1
+},
+"AddedSmallPassiveSkillshave#%increasedEffect": {
+"kr": "추가되는 소형 패시브 스킬의 효과 %1% 증가",
+"n": 1
+},
 "Adds#ChaosDamage": {
 "kr": "카오스 피해 %1~%2 추가",
 "n": 2
@@ -6199,6 +6271,10 @@
 "kr": "이 무기로 공격 시 힘 10당 화염 피해 %1~%2 추가",
 "n": 2
 },
+"Adds#JewelSocketPassiveSkills": {
+"kr": "주얼 슬롯 패시브 스킬 %1개 추가",
+"n": 1
+},
 "Adds#LightningDamage": {
 "kr": "번개 피해 %1~%2 추가",
 "n": 2
@@ -6218,6 +6294,10 @@
 "Adds#LightningDamagetoAttackswiththisWeaponper#Intelligence": {
 "kr": "이 무기로 공격 시 지능 10당 번개 피해 %1~%2 추가",
 "n": 2
+},
+"Adds#PassiveSkills": {
+"kr": "패시브 스킬 %1개 추가",
+"n": 1
 },
 "Adds#PhysicalDamage": {
 "kr": "물리 피해 %1~%2 추가",
@@ -6246,6 +6326,10 @@
 "Adds#PhysicalDamagetoAttackswiththisWeaponper#PlayerLevels": {
 "kr": "이 무기로 공격 시 플레이어 레벨 3당 물리 피해 %1~%2 추가",
 "n": 2
+},
+"Adds#SmallPassiveSkillswhichgrantnothing": {
+"kr": "아무것도 부여하지 않는 소형 패시브 스킬 %1개 추가",
+"n": 1
 },
 "Adds#maximumLightningDamagetoAttacksper#DexterityAllocatedinRadius": {
 "kr": "반경 내 할당된 민첩 %1당 공격에 번개 피해 최대치 1 추가",

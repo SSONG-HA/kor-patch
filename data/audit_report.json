@@ -1,0 +1,296 @@
+{
+ "builds": [
+  "3단계-엔드게임.xml"
+ ],
+ "strings": 7687,
+ "hit": 7395,
+ "miss": 292,
+ "rate": 96.2,
+ "by_area": {
+  "node": {
+   "total": 6613,
+   "hit": 6491,
+   "miss": 122,
+   "rate": 98.2
+  },
+  "mastery-popup": {
+   "total": 352,
+   "hit": 352,
+   "miss": 0,
+   "rate": 100.0
+  },
+  "item": {
+   "total": 300,
+   "hit": 278,
+   "miss": 22,
+   "rate": 92.7
+  },
+  "gem": {
+   "total": 224,
+   "hit": 117,
+   "miss": 107,
+   "rate": 52.2
+  },
+  "config": {
+   "total": 132,
+   "hit": 91,
+   "miss": 41,
+   "rate": 68.9
+  },
+  "mastery": {
+   "total": 66,
+   "hit": 66,
+   "miss": 0,
+   "rate": 100.0
+  }
+ },
+ "reasons": {
+  "PoB 미지원 속성 꼬리표": 18,
+  "기타 문구": 214,
+  "힌트 문구(게임 데이터에만 있음)": 20,
+  "능력치 비교 줄(라벨 사전 밖)": 31,
+  "숫자·기호만 있는 줄": 9
+ },
+ "top_missing": [
+  {
+   "tag": "node",
+   "text": "Increases and Reductions to Light Radius also apply to Effect (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "of your Link Skill Buffs on your Mercenary (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "The Apostate"
+  },
+  {
+   "tag": "node",
+   "text": "Enemies Taunted by your Warcries Explode on death, dealing 8% of their maximum Life as Chaos Damage"
+  },
+  {
+   "tag": "node",
+   "text": "Warcry Skills' Cooldown Time is 4 seconds"
+  },
+  {
+   "tag": "node",
+   "text": "Cover Enemies in Ash for 5 seconds when you Ignite them"
+  },
+  {
+   "tag": "node",
+   "text": "Cover Enemies in Frost for 5 seconds when you Freeze them"
+  },
+  {
+   "tag": "node",
+   "text": "(Being Covered in Frost applies 50% less Critical Strike Chance and 20% increased Cold Damage Taken)"
+  },
+  {
+   "tag": "node",
+   "text": "You have Impenetrable Shrine Buff while affected by no Flasks"
+  },
+  {
+   "tag": "node",
+   "text": "Damaging Ailments deal damage 5% faster"
+  },
+  {
+   "tag": "node",
+   "text": "(They will deal the same total damage over a shorter duration)"
+  },
+  {
+   "tag": "node",
+   "text": "+0.2m AoE Radius"
+  },
+  {
+   "tag": "node",
+   "text": "Trigger level 1 Suspend in Time on Casting a Spell (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "(Creates a Suspended Mirage - an astral-infused clone of yourself that is suspended in time, just before the release of the spellcast that triggered them. On reaching three Suspended Mirages, all Suspended Mirages will be released, using the spell which was cast to create them. Suspended Mirages are not created by Vaal spells, channelling spells, instant spells, or spells which create minions)"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemy Monsters' Fire Resistance against"
+  },
+  {
+   "tag": "node",
+   "text": "25% chance to Trigger Level 20 Summon Elemental Relic when you or a nearby Ally Kill an Enemy, or Hit a Rare or Unique Enemy"
+  },
+  {
+   "tag": "node",
+   "text": "(Summons a Relic of a random element that stays near you. Depending on the element chosen, the relic minion will have an Anger, Hatred, or Wrath aura. These relics explode when they die, dealing elemental damage to enemies around them. If you already have a relic of the chosen element, its duration will be refreshed instead of summoning a new one)"
+  },
+  {
+   "tag": "node",
+   "text": "Can support Intelligence threshold jewels"
+  },
+  {
+   "tag": "node",
+   "text": "(Increases and Reductions to Maximum Mana also apply to Damage at 30% of their value)"
+  },
+  {
+   "tag": "node",
+   "text": "+0.4% Effective Crit Chance"
+  },
+  {
+   "tag": "node",
+   "text": "With at least one nearby corpse, you and nearby Allies deal 10% more Damage"
+  },
+  {
+   "tag": "node",
+   "text": "With at least one nearby corpse, nearby Enemies deal 10% reduced Damage"
+  },
+  {
+   "tag": "node",
+   "text": "Ignites you inflict deal Damage 8% faster"
+  },
+  {
+   "tag": "node",
+   "text": "(Increases and Reductions to Maximum Energy Shield"
+  },
+  {
+   "tag": "node",
+   "text": "also apply to Spell Damage at 30% of their value)"
+  },
+  {
+   "tag": "node",
+   "text": "Can support Strength threshold jewels"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies Convert 25% of their Physical Damage to Fire"
+  },
+  {
+   "tag": "node",
+   "text": "(Primal Aegis calls forth a protective aegis which takes elemental damage from hits for you until depleted. The aegis will be restored to its full value after a short delay if you stop taking elemental damage from hits, or if depleted)"
+  },
+  {
+   "tag": "node",
+   "text": "Grants Armour equal to 25% of your Reserved Mana to you and nearby Allies"
+  },
+  {
+   "tag": "node",
+   "text": "you and nearby Allies"
+  },
+  {
+   "tag": "node",
+   "text": "Grants Level 20 Misty Reflection Skill"
+  },
+  {
+   "tag": "node",
+   "text": "(Dash backwards, leaving a short-lived mist copy of yourself that Taunts nearby Enemies for a short duration. The copy can be damaged by Enemies, and copies that are killed by an Enemy will apply a debuff in an area that makes affected targets take 30% increased Damage and deal 30% less Damage for 4 seconds)"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies are Chilled"
+  },
+  {
+   "tag": "node",
+   "text": "Damaging Ailments deal damage 15% faster"
+  },
+  {
+   "tag": "node",
+   "text": "Bleeding you inflict deals Damage 5% faster"
+  },
+  {
+   "tag": "node",
+   "text": "Removes Elemental Ailments when you use a Flask (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "Vaal Caress"
+  },
+  {
+   "tag": "node",
+   "text": "You gain Onslaught for 20 seconds on using a Vaal Skill (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "10% chance to Blind nearby Enemies when you use an Elemental Skill (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies are Blinded"
+  },
+  {
+   "tag": "node",
+   "text": "(Being Blinded causes 20% less Accuracy Rating and Evasion Rating)"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies are Covered in Ash if you haven't moved in the past 2 seconds"
+  },
+  {
+   "tag": "node",
+   "text": "Each Totem applies 1% increased Damage taken to Enemies near it"
+  },
+  {
+   "tag": "node",
+   "text": "Projectiles deal 35% increased Damage with Hits against nearby Enemies"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies have Cold Exposure while you are affected by Herald of Ice"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies have Fire Exposure while you are affected by Herald of Ash"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies have Lightning Exposure while you are affected by Herald of Thunder"
+  },
+  {
+   "tag": "node",
+   "text": "+0.1m AoE Radius"
+  },
+  {
+   "tag": "node",
+   "text": "Nearby Enemies have Fire Exposure"
+  },
+  {
+   "tag": "node",
+   "text": "Can support Dexterity threshold jewels"
+  },
+  {
+   "tag": "node",
+   "text": "25% chance to Intimidate nearby Enemies for 4 seconds on Melee Kill (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "Totems Hinder Enemies near them when Summoned (Not supported in PoB yet)"
+  },
+  {
+   "tag": "node",
+   "text": "(Increases and Reductions to Maximum Life also apply to Attack Damage at 30% of their value)"
+  },
+  {
+   "tag": "node",
+   "text": "Damaging Ailments deal damage 10% faster"
+  },
+  {
+   "tag": "node",
+   "text": "Dawnbreaker"
+  },
+  {
+   "tag": "node",
+   "text": "25% of Cold Damage taken as Fire Damage"
+  },
+  {
+   "tag": "node",
+   "text": "25% of Lightning Damage taken as Fire Damage"
+  },
+  {
+   "tag": "node",
+   "text": "25% of Physical Damage taken as Fire Damage"
+  },
+  {
+   "tag": "node",
+   "text": "Precursor's Release"
+  },
+  {
+   "tag": "node",
+   "text": "For each nearby corpse, you and nearby Allies Regenerate 0.2% of Energy Shield per second, up to 2.0% per second"
+  }
+ ]
+}

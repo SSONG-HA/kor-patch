@@ -1,0 +1,165 @@
+{
+"coverage": {
+"counts": {
+"숙련 문구": {
+"hit": 392,
+"total": 396
+},
+"숙련 이름": {
+"hit": 99,
+"total": 99
+},
+"일반 문구": {
+"hit": 742,
+"total": 742
+},
+"일반 이름": {
+"hit": 542,
+"total": 542
+},
+"전직 문구": {
+"hit": 751,
+"total": 785
+},
+"전직 이름": {
+"hit": 435,
+"total": 442
+},
+"주얼슬롯 이름": {
+"hit": 4,
+"total": 4
+},
+"주요노드 문구": {
+"hit": 1325,
+"total": 1325
+},
+"주요노드 이름": {
+"hit": 784,
+"total": 784
+},
+"클래스시작 이름": {
+"hit": 7,
+"total": 7
+},
+"플레이버 문구": {
+"hit": 69,
+"total": 69
+},
+"핵심노드 문구": {
+"hit": 124,
+"total": 124
+},
+"핵심노드 이름": {
+"hit": 57,
+"total": 57
+},
+"힌트 문구": {
+"hit": 252,
+"total": 253
+}
+},
+"missing": {
+"flavour": [],
+"mastery_stats": [
+"Flasks adjacent to applied Tincture have 10% increased Effect when",
+"Increases and Reductions to Armour also apply to Energy",
+"Shield Recharge Rate at 20% of their value",
+"used if you've Hit an enemy with a Weapon Recently"
+],
+"node_names": [
+"전직: Fatal Flourish",
+"전직: Fury of Nature",
+"전직: Harness the Void",
+"전직: Indomitable Resolve",
+"전직: Nine Lives",
+"전직: Searing Purity",
+"전직: Unleashed Potential"
+],
+"node_stats": [
+"전직: 1.5% of Physical Damage prevented from Hits in the past",
+"전직: 10 seconds is Regenerated as Life per second",
+"전직: 13% chance to gain 50% of Non-Chaos Damage with Hits as Extra Chaos Damage",
+"전직: 25% chance to gain a Power, Frenzy or Endurance Charge on Kill",
+"전직: 25% of Damage taken Recouped as Life, Mana and Energy Shield",
+"전직: 27% chance to gain 25% of Non-Chaos Damage with Hits as Extra Chaos Damage",
+"전직: 40% increased Life Regeneration rate",
+"전직: 400% increased Endurance, Frenzy and Power Charge Duration",
+"전직: 45% of Chaos Damage taken as Fire Damage",
+"전직: 45% of Chaos Damage taken as Lightning Damage",
+"전직: 5% increased Poison Duration for each Poison you have inflicted Recently, up",
+"전직: 7% chance to gain 100% of Non-Chaos Damage with Hits as Extra Chaos Damage",
+"전직: Consecrated Ground you create causes Life Regeneration to",
+"전직: Deal 10% less Damage",
+"전직: Final Repeat of Attack Skills deals 60% more Damage",
+"전직: Flasks adjacent to active Tinctures gain 3 charges when you Hit an",
+"전직: Flasks adjacent to applied Tincture have 30% increased Effect when",
+"전직: Gain 3% of Missing Unreserved Life before being Hit by an Enemy Per Defiance",
+"전직: Gain Defiance for 10 seconds on losing Life to an Enemy Hit, no",
+"전직: Lose all Defiance when you reach 10 Defiance",
+"전직: Non-Damaging Elemental Ailments you inflict have 100% more Effect",
+"전직: Non-Damaging Elemental Ailments you inflict spread to nearby enemies within 2 metres",
+"전직: Non-Travel Attack Skills Repeat an additional Time",
+"전직: Non-Unique Jewels cause Increases and Reductions to other Damage Types in a Large Radius to be Transformed to apply to Fire Damage",
+"전직: Non-Unique Jewels cause Small and Notable Passive Skills in a Large Radius to",
+"전직: Poison you inflict with Critical Strikes deals 20% more Damage",
+"전직: Recoup Effects instead occur over 3 seconds",
+"전직: Recover 0.5% of Life per Poison affecting Enemies you Kill",
+"전직: Take 25% less Damage",
+"전직: also Recover Energy Shield for you and Allies",
+"전직: also grant +4 to Strength",
+"전직: more than once every 0.3 seconds",
+"전직: to a maximum of 100%",
+"전직: used if you've Hit an enemy with a Weapon Recently"
+],
+"reminders": [
+"(Elemental Ailments are Ignited, Scorched, Chilled, Frozen, Brittled, Shocked, and Sapped)"
+]
+}
+},
+"dict": {
+"conflicts": 6,
+"names": 1910,
+"stats": 3301
+},
+"mastery": {
+"effects": 1837,
+"nodes": 315
+},
+"pairing": {
+"reasons": {
+"문구 충돌": 4,
+"숙련 선택지 줄 나눔 불가(영문 유지)": 7,
+"스탯 줄 나눔 불가(영문 유지)": 6,
+"이름 충돌": 2
+},
+"samples": {
+"문구 충돌": [
+"Skills Cost Life instead of Mana",
+"Skills Reserve Life instead of Mana",
+"Cannot be Stunned",
+"Projectiles gain Damage as they travel farther, dealing up"
+],
+"숙련 선택지 줄 나눔 불가(영문 유지)": [
+"Increases and Reductions to Armour also apply to Energy | Shield Recharge Rate at 20% of their value / 방어도 증가 및 감소 수치의 20%를 에너지 보호막 재충전 속도에도 적용",
+"Increases and Reductions to Armour also apply to Energy | Shield Recharge Rate at 20% of their value / 방어도 증가 및 감소 수치의 20%를 에너지 보호막 재충전 속도에도 적용",
+"Flasks adjacent to applied Tincture have 10% increased Effect when | used if you've Hit an enemy with a Weapon Recently / 최근 4초 이내 무기로 적 명중 시, 적용된 팅크에 인접한 플라스크의",
+"Flasks adjacent to applied Tincture have 10% increased Effect when | used if you've Hit an enemy with a Weapon Recently / 최근 4초 이내 무기로 적 명중 시, 적용된 팅크에 인접한 플라스크의",
+"Flasks adjacent to applied Tincture have 10% increased Effect when | used if you've Hit an enemy with a Weapon Recently / 최근 4초 이내 무기로 적 명중 시, 적용된 팅크에 인접한 플라스크의",
+"Flasks adjacent to applied Tincture have 10% increased Effect when | used if you've Hit an enemy with a Weapon Recently / 최근 4초 이내 무기로 적 명중 시, 적용된 팅크에 인접한 플라스크의",
+"Flasks adjacent to applied Tincture have 10% increased Effect when | used if you've Hit an enemy with a Weapon Recently / 최근 4초 이내 무기로 적 명중 시, 적용된 팅크에 인접한 플라스크의"
+],
+"스탯 줄 나눔 불가(영문 유지)": [
+"Gain Defiance for 10 seconds on losing Life to an Enemy Hit, no | more than once every 0.3 seconds | Lose all Defiance when you reach 10 Defiance | Gain 3% of M",
+"40% increased Life Regeneration rate | 1.5% of Physical Damage prevented from Hits in the past | 10 seconds is Regenerated as Life per second / 생명력 재생 속도 40% 증가",
+"Non-Unique Jewels cause Increases and Reductions to other Damage Types in a Large Radius to be Transformed to apply to Fire Damage | Non-Unique Jewels cause Sma",
+"Consecrated Ground you create causes Life Regeneration to | also Recover Energy Shield for you and Allies | Effects of Consecrated Ground you create Linger for ",
+"Flasks adjacent to active Tinctures gain 3 charges when you Hit an | Enemy with a Melee Weapon, no more than once every second | Flasks adjacent to applied Tinc",
+"Poison you inflict with Critical Strikes deals 20% more Damage | 5% increased Poison Duration for each Poison you have inflicted Recently, up | to a maximum of "
+],
+"이름 충돌": [
+"Juggernaut",
+"Maximum Lightning Resistance"
+]
+}
+}
+}

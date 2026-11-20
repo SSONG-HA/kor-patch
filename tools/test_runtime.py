@@ -1,6 +1,7 @@
 """런타임 견고성 테스트: 전 화면 그리기, F2 전환, 미등록 글자, 폭 계산, 다중 빌드 계산 동일성."""
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.environ.get("LUAJIT_PATH", "/workspace/.local/lib/python3.12/site-packages"))
@@ -75,6 +76,30 @@ def main() -> int:
         fails.append("F2 끔 상태에서 오류: " + str(g["__mainObject__"]["promptMsg"]))
     kr["toggle"]()
     print("F2 전환: 한글→영문 동작 =", enabled_after is False, "/ 복귀 =", kr["enabled"] is True)
+
+    # 사전 조회 규칙 (숙련 선택지·클러스터 주얼·능력치 비교·미지원 꼬리표·홈 표시)
+    probes = lua.execute("""
+local cases = {
+  { "mastery",  "3% chance to deal Triple Damage" },
+  { "popup",    "Gain 25 Life per Enemy Hit with Main Hand Claw Attacks / Gain 25 Mana per Enemy Hit with Off Hand Claw Attacks" },
+  { "cluster",  "Added Small Passive Skills grant: 12% increased Chaos Damage" },
+  { "clusterN", "1 Added Passive Skill is Unholy Grace" },
+  { "diff",     "+254 Effective Hit Pool (+0.3%)" },
+  { "diffneg",  "-1,174 Effective Hit Pool (-6.7%)" },
+  { "support",  "5% chance to Blind Enemies on Hit ^8(Not supported in PoB yet)" },
+  { "sockets",  "Sockets: W=W=W" },
+}
+local out = {}
+for _, c in ipairs(cases) do out[c[1]] = KR.translate(c[2]) or "NIL" end
+return require("dkjson").encode(out)
+""")
+    probes = json.loads(probes)
+    print("사전 조회 표본:")
+    for key, value in probes.items():
+        print("   %-9s %s" % (key, value))
+    for key in ("mastery", "popup", "cluster", "clusterN", "diff", "diffneg", "support", "sockets"):
+        if not re.search(r"[\uac00-\ud7a3]", probes.get(key, "")):
+            fails.append("사전 조회 실패: " + key)
 
     # 미등록 한글 글자 (아틀라스에 없는 글자)
     raw = lua.execute("""

@@ -3,61 +3,61 @@
 {
 "bases": 27,
 "class": "Claws",
-"mods": 1036,
+"mods": 1037,
 "uniques": 21
 },
 {
 "bases": 13,
 "class": "Daggers",
-"mods": 1053,
+"mods": 1054,
 "uniques": 7
 },
 {
 "bases": 27,
 "class": "Wands",
-"mods": 1339,
+"mods": 1342,
 "uniques": 26
 },
 {
 "bases": 31,
 "class": "One_Hand_Swords",
-"mods": 1003,
+"mods": 993,
 "uniques": 32
 },
 {
 "bases": 27,
 "class": "One_Hand_Axes",
-"mods": 997,
+"mods": 994,
 "uniques": 10
 },
 {
 "bases": 27,
 "class": "One_Hand_Maces",
-"mods": 955,
+"mods": 946,
 "uniques": 13
 },
 {
 "bases": 28,
 "class": "Sceptres",
-"mods": 1351,
+"mods": 1352,
 "uniques": 27
 },
 {
 "bases": 17,
 "class": "Rune_Daggers",
-"mods": 1298,
+"mods": 1300,
 "uniques": 15
 },
 {
 "bases": 25,
 "class": "Thrusting_One_Hand_Swords",
-"mods": 998,
+"mods": 989,
 "uniques": 8
 },
 {
 "bases": 28,
 "class": "Bows",
-"mods": 940,
+"mods": 936,
 "uniques": 31
 },
 {
@@ -69,19 +69,19 @@
 {
 "bases": 24,
 "class": "Two_Hand_Swords",
-"mods": 1024,
+"mods": 1022,
 "uniques": 20
 },
 {
 "bases": 24,
 "class": "Two_Hand_Axes",
-"mods": 1010,
+"mods": 1007,
 "uniques": 20
 },
 {
 "bases": 24,
 "class": "Two_Hand_Maces",
-"mods": 949,
+"mods": 941,
 "uniques": 16
 },
 {
@@ -105,13 +105,13 @@
 {
 "bases": 40,
 "class": "Rings",
-"mods": 963,
+"mods": 964,
 "uniques": 113
 },
 {
 "bases": 12,
 "class": "Belts",
-"mods": 742,
+"mods": 743,
 "uniques": 62
 },
 {
@@ -129,13 +129,13 @@
 {
 "bases": 15,
 "class": "Gloves_dex",
-"mods": 1886,
+"mods": 1887,
 "uniques": 0
 },
 {
 "bases": 15,
 "class": "Gloves_int",
-"mods": 1909,
+"mods": 1902,
 "uniques": 0
 },
 {
@@ -147,7 +147,7 @@
 {
 "bases": 11,
 "class": "Gloves_str_int",
-"mods": 1933,
+"mods": 1932,
 "uniques": 0
 },
 {
@@ -165,13 +165,13 @@
 {
 "bases": 14,
 "class": "Boots_dex",
-"mods": 1615,
+"mods": 1613,
 "uniques": 0
 },
 {
 "bases": 14,
 "class": "Boots_int",
-"mods": 1616,
+"mods": 1614,
 "uniques": 0
 },
 {
@@ -183,91 +183,91 @@
 {
 "bases": 10,
 "class": "Boots_str_int",
-"mods": 1646,
+"mods": 1644,
 "uniques": 0
 },
 {
 "bases": 12,
 "class": "Boots_dex_int",
-"mods": 1652,
+"mods": 1650,
 "uniques": 0
 },
 {
 "bases": 21,
 "class": "Body_Armours_str",
-"mods": 1754,
+"mods": 1758,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_dex",
-"mods": 1752,
+"mods": 1753,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_int",
-"mods": 1771,
+"mods": 1772,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_str_dex",
-"mods": 1775,
+"mods": 1774,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_str_int",
-"mods": 1786,
+"mods": 1796,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_dex_int",
-"mods": 1793,
+"mods": 1802,
 "uniques": 0
 },
 {
 "bases": 3,
 "class": "Body_Armours_str_dex_int",
-"mods": 1772,
+"mods": 1847,
 "uniques": 0
 },
 {
 "bases": 14,
 "class": "Helmets_str",
-"mods": 1724,
+"mods": 1727,
 "uniques": 0
 },
 {
 "bases": 13,
 "class": "Helmets_dex",
-"mods": 1724,
+"mods": 1720,
 "uniques": 0
 },
 {
 "bases": 14,
 "class": "Helmets_int",
-"mods": 1727,
+"mods": 1715,
 "uniques": 0
 },
 {
 "bases": 16,
 "class": "Helmets_str_dex",
-"mods": 1747,
+"mods": 1744,
 "uniques": 0
 },
 {
 "bases": 17,
 "class": "Helmets_str_int",
-"mods": 1757,
+"mods": 1756,
 "uniques": 0
 },
 {
 "bases": 17,
 "class": "Helmets_dex_int",
-"mods": 1759,
+"mods": 1754,
 "uniques": 0
 },
 {
@@ -279,13 +279,13 @@
 {
 "bases": 19,
 "class": "Shields_str",
-"mods": 901,
+"mods": 906,
 "uniques": 0
 },
 {
 "bases": 18,
 "class": "Shields_dex",
-"mods": 904,
+"mods": 898,
 "uniques": 0
 },
 {
@@ -297,19 +297,19 @@
 {
 "bases": 13,
 "class": "Shields_str_dex",
-"mods": 934,
+"mods": 936,
 "uniques": 0
 },
 {
 "bases": 13,
 "class": "Shields_str_int",
-"mods": 965,
+"mods": 963,
 "uniques": 0
 },
 {
 "bases": 13,
 "class": "Shields_dex_int",
-"mods": 956,
+"mods": 931,
 "uniques": 0
 },
 {
@@ -363,7 +363,7 @@
 {
 "bases": 1,
 "class": "Timeless_Jewel",
-"mods": 292,
+"mods": 315,
 "uniques": 6
 },
 {
@@ -389,6 +389,24 @@
 "class": "Tinctures",
 "mods": 66,
 "uniques": 5
+},
+{
+"bases": 1,
+"class": "Small_Cluster_Jewel",
+"mods": 284,
+"uniques": 8
+},
+{
+"bases": 1,
+"class": "Medium_Cluster_Jewel",
+"mods": 250,
+"uniques": 1
+},
+{
+"bases": 1,
+"class": "Large_Cluster_Jewel",
+"mods": 250,
+"uniques": 1
 }
 ],
 "mod_conflicts": {
@@ -514,6 +532,7 @@
 "Brute_Force_Solution",
 "Brutus_Lead_Sprinkler",
 "Cadigans_Authority",
+"Calamitous_Visions",
 "Call_of_the_Brotherhood",
 "Call_of_the_Void",
 "Callinellus_Malleus",
@@ -529,6 +548,7 @@
 "Chain_of_Endurance",
 "Chains_of_Emancipation",
 "Cheap_Construction",
+"Child_of_Violence",
 "Chill_of_Corruption",
 "Chin_Sol",
 "Chober_Chaber",
@@ -718,6 +738,7 @@
 "Kikazaru",
 "Kingmaker",
 "Kitavas_Feast",
+"Kitavas_Teachings",
 "Kurgals_Gaze",
 "Lakishus_Blade",
 "Last_Resort",
@@ -753,6 +774,7 @@
 "Martial_Artistry",
 "Martyr_of_Innocence",
 "Marylenes_Fallacy",
+"Megalomaniac",
 "Meginords_Girdle",
 "Melding_of_the_Flesh",
 "Midnight_Bargain",
@@ -775,6 +797,7 @@
 "Mystic_Refractor",
 "Nadir_Mode",
 "Nametaker",
+"Natural_Affinity",
 "Natural_Hierarchy",
 "Nebulis",
 "Nebuloch",
@@ -790,6 +813,7 @@
 "Olesyas_Delight",
 "Olroths_Resolve",
 "Omen_on_the_Winds",
+"One_With_Nothing",
 "Oni-Goroshi",
 "Oriaths_End",
 "Original_Sin",
@@ -1049,6 +1073,7 @@
 "The_Eternal_Struggle",
 "The_Felbog_Fang",
 "The_Flame_of_Hope",
+"The_Front_Line",
 "The_Fulcrum",
 "The_Gluttonous_Tide",
 "The_Goddess_Bound",
@@ -1064,6 +1089,7 @@
 "The_Hidden_Blade",
 "The_Highwayman",
 "The_Hungry_Loop",
+"The_Interrogation",
 "The_Iron_Mass",
 "The_Jinxed_Juju",
 "The_Light_of_Meaning",
@@ -1091,6 +1117,7 @@
 "The_Searing_Touch",
 "The_Selfish_Shepherd",
 "The_Shattered_Divinity",
+"The_Siege",
 "The_Sorrow_of_the_Divine",
 "The_Stormheart",
 "The_Sundered_Will",
@@ -1163,6 +1190,7 @@
 "Violent_Dead",
 "Vivinsect",
 "Voice_of_the_Storm",
+"Voices",
 "Void_Battery",
 "Voideye",
 "Voidfletcher",

@@ -53,8 +53,30 @@ Path of Building Community Fork 를 **인게임 한국어 명칭**으로 보여 
   - PoB 의 모든 텍스트는 전역 `DrawString` / `DrawStringWidth` 를 지나므로 이 둘만 감싸고,
     한글은 미리 구운 글리프 아틀라스로 그립니다. (엔진 폰트는 ASCII 비트맵이라 한글이 없습니다)
   - 그래서 DPS·Life 등 계산값은 영문판과 동일합니다. (`tools/compare_calcs.py` 로 검증)
-- 사전 범위: 젬(변형 포함)·패시브 노드/효과 문구·유니크/베이스 아이템·아이템 옵션 템플릿·주요 UI 문구.
-- 남는 한계: Calcs 의 긴 계산 설명 문단과 플레이어가 지은 희귀 아이템 이름은 영문 그대로입니다.
+- 사전 범위: 젬(변형 포함)·패시브 노드/효과/숙련 선택지·클러스터 주얼·군단 주얼·유니크/베이스 아이템·
+  아이템 옵션 템플릿·계산(Calcs) 능력치 이름과 비교 줄·주요 UI/설정 문구.
+- 남는 한계: 젬 툴팁의 **스킬 능력치 설명 줄**(예: "Deals 2343 to 3453 Chaos Damage")은 게임 데이터의
+  문장 틀 2만여 개를 그대로 옮겨야 해서 아직 영문입니다. 빌드에서 쓰는 희귀 아이템 이름, 고유 아이템의
+  플레이버 텍스트, 지도 속성 이름 일부도 영문 그대로입니다.
+
+## 전수 점검 결과 (v1.1.2)
+
+PoB 를 헤드리스로 띄워 **실제 화면·툴팁에 그려지는 문자열**을 전부 모아 확인했습니다.
+(`python3 tools/audit_render.py` — 빌드 3단계-엔드게임 기준)
+
+| 영역 | 번역 | 비고 |
+|---|---|---|
+| 패시브 트리 노드 이름 | 100% | 일반·주요·핵심·숙련·전직 전부 |
+| 패시브 트리 효과 줄 | 100% (전직 99.7%) | 3.30 에서 문구가 바뀐 전직 3줄은 영문 유지 |
+| 숙련(Mastery) 선택지 | **100%** (315노드·1,837줄) | 이름·선택지·힌트 문구 포함 |
+| 클러스터 주얼 | 100% | 주요 패시브 308개·인챈트 60개·소형 패시브 60줄 |
+| 군단 주얼(무궁한 주얼) | 100% | 사전 검사에서 1,045개 문자열 확인 |
+| 젬 이름 | 99.8% | 824개 중 2개(poedb 미등록) |
+| 아이템 툴팁 | 92.7% | 남은 것은 희귀 아이템 이름·플레이버 문장 |
+| 계산(Calcs)·비교 툴팁 | 98% 이상 | 능력치 비교 줄("+254 유효 생명력 풀 (+0.3%)") 포함 |
+| 젬 툴팁 | 52% | 스킬 능력치 설명 줄이 대부분 (아래 한계 참고) |
+
+화면 전체 문자열 기준 **96.2%**(7,687개 중 7,395개)가 한글로 그려집니다.
 
 ## 저장소 구조
 
@@ -62,13 +84,14 @@ Path of Building Community Fork 를 **인게임 한국어 명칭**으로 보여 
 src/KR/                 PoB 폴더로 배포되는 런타임 (Lua + 사전 + 폰트 아틀라스)
   init.lua              DrawString/DrawStringWidth 후크, F2 전환
   draw.lua font.lua     한글 레이아웃 · 글리프 아틀라스 렌더링
-  Data/*.lua            영→한 사전 (정확 일치 8천여 개 + 옵션 템플릿 3.7천여 개)
+  Data/*.lua            영→한 사전 (정확 일치 9.2천여 개 + 옵션 템플릿 4.2천여 개)
   Fonts/*.png           크기별 글리프 아틀라스 (Noto Sans KR)
 app/                    단일 실행 파일(C# / .NET Framework 4.8) 소스
 scripts/make_payload.py src/KR → exe 에 내장되는 payload zip + build.json
 scripts/test_exe.ps1    CI 에서 exe 설치/복구 동작을 실제로 검사
 tools/                  poedb 데이터 수집 · 사전 생성 · 폰트 굽기 · 버전 갱신
-                        (군단 주얼은 tools/legion.py 가 맡습니다)
+                        (군단 주얼 tools/legion.py, 클러스터 주얼 tools/cluster.py,
+                          실제 화면 기준 점검 tools/audit_render.py)
 installer/              수동 설치용 PowerShell 스크립트 (선택)
 version.json            릴리스 버전 / 시즌 / PoB 버전
 ```
@@ -115,9 +138,10 @@ python tools/fetch_pob.py            # PoB 의 Data/Gems.lua, TreeData/<ver>/tre
                                      #     Data/TimelessJewelData/LegionPassives.lua, Uniques/jewel.lua 준비
 export POB_SRC=$(...)                # 위 스크립트가 알려 주는 경로
 export POE_TREE_VERSION=3_30
-python tools/run_all.py              # gems → passives → items → legion → emit_lua → bake_font
+python tools/run_all.py              # gems → passives → items → cluster → legion → emit_lua → bake_font
 python tools/verify.py               # 커버리지/정합성 확인 (개발 환경)
 python tools/test_legion.py          # 군단 주얼 문구가 모두 한글로 바뀌는지 확인
+python tools/audit_render.py         # 설치된 PoB 로 화면·툴팁 문자열 번역률 점검 (TEST_POB, BUILD_DIR)
 python scripts/make_payload.py       # exe 에 넣을 payload 갱신
 ```
 

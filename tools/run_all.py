@@ -16,7 +16,7 @@ def run(script: str) -> None:
 
 
 def main() -> None:
-    for s in ("gems.py", "passives.py", "items.py", "legion.py", "emit_lua.py", "bake_font.py"):
+    for s in ("gems.py", "passives.py", "items.py", "cluster.py", "legion.py", "emit_lua.py", "bake_font.py"):
         run(s)
     print("\n완료. KR 폴더를 Path of Building 폴더로 복사한 뒤 한글패치_적용.bat 을 실행하세요.")
     print("(이 도구를 이 폴더에서 실행했다면 상위 폴더의 KR 이 이미 갱신되었습니다)")

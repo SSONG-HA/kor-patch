@@ -96,6 +96,24 @@ def strip_tags(s: str) -> str:
     return html.unescape(TAG_RE.sub("", s))
 
 
+# GGG 문자열 태그: "[Critical|Critical Hit]" → "Critical Hit", "[Blind]" → "Blind"
+GGG_PIPE_RE = re.compile(r"\[([^|%\]]+)\|([^\]]+)\]")
+GGG_BARE_RE = re.compile(r"\[([^\]|]+)\]")
+GGG_TAG_RE = re.compile(r"<[^>]+>\{([^}]+)\}")
+
+
+def strip_ggg(s: str) -> str:
+    """게임/PoB 가 화면에 그릴 때 지우는 `[키워드|표시문]` 태그를 지웁니다.
+
+    PoB 는 노드 스탯을 그리기 전에 escapeGGGString 으로 태그를 지우므로,
+    사전 키도 태그를 지운 모양이어야 화면 문자열과 맞습니다.
+    """
+    s = GGG_TAG_RE.sub(r"\1", s)
+    s = GGG_PIPE_RE.sub(r"\2", s)
+    s = GGG_BARE_RE.sub(r"\1", s)
+    return s
+
+
 def page_links(text: str, lang: str) -> dict[str, str]:
     """slug -> link text for /<lang>/... anchors, first occurrence wins."""
     out: dict[str, str] = {}

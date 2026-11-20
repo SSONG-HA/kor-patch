@@ -30,6 +30,9 @@ CLASSES = [
     "Murderous_Eye_Jewel", "Searching_Eye_Jewel", "Hypnotic_Eye_Jewel", "Ghastly_Eye_Jewel",
     "Assembled_Eye_Jewel", "Timeless_Jewel",
     "Life_Flasks", "Mana_Flasks", "Utility_Flasks", "Tinctures",
+    # 클러스터 주얼: 인챈트("Added Small Passive Skills grant: …")와
+    # "Added Small Passive Skills also grant: …" 속성을 이 페이지에서 받습니다.
+    "Small_Cluster_Jewel", "Medium_Cluster_Jewel", "Large_Cluster_Jewel",
 ]
 
 def is_merged_noise(kr_tpl: str) -> bool:
@@ -42,7 +45,10 @@ def is_merged_noise(kr_tpl: str) -> bool:
     return "보조 보조" in kr_tpl
 
 
-NUM_TOKEN_RE = re.compile(r"[+-]?\(?\d+(?:\.\d+)?(?:-\d+(?:\.\d+)?)?\)?")
+# 숫자 토큰: 천 단위 쉼표(1,234)도 한 덩어리로 봅니다.
+# (PoB 는 큰 수를 1,234 처럼 그리므로, 키를 만들 때도 같은 규칙이어야 맞습니다)
+_DIGITS = r"(?:\d{1,3}(?:,\d{3})+|\d+)"
+NUM_TOKEN_RE = re.compile(r"[+-]?\(?%s(?:\.\d+)?(?:-%s(?:\.\d+)?)?\)?" % (_DIGITS, _DIGITS))
 
 
 def _dash(s: str) -> str:

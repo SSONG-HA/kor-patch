@@ -50,7 +50,7 @@ do
 end
 
 local KR = {
-	version = "1.1.1",
+	version = "1.1.2",
 	enabled = true,
 	stats = { draw = 0, korean = 0, miss = 0 },
 }
@@ -84,6 +84,12 @@ local ok, err = pcall(function()
 	local cache = {}
 
 	local function translate(text)
+		-- PoB 가 지원하지 않는 속성 뒤에 붙이는 꼬리표: 앞부분만 번역하고 꼬리표는 그대로 붙인다
+		local core = text:match("^(.-) %^8%(Not supported in PoB yet%)$")
+		if core then
+			local inner = translate(core)
+			if inner then return inner .. " ^8(PoB 미지원)" end
+		end
 		local t = exact[text]
 		if t then return t end
 		-- PoB 데이터에는 끝에 공백이 붙은 이름이 있다 ("Mana ", "Shattered Piercing ")
@@ -123,6 +129,27 @@ local ok, err = pcall(function()
 				return table.concat(parts, ", ")
 			end
 		end
+		-- "A / B" 형태 (숙련 선택지 목록 라벨): 조각이 모두 번역되면 이어붙임
+		if text:find(" / ", 1, true) then
+			local parts, allHit, pos = {}, true, 1
+			while true do
+				local i = text:find(" / ", pos, true)
+				local piece = text:sub(pos, (i and i - 1) or #text)
+				piece = piece:gsub("^%s+", ""):gsub("%s+$", "")
+				local pp = exact[piece]
+				if not pp then allHit = false break end
+				parts[#parts + 1] = pp
+				if not i then break end
+				pos = i + 3
+			end
+			if allHit and #parts > 1 then
+				return table.concat(parts, " / ")
+			end
+		end
+		-- "Sockets: W=W=W" 형태: 홈 색 표시는 그대로 두고 머리말만 번역
+		local socks = text:match("^Sockets: ([BGRWA= ]+)$")
+		if socks then return "홈: " .. socks end
+
 		-- "스킬이름 B-G-R" 형태: 앞쪽 이름만 번역
 		local head2, cols = text:match("^(.-) ([BGRW%-]+)$")
 		if head2 and cols then
@@ -158,6 +185,11 @@ local ok, err = pcall(function()
 		end
 		local prefix, body = splitPrefix(text)
 		local res = translate(text)
+		if not res and prefix ~= "" then
+			-- 앞 색상 코드를 뺀 본문: 중간에 색상 코드가 섞인 줄("Level: ^x8888FF26")은
+			-- 본문 그대로 사전에 넣어 두므로 색상 정보가 유지된다.
+			res = translate(body)
+		end
 		if not res then
 			local plain = text:gsub("%^x%x%x%x%x%x%x", ""):gsub("%^%d", "")
 			res = translate(plain)

@@ -95,6 +95,8 @@ def main() -> None:
         ("bases.json", "베이스 아이템 이름"),
         # 군단 주얼(무궁한 주얼): 정복된 패시브 이름·스탯과 정복자 이름
         ("legion_exact.json", "군단 주얼 이름·문구"),
+        # 클러스터 주얼(스킬 군 주얼): 주요 패시브 이름·인챈트·주얼 슬롯 문구
+        ("cluster_exact.json", "클러스터 주얼 이름·문구"),
     ]
     counts = {}
     for fname, label in sources:
@@ -132,6 +134,34 @@ def main() -> None:
         for k, v in legion.items():
             templates.setdefault(k, v)
         print("%-14s %5d entries (신규 %d)" % ("군단 주얼 스탯", len(legion), len(templates) - before))
+    # 계산(Calcs) 화면 스탯 이름 + 비교 툴팁("+254 Effective Hit Pool (+0.3%)") 문형
+    calcs_path = os.path.join(DATA, "calcs_ko.json")
+    if os.path.exists(calcs_path):
+        calcs = json.load(open(calcs_path, encoding="utf-8"))
+        from items import shape  # noqa: E402  (런타임과 같은 정규화 규칙)
+        added = 0
+        for label, ko in calcs.items():
+            exact.setdefault(label, ko)
+            # 비교 툴팁에 그려지는 네 가지 모양: "+254 Label (+0.3%)", "+23% Label", …
+            forms = (
+                ("+0 %s (+0%%)" % label, "%%1 %s (%%2%%)" % ko),
+                ("+0%% %s (+0%%)" % label, "%%1%% %s (%%2%%)" % ko),
+                ("+0 %s" % label, "%%1 %s" % ko),
+                ("+0%% %s" % label, "%%1%% %s" % ko),
+            )
+            for en, kr in forms:
+                key = shape(en)
+                before = len(templates)
+                templates.setdefault(key, kr)
+                added += len(templates) - before
+        print("%-14s %5d entries (비교 문형 %d)" % ("계산 스탯 이름", len(calcs), added))
+    cluster_path = os.path.join(DATA, "cluster_templates.json")
+    if os.path.exists(cluster_path):
+        cluster = json.load(open(cluster_path, encoding="utf-8"))
+        before = len(templates)
+        for k, v in cluster.items():
+            templates.setdefault(k, v)
+        print("%-14s %5d entries (신규 %d)" % ("클러스터 주얼 효과", len(cluster), len(templates) - before))
     fixed = 0
     for key, kr in list(templates.items()):
         new = merge_placeholder_pair(key, kr)

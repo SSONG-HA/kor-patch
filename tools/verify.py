@@ -55,6 +55,9 @@ def shape_parity():
         "Regenerate 6 Life over 1 second when you Cast a Spell", "1.5% increased Attack Speed",
         "100% increased Armour and Energy Shield", "Gain 15% of Physical Damage as Extra Fire Damage",
         "+(-5--1) to Strength", "Has 1 Socket",
+        # 큰 수는 화면에 1,234 처럼 그려지므로 천 단위 쉼표도 한 숫자로 봐야 한다
+        "-1,174 Effective Hit Pool (-6.7%)", "+73,867.1 Hit DPS (+0.8%)",
+        "Adds 1,234 to 5,678 Fire Damage", "1,047,662.8 total DoT",
     ]
     bad = []
     for s in samples:
@@ -67,7 +70,8 @@ def shape_parity():
     import re as _re
     num_samples = ["Adds 17 to 23 Fire Damage", "Adds 10 to 20 Fire Damage", "Adds 123 to 456 Fire Damage",
                    "Minions deal 17 to 23 additional Fire Damage", "4 to 35 Added Lightning Damage",
-                   "1.5 to 2.5 Cold Damage", "(10-20) to (21-30) Fire Damage"]
+                   "1.5 to 2.5 Cold Damage", "(10-20) to (21-30) Fire Damage",
+                   "+73,867.1 Hit DPS (+0.8%)", "Adds 1,234 to 5,678 Fire Damage"]
     bad_num = []
     for s in num_samples:
         from items import NUM_TOKEN_RE
@@ -156,10 +160,115 @@ def legion_coverage():
           "미번역 %d개 %s" % (len(miss), miss[:3]))
 
 
+def shipped_dicts():
+    """배포 사전(exact.lua/templates.lua)을 그대로 읽어 런타임과 같은 규칙으로 조회합니다."""
+    from common import norm_space
+    lua = LuaRuntime(unpack_returned_tuples=True, encoding="utf-8")
+    lua.execute("SHAPE = dofile(%r)" % os.path.join(SRC, "shape.lua"))
+    exact = lua.eval("function(p) return dofile(p) end")(os.path.join(SRC, "Data", "exact.lua"))
+    templates = lua.eval("function(p) return dofile(p) end")(os.path.join(SRC, "Data", "templates.lua"))
+
+    def hit(text: str) -> bool:
+        text = norm_space(text or "")
+        if not text:
+            return False
+        if exact[text] is not None or exact[text.rstrip()] is not None:
+            return True
+        key = lua.eval("function(x) return (SHAPE.shape(x)) end")(text)
+        return templates[key] is not None
+
+    return hit
+
+
+def tree_shipped_coverage():
+    """PoB 트리 데이터 전체(일반·주요·핵심·숙련·전직·힌트·플레이버) 기준 번역률."""
+    from common import load_lua_table, lua_to_py
+    pob = os.environ.get("POB_SRC", "/workspace/tmpwork/pob/headless")
+    path = os.path.join(pob, "TreeData", "3_30", "tree.lua")
+    if not os.path.exists(path):
+        print("   (PoB 트리 데이터가 없어 트리 커버리지 생략)")
+        return
+    nodes = lua_to_py(load_lua_table(path))["nodes"]
+    hit = shipped_dicts()
+
+    def kind(node):
+        if node.get("isMastery"):
+            return "숙련"
+        if node.get("ascendancyName") or node.get("isAscendancyStart"):
+            return "전직"
+        if node.get("isKeystone") or node.get("ks"):
+            return "핵심노드"
+        if node.get("isNotable") or node.get("notable"):
+            return "주요노드"
+        return "일반"
+
+    names, stats, mastery, hints = {}, {}, {}, {}
+    for node in nodes.values():
+        if not isinstance(node, dict):
+            continue
+        k = kind(node)
+        if node.get("name"):
+            names.setdefault(k, set()).add(" ".join(str(node["name"]).split()))
+        for line in node.get("stats") or []:
+            for piece in str(line).split("\n"):
+                if piece.strip():
+                    stats.setdefault(k, set()).add(" ".join(piece.split()))
+        for effect in node.get("masteryEffects") or []:
+            if not isinstance(effect, dict):
+                continue
+            for line in effect.get("stats") or []:
+                for piece in str(line).split("\n"):
+                    if piece.strip():
+                        mastery.setdefault("숙련 선택지", set()).add(" ".join(piece.split()))
+        for line in node.get("reminderText") or []:
+            hints.setdefault("힌트 문구", set()).add(" ".join(str(line).split()))
+
+    problems = []
+    for label, groups, floor in (("노드 이름", names, 0.995), ("노드 효과", stats, 0.99),
+                                 ("숙련 선택지", mastery, 0.99), ("힌트 문구", hints, 0.98)):
+        for k, values in sorted(groups.items()):
+            good = sum(1 for v in values if hit(v))
+            rate = good / max(1, len(values))
+            check("%s %s" % (label, k), rate >= floor,
+                  "%d/%d (%.1f%%)" % (good, len(values), 100 * rate))
+            if rate < floor:
+                problems.append((k, sorted(v for v in values if not hit(v))[:3]))
+    if problems:
+        print("   미달 상세:", problems[:3])
+
+
+def cluster_coverage():
+    """클러스터 주얼: 주요 패시브 이름·효과 줄·인챈트가 배포 사전에 있는지."""
+    from common import load_lua_table, lua_to_py
+    pob = os.environ.get("POB_SRC", "/workspace/tmpwork/pob/headless")
+    path = os.path.join(pob, "Data", "ClusterJewels.lua")
+    if not os.path.exists(path):
+        print("   (PoB ClusterJewels 데이터가 없어 클러스터 주얼 커버리지 생략)")
+        return
+    data = lua_to_py(load_lua_table(path))
+    hit = shipped_dicts()
+    enchants, stats = set(), set()
+    for jewel in (data.get("jewels") or {}).values():
+        for skill in ((jewel or {}).get("skills") or {}).values():
+            if not isinstance(skill, dict):
+                continue
+            for line in skill.get("enchant") or []:
+                enchants.add(" ".join(str(line).split()))
+            for line in skill.get("stats") or []:
+                stats.add(" ".join(str(line).split()))
+    for label, values, floor in (("클러스터 인챈트", enchants, 0.9), ("클러스터 소형 패시브 효과", stats, 0.95)):
+        good = sum(1 for v in values if hit(v))
+        rate = good / max(1, len(values))
+        check("%s" % label, rate >= floor, "%d/%d (%.1f%%)" % (good, len(values), 100 * rate))
+
+
 def main():
     syntax_checks()
     shape_parity()
     coverage()
+    print("\n[배포 사전 기준 커버리지]")
+    tree_shipped_coverage()
+    cluster_coverage()
     legion_coverage()
     print()
     if FAILS:

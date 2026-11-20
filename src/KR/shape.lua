@@ -6,47 +6,52 @@ local byte, sub, find = string.byte, string.sub, string.find
 
 -- UTF-8 다중 바이트 문자를 그대로 통과시키면서, 숫자 토큰만 '#' 로 바꿉니다.
 -- 숫자 토큰: [+-]? \(? \d+ (.\d+)? (-\d+ (.\d+)?)? )?
+-- 숫자 하나 이상을 읽습니다. 천 단위 쉼표(1,234)는 한 덩어리로 봅니다.
+-- (파이썬 쪽 NUM_TOKEN_RE 와 같은 규칙이어야 사전 키가 맞습니다)
+local function matchDigits(s, j, n)
+	local used = false
+	while j <= n do
+		local b = byte(s, j)
+		if b and b >= 48 and b <= 57 then
+			j = j + 1
+			used = true
+		elseif used and b == 44 then
+			-- 쉼표 뒤에 숫자 정확히 세 자리가 이어질 때만 천 단위로 인정
+			local k, c = j + 1, 0
+			while c < 3 do
+				local bb = byte(s, k)
+				if not bb or bb < 48 or bb > 57 then break end
+				k = k + 1
+				c = c + 1
+			end
+			if c < 3 then break end
+			j = k
+		else
+			break
+		end
+	end
+	return j, used
+end
+
 local function matchNumber(s, i, n)
 	local j = i
 	local c = sub(s, j, j)
 	if c == "+" or c == "-" then j = j + 1 end
 	if sub(s, j, j) == "(" then j = j + 1 end
-	local ds = j
-	while j <= n do
-		local b = byte(s, j)
-		if not b or b < 48 or b > 57 then break end
-		j = j + 1
-	end
-	if j == ds then return nil end
+	local j2, used = matchDigits(s, j, n)
+	if not used then return nil end
+	j = j2
 	if sub(s, j, j) == "." then
-		local k = j + 1
-		local d2 = k
-		while k <= n do
-			local b = byte(s, k)
-			if not b or b < 48 or b > 57 then break end
-			k = k + 1
-		end
-		if k > d2 then j = k end
+		local k, used2 = matchDigits(s, j + 1, n)
+		if used2 then j = k end
 	end
 	if sub(s, j, j) == "-" then
-		local k = j + 1
-		local d3 = k
-		while k <= n do
-			local b = byte(s, k)
-			if not b or b < 48 or b > 57 then break end
-			k = k + 1
-		end
-		if k > d3 then
+		local k, used3 = matchDigits(s, j + 1, n)
+		if used3 then
 			j = k
 			if sub(s, j, j) == "." then
-				local m = j + 1
-				local d4 = m
-				while m <= n do
-					local b = byte(s, m)
-					if not b or b < 48 or b > 57 then break end
-					m = m + 1
-				end
-				if m > d4 then j = m end
+				local m, used4 = matchDigits(s, j + 1, n)
+				if used4 then j = m end
 			end
 		end
 	end

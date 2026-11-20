@@ -1,1 +1,26 @@
-{}
+{
+"Cannot be Stunned": [
+"기절 면역",
+"기절할 수 없음"
+],
+"Juggernaut": [
+"거신상",
+"저거넛"
+],
+"Maximum Lightning Resistance": [
+"번개 저항 최대치",
+"최대 번개 저항"
+],
+"Projectiles gain Damage as they travel farther, dealing up": [
+"투사체 이동 거리가 멀어질수록",
+"투사체 이동 거리가 멀어질수록 명중 및 상태 이상으로"
+],
+"Skills Cost Life instead of Mana": [
+"스킬 사용 시 마나 대신 생명력 소모",
+"스킬이 마나 대신 생명력 소모"
+],
+"Skills Reserve Life instead of Mana": [
+"스킬 사용 시 마나 대신 생명력 점유",
+"스킬이 마나 대신 생명력 점유"
+]
+}
