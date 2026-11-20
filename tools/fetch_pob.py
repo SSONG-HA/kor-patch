@@ -72,6 +72,21 @@ def download(version: str, dest: str) -> str:
         text = fetch(RAW + "src/TreeData/%s/tree.lua" % version, "pob_tree_%s.lua" % version, force=True)
         with open(tree, "w", encoding="utf-8", newline="\n") as f:
             f.write(text)
+
+    # 군단 주얼(무궁한 주얼) 데이터: 정복된 패시브 이름·스탯과 주얼 변형 문구
+    legion_dir = os.path.join(data_dir, "TimelessJewelData")
+    os.makedirs(legion_dir, exist_ok=True)
+    extra = (
+        ("src/Data/TimelessJewelData/LegionPassives.lua", os.path.join(legion_dir, "LegionPassives.lua")),
+        ("src/Data/Uniques/jewel.lua", os.path.join(data_dir, "Uniques", "jewel.lua")),
+    )
+    for remote, local in extra:
+        if os.path.exists(local) and os.path.getsize(local) > 1024:
+            continue
+        os.makedirs(os.path.dirname(local), exist_ok=True)
+        text = fetch(RAW + remote, "pob_" + os.path.basename(local), force=True)
+        with open(local, "w", encoding="utf-8", newline="\n") as f:
+            f.write(text)
     return dest
 
 

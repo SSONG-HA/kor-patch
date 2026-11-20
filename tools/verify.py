@@ -51,6 +51,7 @@ def shape_parity():
             samples.extend(json.load(open(path, encoding="utf-8")).keys())
     samples += [
         "+35% to Fire Resistance", "Adds 10 to 20 Fire Damage", "(25-35)% increased Cold Damage",
+        "Adds 17 to 23 Fire Damage", "Adds 123 to 456 Fire Damage", "Minions deal 17 to 23 additional Fire Damage",
         "Regenerate 6 Life over 1 second when you Cast a Spell", "1.5% increased Attack Speed",
         "100% increased Armour and Energy Shield", "Gain 15% of Physical Damage as Extra Fire Damage",
         "+(-5--1) to Strength", "Has 1 Socket",
@@ -62,6 +63,19 @@ def shape_parity():
         if py != lua_res:
             bad.append((s, py, lua_res))
     check("숫자 정규화 규칙 일치 (%d개 표본)" % len(samples), not bad, str(bad[:2]))
+    # 키 뿐 아니라 치환에 쓰이는 숫자 목록도 같은지 (17 to 23 → 177-23 같은 오류 방지)
+    import re as _re
+    num_samples = ["Adds 17 to 23 Fire Damage", "Adds 10 to 20 Fire Damage", "Adds 123 to 456 Fire Damage",
+                   "Minions deal 17 to 23 additional Fire Damage", "4 to 35 Added Lightning Damage",
+                   "1.5 to 2.5 Cold Damage", "(10-20) to (21-30) Fire Damage"]
+    bad_num = []
+    for s in num_samples:
+        from items import NUM_TOKEN_RE
+        py_nums = NUM_TOKEN_RE.findall(_re.sub(r"(?<=\d)\s+to\s+(?=\d)", "-", s))
+        lua_nums = list(lua.eval("function(x) local k, n = SHAPE.shape(x); return n end")(s).values())
+        if py_nums != lua_nums:
+            bad_num.append((s, py_nums, lua_nums))
+    check("숫자 치환 값 일치 (%d개 표본)" % len(num_samples), not bad_num, str(bad_num[:2]))
 
 
 def coverage():
@@ -119,10 +133,34 @@ def coverage():
         print("   (PoB 데이터 비교 생략: %s)" % str(e)[:60])
 
 
+def legion_coverage():
+    """군단 주얼(무궁한 주얼) 문자열이 배포 사전에서 모두 한글로 바뀌는지 확인합니다."""
+    try:
+        import test_legion as TL
+    except Exception as exc:  # noqa: BLE001
+        print("   (군단 주얼 검사를 불러오지 못했습니다: %s)" % exc)
+        return
+    pob = os.environ.get("POB_SRC", "/workspace/tmpwork/pob/headless")
+    strings = TL.pob_strings(pob)
+    if not strings:
+        print("   (PoB 원본이 없어 군단 주얼 문자열 확인 생략)")
+        return
+    lua = TL.lua_dict()
+    cases = []
+    for text in dict.fromkeys(strings):
+        cases.append(text)
+        if TL.roll(text) != text:
+            cases.append(TL.roll(text))
+    miss = [c for c in cases if not re.search(r"[\uac00-\ud7a3]", TL.translate(lua, c) or "")]
+    check("군단 주얼 문자열 번역 (%d개)" % len(cases), not miss,
+          "미번역 %d개 %s" % (len(miss), miss[:3]))
+
+
 def main():
     syntax_checks()
     shape_parity()
     coverage()
+    legion_coverage()
     print()
     if FAILS:
         print("실패:", FAILS)

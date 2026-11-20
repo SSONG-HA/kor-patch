@@ -1,0 +1,74 @@
+{
+"coverage": {
+"available": true,
+"item_lines": {},
+"node_names": {
+"missing": [],
+"total": 381
+},
+"stat_lines": {
+"missing": [],
+"total": 816
+}
+},
+"items": {
+"devotion": 16,
+"jewels": 11,
+"skipped": [
+"Brutal Restraint Deshret",
+"Glorious Vanity Mazcotl",
+"Heroic Tragedy Uhtred"
+],
+"variants": 44
+},
+"pairing_notes": [
+"tree: Bone Feeders / Triggers Level 20 [SummonAbyssalConstructs::20|Summon Bone Feeders] when Allocated",
+"tree: Huntleader / Trigger Level 20 [SummonSpectralTiger::20|Summon Spectral Tiger] on Critical Strike",
+"tree: Tide Caller / Trigger Level 20 [BrineTorrent::20|Surging Torrent] when you cast an Elemental Spell",
+"tree: Volatile Runes / Trigger Level 20 [WardShatter::20|Ward Shatter] when your Ward Breaks",
+"tree: Unwavering Crusade / 25% chance to Trigger Level 20 [SummonElementalRelic::20|Summon Elemental Relic] when you or Allies within 6 metres Kill an Enemy, or Hit a Rare or Unique Enemy",
+"tree: Radiant Faith / you and Allies within 6 metres",
+"tree: Ramako, Sun's Light / Enemy Monsters within 6 metres have Fire Resistance against",
+"tree: Golden Glory / your Link Skill Buffs on your Mercenary at 50% of their value",
+"tree: Legendary Arms / Your Mercenary and their Minions deal 8% more Damage for",
+"tree: Necromancer / Auras from your Skills grant 2% increased Attack and Cast",
+"tree: Starcaller / Trigger Level 20 [TriggeredStarfall::20|Starfall] on Melee Critical Strike",
+"tree: Choir of the Storm / Trigger Level 30 [LightningBolt::30|Lightning Bolt] when you deal a Critical Strike",
+"tree: Arcane Capacitor / 10% increased Effect of Arcane Surge on you per",
+"tree: Arcane Capacitor / 200 Mana spent Recently, up to 50%",
+"tree: Adaptive Steel / 5% chance to Defend with 200% of Armour for each",
+"tree: Gratuitous Violence / Bleeding Enemies you Kill Explode, dealing 20% of",
+"tree: Bastion of Elements / Triggers Level 20 [PrimalAegis::20|Primal Aegis] when Allocated",
+"tree: Master of Metal / You and nearby Allies deal 6 to 12 added Physical Damage for",
+"tree: Jagged Wounds / 20% increased Maximum total Life Recovery per second from",
+"tree: Essence Glutton / For each corpse within 6 metres, you and Allies within 6 metres Regenerate 5 Mana",
+"tree: Commander of Darkness / Auras from your Skills grant 3% increased Attack and Cast",
+"tree: Nature's Concoction / Flasks adjacent to active Tinctures gain 2 charges when you Hit an",
+"tree: Successive Detonations / 10% increased Critical Strike Chance for each Mine Detonated",
+"tree: Adjacent Animosity / Projectiles deal 40% increased Damage with Hits to targets at the start",
+"tree: Deathmarked / Trigger Level 30 [AssassinsMarkTriggeredAssassin::30|Assassin's Mark] on Attack Critical Strike against",
+"tree: Perfect Crime / Triggers Level 20 [SummonTriggerbots::20|Summon Triggerbots] when Allocated",
+"tree: Purposeful Harbinger / Auras from your Skills have 8% increased Effect on you for",
+"tree: Follow-Through / Projectiles deal 20% increased Damage with Hits and Ailments for"
+],
+"poedb": {
+"additions": {
+"kr": 337,
+"matched": 337,
+"us": 337
+},
+"alternate_rows": 12,
+"passive_cards": {
+"kr": 376,
+"us": 376
+}
+},
+"size": {
+"exact": 587,
+"templates": 1482
+},
+"tree": {
+"lines": 3855,
+"nodes": 1624
+}
+}

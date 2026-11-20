@@ -67,7 +67,9 @@ function M.shape(text)
 	while true do
 		local a, b, d1, d2 = find(s, "(%d)%s+to%s+(%d)")
 		if not a then break end
-		s = sub(s, 1, a) .. d1 .. "-" .. d2 .. sub(s, b + 1)
+		-- a 는 첫 숫자 '한 글자'의 위치이므로, 그 앞까지 남기고 다시 붙입니다.
+		-- (sub(s, 1, a) 로 쓰면 첫 숫자의 끝자리가 한 번 더 붙어 "17 to 23" → "177-23")
+		s = sub(s, 1, a - 1) .. d1 .. "-" .. d2 .. sub(s, b + 1)
 	end
 	local out, nums = {}, {}
 	local i, n = 1, #s

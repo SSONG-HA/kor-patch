@@ -62,12 +62,13 @@ Path of Building Community Fork 를 **인게임 한국어 명칭**으로 보여 
 src/KR/                 PoB 폴더로 배포되는 런타임 (Lua + 사전 + 폰트 아틀라스)
   init.lua              DrawString/DrawStringWidth 후크, F2 전환
   draw.lua font.lua     한글 레이아웃 · 글리프 아틀라스 렌더링
-  Data/*.lua            영→한 사전 (정확 일치 7천여 개 + 옵션 템플릿)
+  Data/*.lua            영→한 사전 (정확 일치 8천여 개 + 옵션 템플릿 3.7천여 개)
   Fonts/*.png           크기별 글리프 아틀라스 (Noto Sans KR)
 app/                    단일 실행 파일(C# / .NET Framework 4.8) 소스
 scripts/make_payload.py src/KR → exe 에 내장되는 payload zip + build.json
 scripts/test_exe.ps1    CI 에서 exe 설치/복구 동작을 실제로 검사
 tools/                  poedb 데이터 수집 · 사전 생성 · 폰트 굽기 · 버전 갱신
+                        (군단 주얼은 tools/legion.py 가 맡습니다)
 installer/              수동 설치용 PowerShell 스크립트 (선택)
 version.json            릴리스 버전 / 시즌 / PoB 버전
 ```
@@ -110,11 +111,13 @@ PoB-KR-Patcher.exe --apply-staged # 미리 받아 둔 패치를 지금 반영
 
 ```bash
 pip install pillow lupa
-python tools/fetch_pob.py            # PoB 의 Data/Gems.lua, TreeData/<ver>/tree.lua 준비
+python tools/fetch_pob.py            # PoB 의 Data/Gems.lua, TreeData/<ver>/tree.lua,
+                                     #     Data/TimelessJewelData/LegionPassives.lua, Uniques/jewel.lua 준비
 export POB_SRC=$(...)                # 위 스크립트가 알려 주는 경로
 export POE_TREE_VERSION=3_30
-python tools/run_all.py              # gems → passives → items → emit_lua → bake_font
+python tools/run_all.py              # gems → passives → items → legion → emit_lua → bake_font
 python tools/verify.py               # 커버리지/정합성 확인 (개발 환경)
+python tools/test_legion.py          # 군단 주얼 문구가 모두 한글로 바뀌는지 확인
 python scripts/make_payload.py       # exe 에 넣을 payload 갱신
 ```
 

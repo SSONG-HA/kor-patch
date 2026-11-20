@@ -50,7 +50,7 @@ do
 end
 
 local KR = {
-	version = "1.1.0",
+	version = "1.1.1",
 	enabled = true,
 	stats = { draw = 0, korean = 0, miss = 0 },
 }
@@ -86,6 +86,12 @@ local ok, err = pcall(function()
 	local function translate(text)
 		local t = exact[text]
 		if t then return t end
+		-- PoB 데이터에는 끝에 공백이 붙은 이름이 있다 ("Mana ", "Shattered Piercing ")
+		local trimmed = text:gsub("%s+$", "")
+		if trimmed ~= text then
+			t = exact[trimmed]
+			if t then return t end
+		end
 		local key, nums = shape(text)
 		local tpl = templates[key]
 		if tpl then

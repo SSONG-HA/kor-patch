@@ -58,6 +58,32 @@ def write_table(name: str, table: dict[str, str], comment: str) -> int:
     return os.path.getsize(path)
 
 
+PAIR_RE = re.compile(r"%(\d)\s*[~\-]\s*%(\d)")
+
+
+def merge_placeholder_pair(key: str, kr: str) -> str:
+    """자리표시가 키의 # 개수보다 하나 많고 두 칸이 "~" 로 붙어 있으면 한 칸으로 합칩니다.
+
+    poedb 는 "Adds 10 to 20 Fire Damage" 처럼 한 덩어리로 그려지는 값을 두 칸으로
+    나눠 적어 두기도 합니다. 그대로 두면 화면에 "%2" 가 남습니다.
+    """
+    if kr.count("%") != key.count("#") + 1:
+        return kr
+    m = PAIR_RE.search(kr)
+    if not m:
+        return kr
+    merged = kr[:m.start()] + "%" + m.group(1) + kr[m.end():]
+    order: dict[str, str] = {}
+
+    def ren(mo):
+        idx = mo.group(1)
+        if idx not in order:
+            order[idx] = str(len(order) + 1)
+        return "%" + order[idx]
+
+    return re.sub(r"%(\d+)", ren, merged)
+
+
 def main() -> None:
     check_inputs()
     exact: dict[str, str] = {}
@@ -67,6 +93,8 @@ def main() -> None:
         ("passives_stats.json", "패시브 효과 문구"),
         ("uniques.json", "유니크 아이템 이름"),
         ("bases.json", "베이스 아이템 이름"),
+        # 군단 주얼(무궁한 주얼): 정복된 패시브 이름·스탯과 정복자 이름
+        ("legion_exact.json", "군단 주얼 이름·문구"),
     ]
     counts = {}
     for fname, label in sources:
@@ -96,6 +124,22 @@ def main() -> None:
         extra = json.load(open(extra_path, encoding="utf-8"))
         templates.update(extra)
         print("%-14s %5d entries" % ("추가 모드 템플릿", len(extra)))
+    # 군단 주얼 스탯 줄은 아이템 모드보다 먼저 넣어, 같은 키가 있으면 모드 문구를 남긴다.
+    legion_path = os.path.join(DATA, "legion_templates.json")
+    if os.path.exists(legion_path):
+        legion = json.load(open(legion_path, encoding="utf-8"))
+        before = len(templates)
+        for k, v in legion.items():
+            templates.setdefault(k, v)
+        print("%-14s %5d entries (신규 %d)" % ("군단 주얼 스탯", len(legion), len(templates) - before))
+    fixed = 0
+    for key, kr in list(templates.items()):
+        new = merge_placeholder_pair(key, kr)
+        if new != kr:
+            templates[key] = new
+            fixed += 1
+    if fixed:
+        print("%-14s %5d entries" % ("자리표시 합침", fixed))
     size2 = write_table("templates.lua", templates, "모드 문구 템플릿 (숫자 자리표시 %1 %2)")
 
     print("exact entries: %d (%.0f KB)" % (len(exact), size / 1024))
