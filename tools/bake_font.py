@@ -8,6 +8,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import re
 import sys
 
 from PIL import Image, ImageDraw, ImageFont
@@ -49,20 +50,56 @@ MAX_W, MAX_H = 4096, 2048
 os.makedirs(OUT_DIR, exist_ok=True)
 
 
+# 수집 보고서는 화면에 그려지는 문구가 아니므로 글자 집합에서 뺀다.
+REPORT_JSON_RE = re.compile(r"(_report\.json|^gems_missing\.json$|^audit_.*\.json$)")
+# 런타임 Lua 가 직접 만드는 한글 문구(" ^8(PoB 미지원)" 등)도 아틀라스에 있어야 한다.
+LUA_STRING_RE = re.compile(r'"((?:[^"\\\n]|\\.)*)"')
+
+
+def _collect_texts(obj, out: list[str]) -> None:
+    """JSON 값(중첩 포함)에서 문자열만 모읍니다."""
+    if isinstance(obj, str):
+        out.append(obj)
+    elif isinstance(obj, dict):
+        for k, v in obj.items():
+            _collect_texts(k, out)
+            _collect_texts(v, out)
+    elif isinstance(obj, (list, tuple)):
+        for v in obj:
+            _collect_texts(v, out)
+
+
+def used_texts() -> list[str]:
+    """런타임이 실제로 그릴 수 있는 모든 문자열.
+
+    1) data/*.json 전체 — 젬·패시브·아이템·군단 주얼·클러스터 주얼·계산(calcs)·UI·보정
+       (파일을 하나하나 나열하면 새 데이터 파일을 추가할 때 빠뜨리기 쉬워서 전부 읽습니다)
+    2) src/KR 아래 Lua 의 문자열 리터럴 — 사전 값과 런타임이 만드는 문구
+    """
+    texts: list[str] = []
+    if os.path.isdir(DATA):
+        for name in sorted(os.listdir(DATA)):
+            if not name.endswith(".json") or REPORT_JSON_RE.search(name):
+                continue
+            path = os.path.join(DATA, name)
+            with open(path, encoding="utf-8") as f:
+                _collect_texts(json.load(f), texts)
+    for root, _dirs, files in os.walk(SRC):
+        for name in sorted(files):
+            if not name.endswith(".lua"):
+                continue
+            with open(os.path.join(root, name), encoding="utf-8") as f:
+                for lit in LUA_STRING_RE.findall(f.read()):
+                    texts.append(lit.replace("\\n", "\n").replace('\\"', '"'))
+    return texts
+
+
 def used_chars() -> set[str]:
     chars: set[str] = set()
-    for name in ("gems.json", "passives_names.json", "passives_stats.json",
-                 "uniques.json", "bases.json", "mods_exact.json", "ui_ko.json",
-                 "overrides_ko.json"):
-        path = os.path.join(DATA, name)
-        if not os.path.exists(path):
-            continue
-        data = json.load(open(path, encoding="utf-8"))
-        values = data.values() if name != "mods_exact.json" else [v["kr"] for v in data.values()]
-        for v in values:
-            for ch in str(v):
-                if ord(ch) > 127:
-                    chars.add(ch)
+    for text in used_texts():
+        for ch in text:
+            if ord(ch) > 127:
+                chars.add(ch)
     return chars
 
 

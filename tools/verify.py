@@ -262,9 +262,84 @@ def cluster_coverage():
         check("%s" % label, rate >= floor, "%d/%d (%.1f%%)" % (good, len(values), 100 * rate))
 
 
+def font_metrics():
+    """아틀라스 PNG 와 metrics.lua 가 한 세트인지 검사합니다.
+
+    v1.1.2 는 871글자 PNG 에 829글자 metrics.lua 를 함께 배포해 모든 한글이
+    다른 글자로 어긋났습니다. 같은 실수를 다시 배포하지 않도록 개수·좌표·폭을
+    실제 파일과 대조합니다.
+    """
+    from PIL import Image
+
+    import bake_font
+
+    fonts = os.path.join(SRC, "Fonts")
+    path = os.path.join(fonts, "metrics.lua")
+    if not os.path.exists(path):
+        check("폰트 메트릭 파일 존재", False, path)
+        return
+    lua = LuaRuntime(unpack_returned_tuples=True, encoding="utf-8")
+    metrics = lua.eval("function(p) return dofile(p) end")(path)
+
+    def as_list(tbl):
+        return [tbl[i] for i in range(1, len(tbl) + 1)] if tbl is not None else []
+
+    codes = [int(c) for c in as_list(metrics["codes"])]
+    want = {ord(ch) for ch in bake_font.used_chars()}
+    have = set(codes)
+    check("metrics 글자 수 == 사전 글자 수 (%d)" % len(want), len(codes) == len(want) and have == want,
+          "metrics %d / 사전 %d, 빠짐 %d, 남음 %d" % (
+              len(codes), len(want), len(want - have), len(have - want)))
+    check("metrics codes 정렬", codes == sorted(codes), str(codes[:3]))
+
+    sizes = as_list(metrics["sizes"])
+    check("아틀라스 크기 종류", len(sizes) > 0, "%d종" % len(sizes))
+    problems = []
+    for defn in sizes:
+        size = int(defn["size"])
+        png = str(defn["png"])
+        adv = as_list(defn["adv"])
+        target = os.path.join(fonts, png)
+        if not os.path.exists(target):
+            problems.append("%s 없음" % png)
+            continue
+        with Image.open(target) as im:
+            actual = im.size
+        expect = (int(defn["w"]), int(defn["h"]))
+        if actual != expect:
+            problems.append("%s 크기 %s != metrics %s" % (png, actual, expect))
+        if len(adv) != len(codes):
+            problems.append("%s adv %d개 != 글자 %d개" % (png, len(adv), len(codes)))
+        cw, chh, cols = int(defn["cw"]), int(defn["ch"]), int(defn["cols"])
+        rows = -(-len(codes) // cols) if cols else 0
+        if cols * cw > expect[0] or rows * chh > expect[1]:
+            problems.append("%s 격자 %dx%d 이 이미지 %s 밖" % (png, cols, rows, expect))
+        if not (0 < int(defn["base"]) <= chh):
+            problems.append("%s baseline %s 가 셀 높이 %d 밖" % (png, defn["base"], chh))
+    check("아틀라스 PNG == metrics (%d종)" % len(sizes), not problems, str(problems[:3]))
+
+    full = metrics["full"]
+    if full is None:
+        check("폴백 아틀라스 정의", False, "metrics.full 없음")
+        return
+    target = os.path.join(fonts, str(full["png"]))
+    if not os.path.exists(target):
+        check("폴백 아틀라스 파일", False, target)
+        return
+    with Image.open(target) as im:
+        actual = im.size
+    expect = (int(full["w"]), int(full["h"]))
+    adv = as_list(full["adv"])
+    ok = actual == expect and len(adv) == int(full["count"]) and int(full["from"]) == 0xAC00 \
+        and int(full["count"]) == 0xD7A4 - 0xAC00
+    check("폴백 아틀라스 (한글 음절 %d자)" % int(full["count"]), ok,
+          "png %s / metrics %s, adv %d개" % (actual, expect, len(adv)))
+
+
 def main():
     syntax_checks()
     shape_parity()
+    font_metrics()
     coverage()
     print("\n[배포 사전 기준 커버리지]")
     tree_shipped_coverage()

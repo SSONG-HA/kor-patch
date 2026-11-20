@@ -50,7 +50,7 @@ do
 end
 
 local KR = {
-	version = "1.1.2",
+	version = "1.1.3",
 	enabled = true,
 	stats = { draw = 0, korean = 0, miss = 0 },
 }
