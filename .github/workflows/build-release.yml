@@ -1,6 +1,7 @@
 name: build-release
 
 # 단일 실행 파일(PoB-KR-Patcher.exe)을 빌드 · 테스트하고 GitHub Release 로 올린다.
+# 한 실행 파일이 PoE1 과 PoE2 를 모두 패치한다 (게임별 데이터는 따로 내장).
 # - main 에 푸시되면 자동 실행
 # - 수동 실행(workflow_dispatch)으로 특정 버전을 배포할 수 있다
 # - season-update.yml 이 workflow_call 로 불러 새 시즌 데이터를 배포한다
@@ -18,7 +19,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "릴리스 버전 (비우면 version.json 값, 예: 1.0.1)"
+        description: "릴리스 버전 (비우면 version.json 값, 예: 2.0.0)"
         required: false
         default: ""
   workflow_call:
@@ -39,7 +40,7 @@ concurrency:
 jobs:
   build:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - name: 체크아웃
         uses: actions/checkout@v4
@@ -63,13 +64,20 @@ jobs:
           $meta = Get-Content version.json -Raw | ConvertFrom-Json
           $v = "${{ inputs.version }}"
           if ([string]::IsNullOrWhiteSpace($v)) { $v = "$($meta.version)" }
+          $poe1 = $meta.games.poe1
+          $poe2 = $meta.games.poe2
           "version=$v" >> $env:GITHUB_OUTPUT
-          "season=$($meta.season)" >> $env:GITHUB_OUTPUT
-          "pob=$($meta.pob)" >> $env:GITHUB_OUTPUT
-          Write-Host "PoB 한글 패처 v$v (PoE1 $($meta.season) / PoB $($meta.pob))"
+          "season=$($poe1.season)" >> $env:GITHUB_OUTPUT
+          "pob=$($poe1.pob)" >> $env:GITHUB_OUTPUT
+          "poe2season=$($poe2.season)" >> $env:GITHUB_OUTPUT
+          "poe2pob=$($poe2.pob)" >> $env:GITHUB_OUTPUT
+          Write-Host "PoB 한글 패처 v$v (PoE1 $($poe1.season) / PoB $($poe1.pob), PoE2 $($poe2.season) / PoB $($poe2.pob))"
 
-      - name: 내장 데이터 생성 (src/KR → payload zip + build.json)
-        run: python scripts/make_payload.py --version ${{ steps.meta.outputs.version }} --season ${{ steps.meta.outputs.season }} --pob ${{ steps.meta.outputs.pob }}
+      - name: 내장 데이터 생성 (PoE1 src/KR)
+        run: python scripts/make_payload.py --game poe1 --version ${{ steps.meta.outputs.version }} --season ${{ steps.meta.outputs.season }} --pob ${{ steps.meta.outputs.pob }}
+
+      - name: 내장 데이터 생성 (PoE2 src/KR2)
+        run: python scripts/make_payload.py --game poe2 --version ${{ steps.meta.outputs.version }} --season ${{ steps.meta.outputs.poe2season }} --pob ${{ steps.meta.outputs.poe2pob }}
 
       - name: EXE 빌드
         run: dotnet build app/PoB-KR-Patcher.csproj -c Release -o out -p:Version=${{ steps.meta.outputs.version }}
@@ -79,14 +87,16 @@ jobs:
         run: |
           $exe = "out/PoB-KR-Patcher.exe"
           if (-not (Test-Path $exe)) { throw "PoB-KR-Patcher.exe 가 만들어지지 않았습니다" }
-          $extra = @(Get-ChildItem out -File | Where-Object { $_.Name -ne "PoB-KR-Patcher.exe" })
-          if ($extra.Count -gt 0) { Write-Host ("[안내] 함께 나온 파일: " + (($extra | ForEach-Object { $_.Name }) -join ", ")) }
           $mb = [math]::Round((Get-Item $exe).Length / 1MB, 2)
           Write-Host "단일 실행 파일: PoB-KR-Patcher.exe ($mb MB)"
 
-      - name: EXE 동작 테스트
+      - name: EXE 동작 테스트 (PoE1)
         shell: pwsh
         run: pwsh -NoProfile -File scripts/test_exe.ps1 -Exe (Resolve-Path out/PoB-KR-Patcher.exe).Path
+
+      - name: EXE 동작 테스트 (PoE2)
+        shell: pwsh
+        run: pwsh -NoProfile -File scripts/test_exe_poe2.ps1 -Exe (Resolve-Path out/PoB-KR-Patcher.exe).Path
 
       - name: 릴리스 자산 준비
         shell: pwsh
@@ -94,26 +104,37 @@ jobs:
           $v = "${{ steps.meta.outputs.version }}"
           $season = "${{ steps.meta.outputs.season }}"
           $pob = "${{ steps.meta.outputs.pob }}"
+          $season2 = "${{ steps.meta.outputs.poe2season }}"
+          $pob2 = "${{ steps.meta.outputs.poe2pob }}"
           New-Item -ItemType Directory -Force -Path dist | Out-Null
           Copy-Item out/PoB-KR-Patcher.exe dist/PoB-KR-Patcher.exe -Force
           Copy-Item app/payload/KR-payload.zip dist/KR-data.zip -Force
-          Copy-Item installer/사용설명서.txt "dist/사용설명서.txt" -Force
+          Copy-Item app/payload/KR2-payload.zip dist/KR-data-poe2.zip -Force
+          Copy-Item installer/manual-ko.txt dist/manual-ko.txt -Force
 
           $dataItem = Get-Item dist/KR-data.zip
+          $data2Item = Get-Item dist/KR-data-poe2.zip
           $exeItem = Get-Item dist/PoB-KR-Patcher.exe
           $dataHash = (Get-FileHash $dataItem.FullName -Algorithm SHA256).Hash.ToLower()
+          $data2Hash = (Get-FileHash $data2Item.FullName -Algorithm SHA256).Hash.ToLower()
           $exeHash = (Get-FileHash $exeItem.FullName -Algorithm SHA256).Hash.ToLower()
           $base = "https://github.com/${{ github.repository }}/releases/download/v$v"
           $latest = [ordered]@{
-            schema  = 1
+            schema  = 2
             version = $v
             season  = $season
             pob     = $pob
-            notes   = "PoE1 $season 대응 한글 데이터"
+            notes   = "PoE1 $season / PoE2 $season2 대응 한글 데이터"
             data    = [ordered]@{ file = "KR-data.zip"; url = "$base/KR-data.zip"; size = $dataItem.Length; sha256 = $dataHash }
             exe     = [ordered]@{ file = "PoB-KR-Patcher.exe"; url = "$base/PoB-KR-Patcher.exe"; size = $exeItem.Length; sha256 = $exeHash }
+            poe2    = [ordered]@{
+              version = $v
+              season  = $season2
+              pob     = $pob2
+              data    = [ordered]@{ file = "KR-data-poe2.zip"; url = "$base/KR-data-poe2.zip"; size = $data2Item.Length; sha256 = $data2Hash }
+            }
           }
-          $json = $latest | ConvertTo-Json -Depth 5
+          $json = $latest | ConvertTo-Json -Depth 6
           [System.IO.File]::WriteAllText((Join-Path (Get-Location) "dist/latest.json"), $json, (New-Object System.Text.UTF8Encoding($false)))
           Get-ChildItem dist -File | ForEach-Object { Write-Host ("  " + $_.Name + "  " + $_.Length) }
 
@@ -124,27 +145,32 @@ jobs:
           RELEASE_VERSION: ${{ steps.meta.outputs.version }}
           RELEASE_SEASON: ${{ steps.meta.outputs.season }}
           RELEASE_POB: ${{ steps.meta.outputs.pob }}
+          RELEASE_SEASON2: ${{ steps.meta.outputs.poe2season }}
+          RELEASE_POB2: ${{ steps.meta.outputs.poe2pob }}
         run: |
           $tag = "v$($env:RELEASE_VERSION)"
           $repo = "${{ github.repository }}"
           $notes = @(
-            "## PoB 한글 패처 $tag",
+            "## PoB 한글 패처 $tag — PoE1 · PoE2 통합",
             "",
-            "Path of Building Community Fork (PoE1 $($env:RELEASE_SEASON) / PoB $($env:RELEASE_POB)) 한글 패처입니다.",
+            "- PoE1 : Path of Building Community Fork (PoE1 $($env:RELEASE_SEASON) / PoB $($env:RELEASE_POB))",
+            "- PoE2 : Path of Building PoE2 ($($env:RELEASE_SEASON2) / PoB $($env:RELEASE_POB2))",
             "",
             "### 사용법",
             "1. 아래 **PoB-KR-Patcher.exe** 파일 하나만 내려받아 아무 폴더에 둡니다. (설치 과정 없음)",
-            "2. 실행하고 **[한글 패치 적용 / 업데이트]** 를 누르면 끝입니다. PoB 설치 폴더는 자동으로 찾고, 못 찾으면 폴더 선택 창이 뜹니다.",
-            "3. Path of Building 을 실행합니다. 게임 안에서 **F2** 를 누르면 한글/영문 표시가 즉시 바뀝니다.",
-            "4. 영문으로 되돌리려면 **[영문 원본으로 복구]** 를 누릅니다.",
+            "2. 실행하면 **PoE1** 과 **PoE2** 칸이 따로 있습니다. 원하는 쪽의 **[패치 및 실행]** 을 누르면 끝입니다.",
+            "   PoB 설치 폴더는 자동으로 찾고, 못 찾으면 폴더 선택 창이 뜹니다.",
+            "3. 게임 안에서 **F2** 를 누르면 한글/영문 표시가 즉시 바뀝니다.",
+            "4. 영문으로 되돌리려면 해당 칸의 **[영문 원본으로 복구]** 를 누릅니다.",
             "",
-            "### 시즌 자동 업데이트",
-            "실행할 때마다 GitHub 의 최신 릴리스를 확인해, 새 시즌 데이터가 있으면 내려받아 적용합니다.",
-            "데이터만 바뀐 경우에는 exe 를 다시 받지 않아도 됩니다. (KR-data.zip / latest.json 은 exe 가 쓰는 파일입니다)",
+            "### 자동 업데이트",
+            "실행할 때마다 GitHub 의 최신 릴리스를 확인해, 새 데이터가 있으면 내려받아 적용합니다.",
+            "데이터만 바뀐 경우에는 exe 를 다시 받지 않아도 됩니다.",
             "",
             "### 참고",
             "- 계산 엔진은 건드리지 않고 화면 표시 계층만 한글로 바꿉니다. DPS·Life 등 계산값은 영문판과 동일합니다.",
-            "- 원본 Modules\\Main.lua 는 KR\\_설치기록\\Main.lua.orig 로 백업됩니다.",
+            "- PoE1 은 PoB 폴더의 KR\, PoE2 는 KR2\ 폴더에 데이터가 들어가며 서로 섞이지 않습니다.",
+            "- 원본 Modules\Main.lua 는 각 데이터 폴더의 _설치기록\Main.lua.orig 로 백업됩니다.",
             "- PoB 를 업데이트한 뒤에는 exe 를 다시 한 번 실행하면 됩니다."
           ) -join "`n"
 
@@ -157,7 +183,7 @@ jobs:
             Write-Host "$tag 릴리스 자산을 갱신했습니다."
           } else {
             $files = @(Get-ChildItem dist -File | ForEach-Object { $_.FullName })
-            gh release create $tag $files -R $repo --title "PoB 한글 패처 $tag" --notes $notes
+            gh release create $tag $files -R $repo --title "PoB 한글 패처 $tag (PoE1 · PoE2)" --notes $notes
             if ($LASTEXITCODE -ne 0) { throw "릴리스 생성 실패" }
             Write-Host "$tag 릴리스를 만들었습니다."
           }
