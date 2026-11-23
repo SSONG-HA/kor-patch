@@ -17,6 +17,7 @@
 "Converts#%ofPhysicaldamagetoFiredamage": "물리 피해의 %1%를 화염 피해로 전환",
 "Converts#%ofPhysicaldamagetoLightningdamage": "물리 피해의 %1%를 번개 피해로 전환",
 "Cooldown:#sec": "재사용 대기시간: %1초",
+"CooldownTime:#sec": "재사용 대기시간: %1초",
 "Cost:#Mana": "소모: 마나 %1",
 "Cost:#Spirit": "소모: 정신력 %1",
 "CriticalHitChance:#%": "치명타 명중 확률: %1%",

@@ -90,6 +90,15 @@ local ok, err = pcall(function()
 			local inner = translate(core)
 			if inner then return inner .. " ^8(PoB 미지원)" end
 		end
+		-- 노드를 할당해야 쓸 수 있는 속성 안내
+		local needNode = text:match("^Requires allocation of node: (.+)$")
+		if needNode then
+			local inner = exact[needNode] or needNode
+			return "노드 할당 필요: " .. inner
+		end
+		-- 젬 분류(혈통 보조 등) 이름은 고유 명칭이라 그대로 둔다
+		local category = text:match("^Category: (.+)$")
+		if category then return "분류: " .. category end
 		local t = exact[text]
 		if t then return t end
 		-- PoB 데이터에는 끝에 공백이 붙은 이름이 있다 ("Mana ", "Shattered Piercing ")
@@ -193,8 +202,11 @@ local ok, err = pcall(function()
 		if not res then
 			local plain = text:gsub("%^x%x%x%x%x%x%x", ""):gsub("%^%d", "")
 			res = translate(plain)
-			if res and prefix == "" and body then
-				-- 문자열 중간 색상은 색상 정보 없이 번역문만 사용
+			if not res then
+				-- 젬 툴팁은 색상 코드 뒤에 오른쪽 정렬용 공백이 잔뜩 붙는다
+				-- ("^x6F9A98      Attack"). 공백을 하나로 줄여 다시 찾는다.
+				local compact = plain:gsub("%s+", " "):gsub("^ ", ""):gsub(" $", "")
+				if compact ~= plain then res = translate(compact) end
 			end
 		end
 		if res then

@@ -1407,6 +1407,7 @@ return {
 ["Converts#%ofPhysicaldamagetoFiredamage"]="물리 피해의 %1%를 화염 피해로 전환",
 ["Converts#%ofPhysicaldamagetoLightningdamage"]="물리 피해의 %1%를 번개 피해로 전환",
 ["Cooldown:#sec"]="재사용 대기시간: %1초",
+["CooldownTime:#sec"]="재사용 대기시간: %1초",
 ["CopyarandomModifierfromeachenemyinyourPresencewhenyouShapeshifttoanAnimalformModifiersgainedthiswayarelostafter#secondsorwhenyounextShapeshift"]="동물 형상으로 형태 변환 시 접근해 있는 적 하나당무작위 속성 1개 복제이 방식으로 얻은 속성은 %1초 후 또는 다음 형태 변환 시 사라짐",
 ["Cost:#Mana"]="소모: 마나 %1",
 ["Cost:#Spirit"]="소모: 정신력 %1",

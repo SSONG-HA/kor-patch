@@ -108,8 +108,16 @@ def main() -> None:
     args = ap.parse_args()
 
     if not args.game:
+        # 인수 없이 부를 때(기존 워크플로우): 두 게임 모두.
+        # --season/--pob 는 PoE1 값이므로 PoE2 에는 version.json 의 poe2 값을 쓴다.
         for game in ("poe1", "poe2"):
-            build_one(game, meta, games, args)
+            if game == "poe2":
+                sub = argparse.Namespace(**vars(args))
+                sub.season = ""
+                sub.pob = ""
+                build_one(game, meta, games, sub)
+            else:
+                build_one(game, meta, games, args)
         return
     build_one(args.game, meta, games, args)
 

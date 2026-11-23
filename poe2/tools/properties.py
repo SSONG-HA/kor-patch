@@ -71,6 +71,7 @@ TEMPLATES: list[tuple[str, str]] = [
     ("Cost: 12 Mana", "소모: 마나 %1"),
     ("Cost: 12 Spirit", "소모: 정신력 %1"),
     ("Cast Time: 0.80 sec", "시전 시간: %1초"),
+    ("Cooldown Time: 0.50 sec", "재사용 대기시간: %1초"),
     ("Attack Time: 0.80 sec", "공격 시간: %1초"),
     ("Effectiveness of Added Damage: 100%", "추가 피해 효율: %1%"),
     ("Effectiveness of Added Damage: 100% (augmented)", "추가 피해 효율: %1% (증가)"),
@@ -174,6 +175,8 @@ EXTRA_EXACT = {
     "Runic Ward": "룬 보호",
     "Charm Slots": "호신부 슬롯",
     "Cannot Chain": "연쇄 불가",
+    "Cast Time: Instant": "시전 시간: 즉시",
+    "Requires: Level 90, 86 Dex, 86 Int": "요구: 레벨 90, 민첩 86, 지능 86",
 }
 
 
