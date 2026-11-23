@@ -9,9 +9,9 @@
     <Product>PoB 한글 패처</Product>
     <Company>PoB-KR-Patcher</Company>
     <Copyright>MIT</Copyright>
-    <Version>1.1.0</Version>
-    <FileVersion>1.1.0.0</FileVersion>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Version>2.0.0</Version>
+    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
     <DebugType>none</DebugType>
     <Deterministic>true</Deterministic>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
@@ -34,6 +34,8 @@
   <ItemGroup>
     <EmbeddedResource Include="payload/KR-payload.zip" LogicalName="payload.zip" Condition="Exists('payload/KR-payload.zip')" />
     <EmbeddedResource Include="payload/build.json" LogicalName="build.json" Condition="Exists('payload/build.json')" />
+    <EmbeddedResource Include="payload/KR2-payload.zip" LogicalName="payload-poe2.zip" Condition="Exists('payload/KR2-payload.zip')" />
+    <EmbeddedResource Include="payload/build-poe2.json" LogicalName="build-poe2.json" Condition="Exists('payload/build-poe2.json')" />
   </ItemGroup>
 
   <ItemGroup>

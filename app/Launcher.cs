@@ -10,10 +10,20 @@ namespace PoBKR
     internal sealed class LaunchOptions
     {
         public string Dir = "";
+        public string GameId = "poe1";
         public bool NoUpdate;
         public bool NoStart;
         public bool Quiet;
         public bool Help;
+
+        public GameTarget Game { get { return Targets.ById(GameId); } }
+
+        private static string NormalizeGame(string value)
+        {
+            var v = (value ?? "").Trim().Trim('"').ToLowerInvariant();
+            if (v == "poe2" || v == "2" || v == "pob2" || v == "pathofbuilding-poe2") return "poe2";
+            return "poe1";
+        }
 
         public static LaunchOptions Parse(string[] args)
         {
@@ -31,6 +41,16 @@ namespace PoBKR
                 if (low == "--dir")
                 {
                     if (i + 1 < args.Length) o.Dir = (args[++i] ?? "").Trim().Trim('"');
+                    continue;
+                }
+                if (low == "--game")
+                {
+                    if (i + 1 < args.Length) o.GameId = NormalizeGame(args[++i]);
+                    continue;
+                }
+                if (low.StartsWith("--game=", StringComparison.Ordinal))
+                {
+                    o.GameId = NormalizeGame(a.Substring("--game=".Length));
                     continue;
                 }
                 if (low.StartsWith("--dir=", StringComparison.Ordinal))
@@ -167,6 +187,7 @@ namespace PoBKR
         {
             Program.HideConsole();
             var opts = LaunchOptions.Parse(args);
+            var game = opts.Game;
             var target = ResolveQuiet(opts);
             if (target.Length == 0) return 2;
 
@@ -178,18 +199,18 @@ namespace PoBKR
                 if (Installer.IsPoBRunning())
                 {
                     // PoB 가 KR 파일을 쓰고 있는 중 — 살아 있는 파일은 건드리지 않고 KR\_update 에 넣어 둔다.
-                    var rel = Updater.GetLatestQuiet(FastTimeoutSeconds);
+                    var rel = Updater.GetLatestQuiet(FastTimeoutSeconds, game);
                     if (rel != null)
                     {
-                        var installed = Installer.InstalledVersion(target) ?? "0.0.0";
-                        var baseline = Higher(installed, AppInfo.Embedded.Version);
+                        var installed = Installer.InstalledVersion(target, game) ?? "0.0.0";
+                        var baseline = Higher(installed, AppInfo.EmbeddedFor(game).Version);
                         if (VersionUtil.IsNewer(rel.Version, baseline))
                         {
                             upToDate = false;
                             try
                             {
                                 var payload = Updater.DownloadData(rel, null);
-                                if (Installer.Stage(target, payload, AppInfo.VersionLine(rel.ToBuildInfo())))
+                                if (Installer.Stage(target, payload, AppInfo.VersionLine(rel.ToBuildInfo()), game))
                                     upToDate = true;
                             }
                             catch
@@ -216,7 +237,7 @@ namespace PoBKR
             }
 
             // 다음 확인 시각을 남긴다 (정상: 6시간 뒤, 실패: 1시간 뒤).
-            Installer.WriteLastCheck(target, upToDate ? checkedAt : checkedAt - (BackgroundIntervalHours - RetryHours) * 3600L);
+            Installer.WriteLastCheck(target, upToDate ? checkedAt : checkedAt - (BackgroundIntervalHours - RetryHours) * 3600L, game);
             return upToDate ? 0 : 1;
         }
 
@@ -225,12 +246,13 @@ namespace PoBKR
         {
             Program.HideConsole();
             var opts = LaunchOptions.Parse(args);
+            var game = opts.Game;
             var target = ResolveQuiet(opts);
             if (target.Length == 0) return 2;
-            if (!Installer.HasPending(target)) return 0;
+            if (!Installer.HasPending(target, game)) return 0;
 
             string version;
-            if (!Installer.ApplyStaged(target, out version)) return 1;
+            if (!Installer.ApplyStaged(target, out version, game)) return 1;
             if (!opts.Quiet) Console.WriteLine("  한글 패치 반영: " + version);
             return 0;
         }
@@ -273,23 +295,24 @@ namespace PoBKR
             var running = Installer.FindRunningPoBFolder();
             if (running != null)
             {
-                Remember(running);
+                Remember(running, opts.Game);
                 return running;
             }
             var settings = Settings.Load();
-            if (Installer.IsPoB(settings.LastTarget)) return Installer.Clean(settings.LastTarget);
-            var found = Installer.FindPoB(null);
+            var last = settings.GetLastTarget(opts.GameId);
+            if (Installer.IsPoB(last)) return Installer.Clean(last);
+            var found = Installer.FindPoB(null, opts.Game);
             return found ?? "";
         }
 
-        private static void Remember(string target)
+        private static void Remember(string target, GameTarget game)
         {
             try
             {
                 var settings = Settings.Load();
-                if (!string.Equals(settings.LastTarget, target, StringComparison.OrdinalIgnoreCase))
+                if (!string.Equals(settings.GetLastTarget(game.Id), target, StringComparison.OrdinalIgnoreCase))
                 {
-                    settings.LastTarget = target;
+                    settings.SetLastTarget(game.Id, target);
                     settings.Save();
                 }
             }
@@ -319,11 +342,12 @@ namespace PoBKR
                 return plan;
             }
 
+            var game = opts.Game;
             var settings = Settings.Load();
-            var last = settings.LastTarget ?? "";
+            var last = settings.GetLastTarget(game.Id) ?? "";
             if (last.Length > 0 && !Installer.IsPoB(last)) last = "";
 
-            var newer = NewerCandidate(last, settings.IgnoredNewer);
+            var newer = NewerCandidate(last, settings.GetIgnoredNewer(game.Id), game);
             if (last.Length > 0 && newer != null && ask != null)
             {
                 var useNew = ask("새로 내려받은 Path of Building 폴더를 발견했습니다.\n\n" + newer
@@ -335,7 +359,7 @@ namespace PoBKR
                 else
                 {
                     plan.Target = last;
-                    settings.IgnoredNewer = newer;
+                    settings.SetIgnoredNewer(game.Id, newer);
                     settings.Save();
                 }
             }
@@ -350,7 +374,7 @@ namespace PoBKR
 
             if (plan.Target.Length == 0)
             {
-                var found = Installer.FindPoB(null);
+                var found = Installer.FindPoB(null, game);
                 if (found != null) plan.Target = found;
             }
 
@@ -361,16 +385,16 @@ namespace PoBKR
                 return plan;
             }
 
-            if (!string.Equals(settings.LastTarget, plan.Target, StringComparison.OrdinalIgnoreCase))
+            if (!string.Equals(settings.GetLastTarget(game.Id), plan.Target, StringComparison.OrdinalIgnoreCase))
             {
-                settings.LastTarget = plan.Target;
+                settings.SetLastTarget(game.Id, plan.Target);
                 settings.Save();
             }
             return plan;
         }
 
         /// <summary>마지막으로 쓰던 폴더보다 확실히 더 최신인 PoB 폴더 (바탕화면·다운로드 등).</summary>
-        private static string NewerCandidate(string lastTarget, string ignored)
+        private static string NewerCandidate(string lastTarget, string ignored, GameTarget game)
         {
             var candidates = Installer.FindPoBCandidates(2);
             if (candidates.Count == 0) return null;
@@ -407,24 +431,25 @@ namespace PoBKR
                 return result;
             }
 
+            var game = opts.Game;
             try
             {
-                var embed = AppInfo.Embedded;
-                var installed = Installer.InstalledVersion(result.Target);
-                var hasData = Installer.HasData(result.Target);
+                var embed = AppInfo.EmbeddedFor(game);
+                var installed = Installer.InstalledVersion(result.Target, game);
+                var hasData = Installer.HasData(result.Target, game);
                 result.VersionText = installed ?? "";
 
                 // (0) 미리 받아 둔 패치가 있으면 먼저 반영한다. (PoB 는 아직 실행 전이다)
-                if (Installer.HasPending(result.Target))
+                if (Installer.HasPending(result.Target, game))
                 {
                     say("받아 둔 한글 패치를 반영하는 중...");
                     string stagedVersion;
-                    if (Installer.ApplyStaged(result.Target, out stagedVersion))
+                    if (Installer.ApplyStaged(result.Target, out stagedVersion, game))
                     {
                         result.Patched = true;
                         result.VersionText = stagedVersion;
                         installed = stagedVersion.Length > 0 ? stagedVersion : installed;
-                        hasData = Installer.HasData(result.Target);
+                        hasData = Installer.HasData(result.Target, game);
                     }
                 }
 
@@ -437,7 +462,7 @@ namespace PoBKR
                     try
                     {
                         say("새 한글 패치 확인 중...");
-                        var rel = Updater.GetLatestQuiet(FastTimeoutSeconds);
+                        var rel = Updater.GetLatestQuiet(FastTimeoutSeconds, game);
                         var baseline = Higher(installed ?? "0.0.0", embed.Version);
                         if (rel != null && VersionUtil.IsNewer(rel.Version, baseline))
                         {
@@ -468,7 +493,7 @@ namespace PoBKR
                 {
                     try
                     {
-                        payload = AppInfo.EmbeddedPayload();
+                        payload = AppInfo.EmbeddedPayloadFor(game);
                         data = embed;
                     }
                     catch (Exception ex)
@@ -481,7 +506,7 @@ namespace PoBKR
                 if (payload != null)
                 {
                     say("한글 패치 적용 중...");
-                    var applied = Installer.Apply(result.Target, payload, data);
+                    var applied = Installer.Apply(result.Target, payload, data, game);
                     if (applied.Ok)
                     {
                         result.Patched = true;
@@ -492,14 +517,14 @@ namespace PoBKR
                         result.Error = applied.Error;
                     }
                 }
-                else if (!Installer.HasMarker(result.Target))
+                else if (!Installer.HasMarker(result.Target, game))
                 {
                     say("PoB 업데이트로 지워진 한글 로더를 다시 넣는 중...");
-                    if (Installer.EnsureLoader(result.Target)) result.Patched = true;
+                    if (Installer.EnsureLoader(result.Target, game)) result.Patched = true;
                     else if (result.Error.Length == 0) result.Error = "Modules\\Main.lua 에 한글 로더를 넣지 못했습니다.";
                 }
 
-                if (!Installer.HasMarker(result.Target) && result.Error.Length == 0)
+                if (!Installer.HasMarker(result.Target, game) && result.Error.Length == 0)
                     result.Error = "Modules\\Main.lua 에 한글 로더가 없습니다. 관리자 권한으로 한 번 실행해 주세요.";
             }
             catch (Exception ex)
@@ -507,7 +532,7 @@ namespace PoBKR
                 result.Error = Short(ex);
             }
 
-            var exe = Installer.FindPoBExe(result.Target);
+            var exe = Installer.FindPoBExe(result.Target, game);
             if (string.IsNullOrEmpty(exe))
             {
                 if (result.Error.Length == 0) result.Error = "Path of Building 실행 파일을 찾지 못했습니다.\n(" + result.Target + ")";

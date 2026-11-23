@@ -8,9 +8,76 @@ using System.Web.Script.Serialization;
 
 namespace PoBKR
 {
-    /// <summary>내장 데이터(build.json) 정보.</summary>
+    /// <summary>패치 대상 게임(PoE1 / PoE2)의 차이를 한 곳에 모은 것.</summary>
+    internal sealed class GameTarget
+    {
+        public readonly string Id;          // "poe1" / "poe2"
+        public readonly string Display;     // 화면에 보이는 이름
+        public readonly string DataDir;     // PoB 폴더 안 데이터 폴더 (KR / KR2)
+        public readonly string Marker;      // Modules\Main.lua 에 넣는 표식
+        public readonly string Loader;      // Modules\Main.lua 맨 앞에 붙이는 두 줄
+        public readonly string DataAsset;   // 릴리스 자산 이름 (KR-data.zip / KR-data-poe2.zip)
+        public readonly string ShortcutName;// 바로가기 이름
+        public readonly string ExeFolderHint; // 자동 탐색 시 폴더 이름 힌트
+        public readonly string[] ExeNames;  // PoB 실행 파일 후보
+
+        public GameTarget(string id, string display, string dataDir, string marker, string loader,
+            string dataAsset, string shortcutName, string exeFolderHint, string[] exeNames)
+        {
+            Id = id;
+            Display = display;
+            DataDir = dataDir;
+            Marker = marker;
+            Loader = loader;
+            DataAsset = dataAsset;
+            ShortcutName = shortcutName;
+            ExeFolderHint = exeFolderHint;
+            ExeNames = exeNames;
+        }
+
+        public bool IsPoe2 { get { return Id == "poe2"; } }
+
+        public static string LoaderFor(string dataDir, string marker)
+        {
+            return marker + " Korean patch loader (PoB-KR-Patcher)\r\n" +
+                "pcall(function() local p = GetScriptPath and GetScriptPath() or \"\"; if p == \"\" then p = \".\" end; " +
+                "KR_ROOT = p .. \"/" + dataDir + "\"; dofile(KR_ROOT .. \"/init.lua\") end)\r\n";
+        }
+    }
+
+    internal static class Targets
+    {
+        public static readonly GameTarget Poe1 = new GameTarget(
+            "poe1", "PoE1", "KR", "-- [PoB-KR]",
+            GameTarget.LoaderFor("KR", "-- [PoB-KR]"),
+            "KR-data.zip", "Path of Building (한글)", "Path of Building Community",
+            new[]
+            {
+                "Path of Building.exe", "PathOfBuilding.exe", "Path of Building Community.exe",
+                "PathOfBuildingCommunity.exe", "Path of Building (Community Fork).exe"
+            });
+
+        public static readonly GameTarget Poe2 = new GameTarget(
+            "poe2", "PoE2", "KR2", "-- [PoB-KR2]",
+            GameTarget.LoaderFor("KR2", "-- [PoB-KR2]"),
+            "KR-data-poe2.zip", "Path of Building PoE2 (한글)", "Path of Building Community PoE2",
+            new[]
+            {
+                "Path of Building-PoE2.exe", "PathOfBuilding-PoE2.exe",
+                "Path of Building PoE2.exe", "PathOfBuildingPoE2.exe",
+                "Path of Building Community (PoE2).exe", "Path of Building.exe"
+            });
+
+        public static GameTarget ById(string id)
+        {
+            return string.Equals(id, "poe2", StringComparison.OrdinalIgnoreCase) ? Poe2 : Poe1;
+        }
+    }
+
+    /// <summary>내장 데이터(build.json / build-poe2.json) 정보.</summary>
     internal sealed class BuildInfo
     {
+        public string Game = "poe1";
         public string Version = "0.0.0";
         public string Season = "";
         public string Pob = "";
@@ -24,7 +91,7 @@ namespace PoBKR
             {
                 var extra = new List<string>();
                 if (!string.IsNullOrEmpty(Pob)) extra.Add("PoB " + Pob);
-                if (!string.IsNullOrEmpty(Season)) extra.Add("PoE1 " + Season);
+                if (!string.IsNullOrEmpty(Season)) extra.Add((Game == "poe2" ? "PoE2 " : "PoE1 ") + Season);
                 return extra.Count == 0 ? Version : Version + " (" + string.Join(" · ", extra.ToArray()) + ")";
             }
         }
@@ -37,6 +104,8 @@ namespace PoBKR
         public bool CreateShortcut;
         public string LastTarget = "";
         public string IgnoredNewer = "";
+        public string LastTargetPoe2 = "";
+        public string IgnoredNewerPoe2 = "";
 
         private static string Dir
         {
@@ -62,6 +131,8 @@ namespace PoBKR
                     if (d.ContainsKey("createShortcut")) s.CreateShortcut = Convert.ToBoolean(d["createShortcut"], CultureInfo.InvariantCulture);
                     if (d.ContainsKey("lastTarget")) s.LastTarget = Convert.ToString(d["lastTarget"], CultureInfo.InvariantCulture) ?? "";
                     if (d.ContainsKey("ignoredNewer")) s.IgnoredNewer = Convert.ToString(d["ignoredNewer"], CultureInfo.InvariantCulture) ?? "";
+                    if (d.ContainsKey("lastTargetPoe2")) s.LastTargetPoe2 = Convert.ToString(d["lastTargetPoe2"], CultureInfo.InvariantCulture) ?? "";
+                    if (d.ContainsKey("ignoredNewerPoe2")) s.IgnoredNewerPoe2 = Convert.ToString(d["ignoredNewerPoe2"], CultureInfo.InvariantCulture) ?? "";
                     return s;
                 }
             }
@@ -70,6 +141,28 @@ namespace PoBKR
                 // 설정 파일이 깨졌으면 기본값으로 동작한다.
             }
             return new Settings();
+        }
+
+        public string GetLastTarget(string gameId)
+        {
+            return string.Equals(gameId, "poe2", StringComparison.OrdinalIgnoreCase) ? LastTargetPoe2 : LastTarget;
+        }
+
+        public string GetIgnoredNewer(string gameId)
+        {
+            return string.Equals(gameId, "poe2", StringComparison.OrdinalIgnoreCase) ? IgnoredNewerPoe2 : IgnoredNewer;
+        }
+
+        public void SetLastTarget(string gameId, string path)
+        {
+            if (string.Equals(gameId, "poe2", StringComparison.OrdinalIgnoreCase)) LastTargetPoe2 = path ?? "";
+            else LastTarget = path ?? "";
+        }
+
+        public void SetIgnoredNewer(string gameId, string path)
+        {
+            if (string.Equals(gameId, "poe2", StringComparison.OrdinalIgnoreCase)) IgnoredNewerPoe2 = path ?? "";
+            else IgnoredNewer = path ?? "";
         }
 
         public void Save()
@@ -82,7 +175,9 @@ namespace PoBKR
                     { "autoCheck", AutoCheck },
                     { "createShortcut", CreateShortcut },
                     { "lastTarget", LastTarget ?? "" },
-                    { "ignoredNewer", IgnoredNewer ?? "" }
+                    { "ignoredNewer", IgnoredNewer ?? "" },
+                    { "lastTargetPoe2", LastTargetPoe2 ?? "" },
+                    { "ignoredNewerPoe2", IgnoredNewerPoe2 ?? "" }
                 };
                 var json = new JavaScriptSerializer().Serialize(d);
                 File.WriteAllText(PathFile, json, new UTF8Encoding(false));
@@ -106,14 +201,11 @@ namespace PoBKR
         public const string ApiLatestUrl =
             "https://api.github.com/repos/SSONG-HA/kor-patch/releases/latest";
 
-        /// <summary>Modules\Main.lua 에 들어가는 표식 (install.ps1 과 동일).</summary>
+        /// <summary>PoE1 표식 (예전 버전과의 호환용).</summary>
         public const string Marker = "-- [PoB-KR]";
 
-        /// <summary>install.ps1 이 넣는 로더 두 줄과 완전히 같은 문자열.</summary>
-        public static readonly string Loader =
-            "-- [PoB-KR] Korean patch loader (PoB-KR-Patcher)\r\n" +
-            "pcall(function() local p = GetScriptPath and GetScriptPath() or \"\"; if p == \"\" then p = \".\" end; " +
-            "KR_ROOT = p .. \"/KR\"; dofile(KR_ROOT .. \"/init.lua\") end)\r\n";
+        /// <summary>PoE1 로더 두 줄 (예전 install.ps1 과 동일).</summary>
+        public static readonly string Loader = Targets.Poe1.Loader;
 
         public static readonly UTF8Encoding Utf8NoBom = new UTF8Encoding(false);
 
@@ -144,22 +236,28 @@ namespace PoBKR
         }
 
         private static BuildInfo _embedded;
+        private static BuildInfo _embeddedPoe2;
 
-        public static BuildInfo Embedded
+        public static BuildInfo Embedded { get { return EmbeddedFor(Targets.Poe1); } }
+        public static BuildInfo EmbeddedPoe2 { get { return EmbeddedFor(Targets.Poe2); } }
+
+        public static BuildInfo EmbeddedFor(GameTarget target)
         {
-            get
+            if (target.IsPoe2)
             {
-                if (_embedded == null) _embedded = LoadBuildInfo();
-                return _embedded;
+                if (_embeddedPoe2 == null) _embeddedPoe2 = LoadBuildInfo("build-poe2.json", AppVersion);
+                return _embeddedPoe2;
             }
+            if (_embedded == null) _embedded = LoadBuildInfo("build.json", AppVersion);
+            return _embedded;
         }
 
-        private static BuildInfo LoadBuildInfo()
+        private static BuildInfo LoadBuildInfo(string resource, string fallbackVersion)
         {
-            var info = new BuildInfo { Version = AppVersion };
+            var info = new BuildInfo { Version = fallbackVersion, Game = resource.Contains("poe2") ? "poe2" : "poe1" };
             try
             {
-                using (var s = Assembly.GetExecutingAssembly().GetManifestResourceStream("build.json"))
+                using (var s = Assembly.GetExecutingAssembly().GetManifestResourceStream(resource))
                 {
                     if (s != null)
                     {
@@ -184,11 +282,17 @@ namespace PoBKR
             return info;
         }
 
-        public static byte[] EmbeddedPayload()
+        public static byte[] EmbeddedPayload() { return EmbeddedPayloadFor(Targets.Poe1); }
+
+        public static byte[] EmbeddedPayloadFor(GameTarget target)
         {
-            using (var s = Assembly.GetExecutingAssembly().GetManifestResourceStream("payload.zip"))
+            var name = target.IsPoe2 ? "payload-poe2.zip" : "payload.zip";
+            using (var s = Assembly.GetExecutingAssembly().GetManifestResourceStream(name))
             {
-                if (s == null) throw new InvalidOperationException("이 실행 파일에 한글 데이터가 들어 있지 않습니다. Releases 에서 다시 받아 주세요.");
+                if (s == null)
+                    throw new InvalidOperationException(
+                        (target.IsPoe2 ? "PoE2 " : "PoE1 ") +
+                        "한글 데이터가 이 실행 파일에 들어 있지 않습니다. Releases 에서 다시 받아 주세요.");
                 using (var ms = new MemoryStream())
                 {
                     s.CopyTo(ms);
@@ -201,7 +305,7 @@ namespace PoBKR
         {
             var extra = new List<string>();
             if (!string.IsNullOrEmpty(b.Pob)) extra.Add("Path of Building " + b.Pob);
-            if (!string.IsNullOrEmpty(b.Season)) extra.Add("PoE1 " + b.Season);
+            if (!string.IsNullOrEmpty(b.Season)) extra.Add((b.Game == "poe2" ? "PoE2 " : "PoE1 ") + b.Season);
             return extra.Count == 0 ? b.Version : b.Version + " (" + string.Join(" · ", extra.ToArray()) + ")";
         }
     }

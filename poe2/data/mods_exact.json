@@ -1,0 +1,3806 @@
+{
+"#%ChancetogainaChargewhenyoukillanenemy": {
+"kr": "적 처치 시 %1%의 확률로 충전 획득",
+"n": 2
+},
+"#%LifeRecoveryfromFlasksalsoappliestoRunicWard": {
+"kr": "플라스크로 얻는 생명력 회복의 %1%가 룬 수호에도 적용",
+"n": 2
+},
+"#%SurpassingChancetogainaPuppetMasterstackwheneveryouuseaCommandSkill": {
+"kr": "명령 스킬을 사용할 때마다 %1%의 초과 확률로 인형사 중첩 획득",
+"n": 2
+},
+"#%SurpassingchancetofireanadditionalArrow": {
+"kr": "추가 화살을 발사할 초과 확률 %1%",
+"n": 2
+},
+"#%additionalPhysicalDamageReduction": {
+"kr": "받는 물리 피해 %1% 추가 감소",
+"n": 2
+},
+"#%chanceforCharmsyouusetonotconsumeCharges": {
+"kr": "호신부 사용 시 %1% 확률로 충전을 소모하지 않음",
+"n": 2
+},
+"#%chanceforDamageofEnemiesHittingyoutobeUnlucky": {
+"kr": "%1% 확률로 플레이어에게 공격을 명중시킨 적의 피해에 불운 적용",
+"n": 2
+},
+"#%chanceforEnergyShieldRechargetostartwhenyouKillanEnemy": {
+"kr": "적 처치 시 %1%의 확률로 에너지 보호막 재충전 시작",
+"n": 2
+},
+"#%chanceforFlasksyouusetonotconsumeCharges": {
+"kr": "%1%의 확률로 자신의 플라스크 충전을 소모하지 않음",
+"n": 2
+},
+"#%chanceforMaceSlamSkillsyouuseyourselftocauseanadditionalAftershock": {
+"kr": "직접 사용하는 철퇴 강타 스킬이 %1%의 확률로 추가 여진 유발",
+"n": 2
+},
+"#%chanceforRemnantsyoupickuptocountaspickingupanadditionalRemnant": {
+"kr": "획득하는 잔류물이 %1% 확률로 잔류물을 1개 추가로 획득한 것으로 간주됨",
+"n": 2
+},
+"#%chanceforSkillstoretain#%ofGloryonuse": {
+"kr": "스킬 사용 시 %1% 확률로 영광의 40%를 유지",
+"n": 3
+},
+"#%chanceforSlamSkillsyouuseyourselftocauseanadditionalAftershock": {
+"kr": "직접 사용하는 강타 스킬이 %1%의 확률로 추가 여진 유발",
+"n": 2
+},
+"#%chanceforSpellDamagewithCriticalHitstobeLucky": {
+"kr": "치명타 명중 시 %1%의 확률로 주문 피해에 행운 적용",
+"n": 2
+},
+"#%chanceforSpellSkillstofire#additionalProjectiles": {
+"kr": "주문 스킬이 %1%의 확률로 투사체 2개 추가 발사",
+"n": 2
+},
+"#%chancethatwhenVolatilityonyouexplodes,youregainanequivalentamountofVolatility": {
+"kr": "플레이어의 일촉즉발이 폭발하면 %1%의 확률로 그와 동일한 양의 일촉즉발 재획득",
+"n": 2
+},
+"#%chancetoAggravateBleedingonHit": {
+"kr": "명중 시 %1%의 확률로 출혈 가중",
+"n": 2
+},
+"#%chancetoAvoidChaosDamagefromHits": {
+"kr": "피격 시 %1% 확률로 카오스 피해 긴급회피",
+"n": 2
+},
+"#%chancetoAvoidColdDamagefromHits": {
+"kr": "명중 받을 시 %1% 확률로 냉기 피해 긴급회피",
+"n": 2
+},
+"#%chancetoAvoidDeathfromHits": {
+"kr": "%1%의 확률로 명중으로 인한 사망 긴급회피",
+"n": 2
+},
+"#%chancetoAvoidFireDamagefromHits": {
+"kr": "명중 받을 시 %1% 확률로 화염 피해 긴급회피",
+"n": 2
+},
+"#%chancetoAvoidLightningDamagefromHits": {
+"kr": "명중 받을 시 %1% 확률로 번개 피해 긴급회피",
+"n": 2
+},
+"#%chancetoAvoidPhysicalDamagefromHits": {
+"kr": "피격 시 %1% 확률로 물리 피해 긴급회피",
+"n": 2
+},
+"#%chancetoBlindEnemiesonhit": {
+"kr": "명중 시 %1%의 확률로 적 실명 유발",
+"n": 2
+},
+"#%chancetoChainanadditionaltime": {
+"kr": "%1%의 확률로 1회 추가 연쇄",
+"n": 2
+},
+"#%chancetoIntimidateEnemiesfor#secondsonHit": {
+"kr": "명중 시 %1%의 확률로 4초 동안 적 위협",
+"n": 2
+},
+"#%chancetoMaimonHit": {
+"kr": "명중 시 %1%의 확률로 힘줄 절단",
+"n": 2
+},
+"#%chancetoPierceanEnemy": {
+"kr": "%1%의 확률로 적 관통",
+"n": 2
+},
+"#%chancetoPoisononHit": {
+"kr": "명중 시 %1%의 확률로 중독 유발",
+"n": 2
+},
+"#%chancetoPoisononHitwithAttacks": {
+"kr": "공격 명중 시 %1%의 확률로 중독 유발",
+"n": 2
+},
+"#%chancetoPoisononHitwithSpellDamage": {
+"kr": "주문 피해 명중 시 %1%의 확률로 중독 유발",
+"n": 2
+},
+"#%chancetoPoisononHitwiththisweapon": {
+"kr": "이 무기로 명중 시 %1%의 확률로 중독 유발",
+"n": 2
+},
+"#%chancetoavoidProjectiles": {
+"kr": "%1%의 확률로 투사체 긴급회피",
+"n": 2
+},
+"#%chancetobePoisoned": {
+"kr": "중독될 확률 %1%",
+"n": 2
+},
+"#%chancetobeinflictedwithBleedingwhenHit": {
+"kr": "명중당하면 %1%의 확률로 플레이어에게 출혈 유발",
+"n": 2
+},
+"#%chancetobuildanadditionalComboonHit": {
+"kr": "명중 시 %1% 확률로 추가 연계 축적",
+"n": 2
+},
+"#%chancetocauseBleedingonHit": {
+"kr": "명중 시 %1%의 확률로 출혈 유발",
+"n": 2
+},
+"#%chancetocreateanadditionalRemnant": {
+"kr": "%1% 확률로 잔류물 1개 추가 생성",
+"n": 2
+},
+"#%chancetodealyourThornsDamagetoEnemiesyouHitwithMeleeAttacks": {
+"kr": "플레이어가 근접 공격으로 명중시키는 적들에게 %1% 확률로 가시 피해를 줌",
+"n": 2
+},
+"#%chancetogainNature'sArchonwhenyourPlantsOvergrow": {
+"kr": "식물이 과성장하면 %1% 확률로 자연의 집정관 획득",
+"n": 2
+},
+"#%chancetogainOnslaughtonKillingHitswiththisWeapon": {
+"kr": "이 무기로 명중시켜 처치 시 %1%의 확률로 맹공 획득",
+"n": 2
+},
+"#%chancetogainaPowerChargeonCriticalHit": {
+"kr": "치명타 명중 시 %1%의 확률로 권능 충전 획득",
+"n": 2
+},
+"#%chancetogainaPowerChargeonHit": {
+"kr": "명중 시 %1%의 확률로 권능 충전 획득",
+"n": 2
+},
+"#%chancetogainanadditionalrandomChargewhenyougainaCharge": {
+"kr": "충전 획득 시 %1% 확률로 추가 무작위 충전 획득",
+"n": 2
+},
+"#%chancetoinflictBleedingonHit": {
+"kr": "명중 시 %1%의 확률로 출혈 유발",
+"n": 2
+},
+"#%chancetoloadaboltintoallCrossbowskillsonKill": {
+"kr": "처치 시 %1%의 확률로 모든 석궁 스킬에 볼트 장전",
+"n": 2
+},
+"#%chancetonotdestroyCorpseswhenConsumingCorpses": {
+"kr": "시신 소모 시 %1%의 확률로 시신을 파괴하지 않음",
+"n": 2
+},
+"#%chancewhencollectinganElementalInfusiontogainanadditionalElementalInfusionofthesametype": {
+"kr": "원소 주입 획득 시 %1% 확률로같은 유형의 원소 주입 1개를 추가로 획득",
+"n": 2
+},
+"#%chancewhenyouReloadaCrossbowtobeimmediate": {
+"kr": "%1% 확률로 석궁 재장전이 즉시 완료",
+"n": 2
+},
+"#%chancewhenyougainaChargetogainanadditionalCharge": {
+"kr": "충전 획득 시 %1% 확률로 충전 1개 추가 획득",
+"n": 2
+},
+"#%chancewhenyougainaFrenzyChargetogainanadditionalFrenzyCharge": {
+"kr": "격분 충전 획득 시 %1% 확률로 격분 충전 1개 추가 획득",
+"n": 2
+},
+"#%chancewhenyougainaPowerChargetogainanadditionalPowerCharge": {
+"kr": "권능 충전 획득 시 %1% 확률로 권능 충전 1개 추가 획득",
+"n": 2
+},
+"#%chancewhenyougainanEnduranceChargetogainanadditionalEnduranceCharge": {
+"kr": "인내 충전 획득 시 %1% 확률로 인내 충전 1개 추가 획득",
+"n": 2
+},
+"#%fasterCurseActivation": {
+"kr": "저주 활성화 속도 %1% 가속",
+"n": 2
+},
+"#%fasterDodgeRoll": {
+"kr": "회피 구르기 속도 %1% 증가",
+"n": 2
+},
+"#%fasterstartofEnergyShieldRecharge": {
+"kr": "에너지 보호막 재충전 시작 속도 %1% 가속",
+"n": 2
+},
+"#%increasedAccuracyRating": {
+"kr": "일반 정확도 %1% 증가",
+"n": 2
+},
+"#%increasedAmountRecovered": {
+"kr": "회복량 %1% 증가",
+"n": 2
+},
+"#%increasedArchonBuffduration": {
+"kr": "집정관 버프 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedAreaofEffect": {
+"kr": "효과 범위 %1% 증가",
+"n": 2
+},
+"#%increasedAreaofEffectforAttacks": {
+"kr": "공격 효과 범위 %1% 증가",
+"n": 2
+},
+"#%increasedAreaofEffectforAttacksper#Intelligence": {
+"kr": "지능 10당 공격의 효과 범위 %1% 증가",
+"n": 2
+},
+"#%increasedAreaofEffectofCurses": {
+"kr": "저주의 효과 범위 %1% 증가",
+"n": 2
+},
+"#%increasedArmour": {
+"kr": "방어도 %1% 증가",
+"n": 2
+},
+"#%increasedArmour,EvasionandEnergyShield": {
+"kr": "방어도, 회피, 에너지 보호막 %1% 증가",
+"n": 2
+},
+"#%increasedArmour,EvasionandEnergyShieldwhileyourCompanionisinyourPresence": {
+"kr": "반려수가 접근해 있는 동안 방어도, 회피, 에너지 보호막 %1% 증가",
+"n": 2
+},
+"#%increasedArmourandEnergyShield": {
+"kr": "방어도 및 에너지 보호막 %1% 증가",
+"n": 2
+},
+"#%increasedArmourandEvasion": {
+"kr": "방어도 및 회피 %1% 증가",
+"n": 2
+},
+"#%increasedArmourfromEquippedBodyArmour": {
+"kr": "장착한 갑옷으로 얻는 방어도 %1% 증가",
+"n": 2
+},
+"#%increasedArmourifyou'veconsumedanEnduranceChargeRecently": {
+"kr": "최근 4초 이내 인내 충전을 소모한 경우 방어도 %1% 증가",
+"n": 2
+},
+"#%increasedArrowSpeed": {
+"kr": "화살 속도 %1% 증가",
+"n": 2
+},
+"#%increasedAttackDamageagainstMaimedEnemies": {
+"kr": "힘줄 절단된 적에 대한 공격 피해 %1% 증가",
+"n": 2
+},
+"#%increasedAttackDamageagainstRareorUniqueEnemies": {
+"kr": "희귀 또는 고유 적에게 주는 공격 피해 %1% 증가",
+"n": 2
+},
+"#%increasedAttackDamagewhileShapeshifted": {
+"kr": "형태 변환 상태일 때 공격 피해 %1% 증가",
+"n": 2
+},
+"#%increasedAttackDamagewhileonLowLife": {
+"kr": "낮은 생명력 상태인 동안 공격 피해 %1% 증가",
+"n": 2
+},
+"#%increasedAttackSpeed": {
+"kr": "공격 속도 %1% 증가",
+"n": 2
+},
+"#%increasedAttackSpeed#%increasedAttackSpeedwhileyourCompanionisinyourPresence": {
+"kr": "공격 속도 %1% 증가접근해 있는 반려수의 공격 속도 %2% 증가",
+"n": 4
+},
+"#%increasedAttackSpeed#%lessAttackDamage": {
+"kr": "공격 속도 %1% 증가공격 피해 %2% 감폭",
+"n": 4
+},
+"#%increasedAttackSpeedCompanionshave#%increasedAttackSpeed": {
+"kr": "공격 속도 %1% 증가반려수의 공격 속도 %2% 증가",
+"n": 4
+},
+"#%increasedAttackSpeedper#Dexterity": {
+"kr": "민첩 10당 공격 속도 %1% 증가",
+"n": 2
+},
+"#%increasedAttackSpeedwhilemissingRunicWard": {
+"kr": "룬 수호가 없는 동안 공격 속도 %1% 증가",
+"n": 2
+},
+"#%increasedAttackSpeedwhileonFullMana": {
+"kr": "마나가 최대일 때 공격 속도 %1% 증가",
+"n": 2
+},
+"#%increasedAttackSpeedwhileyourCompanionisinyourPresence": {
+"kr": "접근해 있는 반려수의 공격 속도 %1% 증가",
+"n": 2
+},
+"#%increasedAttributeRequirements": {
+"kr": "능력치 요구사항 %1% 증가",
+"n": 2
+},
+"#%increasedBleedingDuration": {
+"kr": "출혈 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedBlockchance": {
+"kr": "막기 확률 %1% 증가",
+"n": 2
+},
+"#%increasedBlockchanceagainstProjectiles": {
+"kr": "투사체에 대한 막기 확률 %1% 증가",
+"n": 2
+},
+"#%increasedBlockchanceper#totalItemArmouronEquippedArmourItems": {
+"kr": "장착한 방어구 아이템의 총 아이템 방어도 100당 막기 확률 %1% 증가",
+"n": 2
+},
+"#%increasedBoltSpeed": {
+"kr": "볼트 속도 %1% 증가",
+"n": 2
+},
+"#%increasedCastSpeed": {
+"kr": "시전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedCastSpeedGain#%ofElementalDamageasExtraColdDamage": {
+"kr": "시전 속도 %1% 증가원소 피해의 %2%를 추가 냉기 피해로 획득",
+"n": 4
+},
+"#%increasedCastSpeedduringanyFlaskEffect": {
+"kr": "아무 플라스크나 효과를 받는 동안 시전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedCastSpeedforeachdifferentNon-InstantSpellyou'veCastRecently": {
+"kr": "최근 4초 이내 시전한 각기 다른 비-즉시 시전 주문 하나당 시전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedCastSpeedwhenonLowLife": {
+"kr": "낮은 생명력 상태일 때 시전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedCastSpeedwhileonFullMana": {
+"kr": "마나가 최대일 때 시전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedChancetobeafflictedbyAilmentswhenHit": {
+"kr": "명중당했을 때 상태 이상에 걸릴 확률 %1% 증가",
+"n": 2
+},
+"#%increasedChaosDamage": {
+"kr": "카오스 피해 %1% 증가",
+"n": 2
+},
+"#%increasedCharges": {
+"kr": "충전 %1% 증가",
+"n": 2
+},
+"#%increasedChargesgained": {
+"kr": "충전량 %1% 증가",
+"n": 2
+},
+"#%increasedChargesperuse": {
+"kr": "사용 1회당 충전 소모량 %1% 증가",
+"n": 2
+},
+"#%increasedCharmChargesgained": {
+"kr": "호신부 충전량 %1% 증가",
+"n": 2
+},
+"#%increasedCharmEffectDuration": {
+"kr": "호신부 효과 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedChillDurationonEnemies": {
+"kr": "적에게 적용되는 냉각 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedColdDamage": {
+"kr": "냉기 피해 %1% 증가",
+"n": 2
+},
+"#%increasedColdDamage#%increasedFreezeBuildup": {
+"kr": "냉기 피해 %1% 증가동결 축적 %2% 증가",
+"n": 4
+},
+"#%increasedColdDamageifyou'vecollectedaColdInfusioninthelast#seconds": {
+"kr": "지난 8초 이내 냉기 주입을 획득한 경우 냉기 피해 %1% 증가",
+"n": 2
+},
+"#%increasedCooldownRecoveryRate": {
+"kr": "재사용 대기시간 회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedCorruptedCharmseffectduration": {
+"kr": "타락한 호신부 효과 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedCostEfficiency#%ofSpellManaCostConvertedtoLifeCost": {
+"kr": "소모 효율 %1% 증가주문의 마나 소모의 %2%가 생명력 소모로 전환",
+"n": 4
+},
+"#%increasedCostEfficiencyofAttacks": {
+"kr": "공격의 소모 효율 %1% 증가",
+"n": 2
+},
+"#%increasedCostofSkillsforeach#totalManaSpentRecently": {
+"kr": "최근 4초 이내 사용한 마나 200당 스킬의 소모 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalDamageBonus": {
+"kr": "치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalDamageBonusforAttackDamage": {
+"kr": "공격 피해의 치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalDamageBonusperPowerCharge": {
+"kr": "권능 충전 하나당 치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalDamageBonuswhileShocked": {
+"kr": "감전 상태일 때 치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalHitChance": {
+"kr": "치명타 확률 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalHitChanceagainstMarkedEnemies": {
+"kr": "징표가 찍힌 적에 대한 치명타 확률 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalHitChanceforAttacks": {
+"kr": "공격 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalHitChanceforSpells": {
+"kr": "주문 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalHitChancewhileShapeshifted": {
+"kr": "형태 변환 상태일 때 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalHitChancewithTraps": {
+"kr": "덫 사용 시 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"#%increasedCriticalSpellDamageBonus": {
+"kr": "주문 치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedCrossbowReloadSpeed": {
+"kr": "석궁 재장전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedCullingStrikeThreshold": {
+"kr": "마무리 타격 한계치 %1% 증가",
+"n": 2
+},
+"#%increasedCurseDuration": {
+"kr": "저주 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedCurseMagnitudes": {
+"kr": "저주 강도 %1% 증가",
+"n": 2
+},
+"#%increasedDamage": {
+"kr": "피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamageagainstEnemieswithFullyBrokenArmour": {
+"kr": "완전히 파괴된 방어구를 가진 적에게 주는 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamageagainstImmobilisedEnemies": {
+"kr": "이동 불가 상태의 적에게 주는 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamageforeachtypeofElementalAilmentonEnemy": {
+"kr": "적에게 걸린 원소 상태 이상 유형 하나당 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamageperMinion": {
+"kr": "소환수 하나당 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamagepereachdifferentCompanioninyourPresence": {
+"kr": "접근해 있는 각기 다른 반려수 하나당 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamagewhileLeeching": {
+"kr": "흡수하는 동안 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamagewhileShapeshifted": {
+"kr": "형태 변환 상태일 때 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamagewhileyouhaveaTotem": {
+"kr": "토템이 있는 동안 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamagewhileyourCompanionisinyourPresence": {
+"kr": "반려수가 접근해 있는 동안 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamagewithBowSkills": {
+"kr": "활 스킬로 주는 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDamagewithHitsagainsttargetsinyourPresence": {
+"kr": "접근해 있는 대상에게 주는 명중 피해 %1% 증가",
+"n": 2
+},
+"#%increasedDeflectionRating": {
+"kr": "튕겨내기 평점 %1% 증가",
+"n": 2
+},
+"#%increasedDesecratedModifiermagnitudes": {
+"kr": "훼손된 속성 강도 %1% 증가",
+"n": 2
+},
+"#%increasedDexterity": {
+"kr": "민첩 %1% 증가",
+"n": 2
+},
+"#%increasedDuration": {
+"kr": "지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedEffectofJewelSocketPassiveSkillscontainingCorruptedMagicJewels": {
+"kr": "타락한 마법 주얼을 장착한주얼 슬롯 패시브 스킬의 효과 %1% 증가",
+"n": 2
+},
+"#%increasedEffectofyourMarkSkills": {
+"kr": "플레이어의 징표 스킬의 효과 %1% 증가",
+"n": 2
+},
+"#%increasedElementalAilmentThreshold": {
+"kr": "원소 상태 이상 한계치 %1% 증가",
+"n": 2
+},
+"#%increasedElementalDamage": {
+"kr": "원소 피해 %1% 증가",
+"n": 2
+},
+"#%increasedElementalDamagewithAttacks": {
+"kr": "공격 스킬의 원소 피해 %1% 증가",
+"n": 2
+},
+"#%increasedEndurance,FrenzyandPowerChargeDuration": {
+"kr": "인내, 격분, 권능 충전 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedEnergyShield": {
+"kr": "에너지 보호막 %1% 증가",
+"n": 2
+},
+"#%increasedEnergyShield#tomaximumMana": {
+"kr": "에너지 보호막 %1% 증가마나 최대치 %2",
+"n": 3
+},
+"#%increasedEnergyShieldRechargeRate": {
+"kr": "에너지 보호막 재충전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedEnergyShieldfromEquippedBodyArmour": {
+"kr": "장착한 갑옷으로 얻는 에너지 보호막 %1% 증가",
+"n": 2
+},
+"#%increasedEvasionRating": {
+"kr": "회피 %1% 증가",
+"n": 2
+},
+"#%increasedEvasionRating#toStunThreshold": {
+"kr": "회피 %1% 증가기절 한계치 %2",
+"n": 3
+},
+"#%increasedEvasionRatingfromEquippedBodyArmour": {
+"kr": "갑옷이 제공하는 회피 %1% 증가",
+"n": 2
+},
+"#%increasedEvasionRatingifyou'veDodgeRolledRecently": {
+"kr": "최근 4초 이내 회피 구르기를 한 경우 회피 %1% 증가",
+"n": 2
+},
+"#%increasedEvasionRatingifyou'veconsumedaFrenzyChargeRecently": {
+"kr": "최근 4초 이내 격분 충전을 소모한 경우 회피 %1% 증가",
+"n": 2
+},
+"#%increasedEvasionRatingifyouhavebeenHitRecently": {
+"kr": "최근 4초 이내 명중당한 경우 회피 %1% 증가",
+"n": 2
+},
+"#%increasedEvasionRatingwhenonFullLife": {
+"kr": "생명력이 최대일 때 일반 회피 %1% 증가",
+"n": 2
+},
+"#%increasedEvasionandEnergyShield": {
+"kr": "회피 및 에너지 보호막 %1% 증가",
+"n": 2
+},
+"#%increasedExperiencegain": {
+"kr": "경험치 획득 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitChaosModifiermagnitudes": {
+"kr": "비고정 카오스 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitColdModifiermagnitudes": {
+"kr": "비고정 냉기 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitCriticalModifiermagnitudes": {
+"kr": "비고정 치명타 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitElementalDamageModifiermagnitudes": {
+"kr": "비고정 원소 피해 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitFireModifiermagnitudes": {
+"kr": "비고정 화염 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitLightningModifiermagnitudes": {
+"kr": "비고정 번개 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitManaModifiermagnitudes": {
+"kr": "비고정 마나 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitPhysicalModifiermagnitudes": {
+"kr": "비고정 물리 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitResistanceModifiermagnitudes": {
+"kr": "비고정 저항 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExplicitSpeedModifiermagnitudes": {
+"kr": "비고정 속도 속성 부여 규모 %1% 증가",
+"n": 2
+},
+"#%increasedExposureEffect": {
+"kr": "노출 효과 %1% 증가",
+"n": 2
+},
+"#%increasedFireDamage": {
+"kr": "화염 피해 %1% 증가",
+"n": 2
+},
+"#%increasedFireDamage#%increasedIgniteMagnitude": {
+"kr": "화염 피해 %1% 증가점화 강도 %2% 증가",
+"n": 4
+},
+"#%increasedFireDamageifyou'vecollectedaFireInfusioninthelast#seconds": {
+"kr": "지난 8초 이내 화염 주입을 획득한 경우 화염 피해 %1% 증가",
+"n": 2
+},
+"#%increasedFlammabilityMagnitude": {
+"kr": "인화성 강도 %1% 증가",
+"n": 2
+},
+"#%increasedFlammabilityMagnitudelocalweaponimplicithidden%basedamageisfire[#]": {
+"kr": "인화성 강도 %1% 증가local weapon implicit hidden % base damage is fire [30]",
+"n": 3
+},
+"#%increasedFlaskChargesgained": {
+"kr": "플라스크 충전량 %1% 증가",
+"n": 2
+},
+"#%increasedFlaskChargesused": {
+"kr": "플라스크 충전 소모량 %1% 증가",
+"n": 2
+},
+"#%increasedFlaskLifeRecoveryrate": {
+"kr": "플라스크로 얻는 생명력 회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedFlaskManaRecoveryrate": {
+"kr": "플라스크로 얻는 마나 회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedFreezeBuildup": {
+"kr": "동결 축적 %1% 증가",
+"n": 2
+},
+"#%increasedFreezeBuildupifyou'veconsumedanPowerChargeRecently": {
+"kr": "최근 4초 이내 권능 충전을 소모한 경우 동결 축적 %1% 증가",
+"n": 2
+},
+"#%increasedFreezeDurationonEnemies": {
+"kr": "적에게 적용되는 동결 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedGlobalArmour,EvasionandEnergyShield": {
+"kr": "일반 방어도, 회피, 에너지 보호막 %1% 증가",
+"n": 2
+},
+"#%increasedGlobalEvasionRatingwhenonLowLife": {
+"kr": "낮은 생명력 상태일 때 일반 회피 %1% 증가",
+"n": 2
+},
+"#%increasedGlobalPhysicalDamage": {
+"kr": "일반 물리 피해 %1% 증가",
+"n": 2
+},
+"#%increasedGrenadeDamage#%increasedGrenadeDuration": {
+"kr": "유탄 피해 %1% 증가유탄 지속시간 %2% 증가",
+"n": 4
+},
+"#%increasedGuardgained": {
+"kr": "가호 획득 %1% 증가",
+"n": 2
+},
+"#%increasedIgniteMagnitude": {
+"kr": "점화 강도 %1% 증가",
+"n": 2
+},
+"#%increasedImmobilisationbuildup": {
+"kr": "이동 불가 축적 %1% 증가",
+"n": 2
+},
+"#%increasedIntelligence": {
+"kr": "지능 %1% 증가",
+"n": 2
+},
+"#%increasedLifeRecoveredRemoves#%ofLifeRecoveredfromManawhenused": {
+"kr": "생명력 회복 %1% 증가사용 시 마나에서 회복한 생명력의 %2% 제거",
+"n": 4
+},
+"#%increasedLifeRecoveryRatewhileyourCompanionisinyourPresence": {
+"kr": "반려수가 접근해 있는 동안 생명력 회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedLifeRecoveryfromFlasks": {
+"kr": "플라스크로 회복하는 생명력 %1% 증가",
+"n": 2
+},
+"#%increasedLifeRecoveryrate": {
+"kr": "생명력 회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedLifeRegenerationrate": {
+"kr": "생명력 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedLifeRegenerationrateduringEffectofanyLifeFlask": {
+"kr": "아무 생명력 플라스크나 효과를 받는 동안 생명력 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedLifeRegenerationratewhileShapeshifted": {
+"kr": "형태 변환 상태일 때 생명력 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedLifeandManaRecoveryfromFlasks": {
+"kr": "플라스크로 얻는 생명력과 마나 회복 %1% 증가",
+"n": 2
+},
+"#%increasedLightRadius": {
+"kr": "시야 반경 %1% 증가",
+"n": 2
+},
+"#%increasedLightningDamage": {
+"kr": "번개 피해 %1% 증가",
+"n": 2
+},
+"#%increasedLightningDamage#%increasedMagnitudeofShockyouinflict": {
+"kr": "번개 피해 %1% 증가플레이어가 유발하는 감전의 강도 %2% 증가",
+"n": 4
+},
+"#%increasedLightningDamageifyou'vecollectedaLightningInfusioninthelast#seconds": {
+"kr": "지난 8초 이내 번개 주입을 획득한 경우 번개 피해 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofAilmentsyouinflict": {
+"kr": "플레이어가 유발하는 상태 이상의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofBleedingyouinflict": {
+"kr": "플레이어가 유발하는 출혈의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofChillyouinflict": {
+"kr": "플레이어가 유발하는 냉각의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofDamagingAilmentsyouinflict": {
+"kr": "플레이어가 유발하는 피해를 주는 상태 이상의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofElementalAilmentsyouinflictwithSpells": {
+"kr": "플레이어가 주문으로 유발하는 원소 상태 이상의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofIgniteifyou'veconsumedanEnduranceChargeRecently": {
+"kr": "최근 4초 이내 인내 충전을 소모한 경우 점화 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofImpalesinflictedwithSpells": {
+"kr": "주문으로 유발되는 꿰뚫기의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofPoisonyouinflict": {
+"kr": "플레이어가 유발하는 중독의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofShockifyou'veconsumedaFrenzyChargeRecently": {
+"kr": "최근 4초 이내 격분 충전을 소모한 경우 감전 강도 %1% 증가",
+"n": 2
+},
+"#%increasedMagnitudeofShockyouinflict": {
+"kr": "플레이어가 유발하는 감전의 강도 %1% 증가",
+"n": 2
+},
+"#%increasedManaCostEfficiency": {
+"kr": "마나 소모 효율 %1% 증가",
+"n": 2
+},
+"#%increasedManaCostEfficiencyofSpells": {
+"kr": "주문의 마나 소모 효율 %1% 증가",
+"n": 2
+},
+"#%increasedManaCostofSkills": {
+"kr": "스킬의 마나 소모 %1% 증가",
+"n": 2
+},
+"#%increasedManaRecoveredRemoves#%ofManaRecoveredfromLifewhenused": {
+"kr": "마나 회복 %1% 증가사용 시 생명력에서 회복한 마나의 %2% 제거",
+"n": 4
+},
+"#%increasedManaRecoveryfromFlasks": {
+"kr": "플라스크로 얻는 마나 회복 %1% 증가",
+"n": 2
+},
+"#%increasedManaRecoveryratewhileyourCompanionisinyourPresence": {
+"kr": "반려수가 접근해 있는 동안 마나 회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedManaRegenerationRate": {
+"kr": "마나 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedManaRegenerationRate#%increasedLightRadius": {
+"kr": "마나 재생 속도 %1% 증가시야 반경 %2% 증가",
+"n": 4
+},
+"#%increasedManaRegenerationRateifyou'vedealtaCriticalHitRecently": {
+"kr": "최근 4초 이내 치명타 명중 시 마나 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedManaRegenerationRateperFragileRegrowth": {
+"kr": "불안정한 재성장 하나당 마나 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedManaRegenerationRatewhilestationary": {
+"kr": "정지 상태일 때 마나 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedMaximumLifepersocketedGrandSpectrum": {
+"kr": "장대한 파장 하나당 최대 생명력 %1% 증가",
+"n": 2
+},
+"#%increasedMeleeDamageagainstHeavyStunnedenemies": {
+"kr": "강력 기절 상태의 적에게 주는 근접 피해 %1% 증가",
+"n": 2
+},
+"#%increasedMeleeDamageifyou'vedealtaProjectileAttackHitinthepasteightseconds": {
+"kr": "최근 8초 이내 투사체 공격 명중 시 근접 피해 %1% 증가",
+"n": 2
+},
+"#%increasedMeleeStrikeRangewiththisweapon": {
+"kr": "이 무기 사용 시 근접 타격 범위 %1% 증가",
+"n": 2
+},
+"#%increasedMinionDamageperdifferentCommandSkillusedinthepast#seconds": {
+"kr": "최근 15초 이내 사용한 서로 다른 명령 스킬 하나당 소환수 피해 %1% 증가",
+"n": 2
+},
+"#%increasedMinionDuration": {
+"kr": "소환수 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedMovementSpeed": {
+"kr": "이동 속도 %1% 증가",
+"n": 2
+},
+"#%increasedMovementSpeedperFrenzyCharge": {
+"kr": "격분 충전 하나당 이동 속도 %1% 증가",
+"n": 2
+},
+"#%increasedMovementSpeedwhenonFullLife": {
+"kr": "생명력이 최대일 때 이동 속도 %1% 증가",
+"n": 2
+},
+"#%increasedMovementSpeedwhileaffectedbyanAilment": {
+"kr": "상태 이상의 영향을 받는 동안 이동 속도 %1% 증가",
+"n": 2
+},
+"#%increasedParriedDebuffDuration": {
+"kr": "흘려보내기 디버프 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedParriedDebuffMagnitude": {
+"kr": "흘려보내기 디버프 강도 %1% 증가",
+"n": 2
+},
+"#%increasedParryDamage": {
+"kr": "흘려보내기 피해 %1% 증가",
+"n": 2
+},
+"#%increasedParryRange": {
+"kr": "흘려보내기 범위 %1% 증가",
+"n": 2
+},
+"#%increasedPhysicalDamage": {
+"kr": "물리 피해 %1% 증가",
+"n": 2
+},
+"#%increasedPhysicalDamage#%reducedAttackSpeed": {
+"kr": "물리 피해 %1% 증가공격 속도 %2% 감소",
+"n": 4
+},
+"#%increasedPhysicalDamage#toAccuracyRating": {
+"kr": "물리 피해 %1% 증가정확도 %2",
+"n": 3
+},
+"#%increasedPhysicalDamage#toallAttributes": {
+"kr": "물리 피해 %1% 증가모든 능력치 %2",
+"n": 3
+},
+"#%increasedPoisonDuration": {
+"kr": "중독 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedPresenceAreaofEffect": {
+"kr": "접근 효과 범위 %1% 증가",
+"n": 2
+},
+"#%increasedProjectileDamageifyou'vedealtaMeleeHitinthepasteightseconds": {
+"kr": "최근 8초 이내 근접 공격을 명중시킨 경우 투사체 피해 %1% 증가",
+"n": 2
+},
+"#%increasedProjectileSpeed": {
+"kr": "투사체 속도 %1% 증가",
+"n": 2
+},
+"#%increasedProjectileSpeedwiththisWeapon": {
+"kr": "이 무기의 투사체 속도 %1% 증가",
+"n": 2
+},
+"#%increasedQuantityofGoldDroppedbySlainEnemies": {
+"kr": "처치한 적이 떨어뜨리는 골드 수량 %1% 증가",
+"n": 2
+},
+"#%increasedRarityofItemsDroppedbyEnemieskilledwithaCriticalHit": {
+"kr": "치명타 명중으로 처치한 적이 떨어뜨리는 아이템 희귀도 %1% 증가",
+"n": 2
+},
+"#%increasedRarityofItemsfound": {
+"kr": "발견하는 아이템 희귀도 %1% 증가",
+"n": 2
+},
+"#%increasedRarityofItemsfoundYourotherModifierstoRarityofItemsfounddonotapply": {
+"kr": "발견하는 아이템의 희귀도 %1% 증가다른 발견하는 아이템의 희귀도 속성들이 적용되지 않음",
+"n": 2
+},
+"#%increasedRarityofItemsfoundwhenonLowLife": {
+"kr": "낮은 생명력 상태일 때 발견하는 아이템 희귀도 %1% 증가",
+"n": 2
+},
+"#%increasedRecoveryrate": {
+"kr": "회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedReloadSpeed": {
+"kr": "재장전 속도 %1% 증가",
+"n": 2
+},
+"#%increasedReservationEfficiencyofCompanionSkills": {
+"kr": "반려수 스킬의 점유 효율 %1% 증가",
+"n": 2
+},
+"#%increasedReservationEfficiencyofHeraldSkills": {
+"kr": "전령 스킬의 점유 효율 %1% 증가",
+"n": 2
+},
+"#%increasedReservationEfficiencyofMinionSkills": {
+"kr": "소환수 스킬의 점유 효율 %1% 증가",
+"n": 2
+},
+"#%increasedReservationEfficiencyofRemnantSkills": {
+"kr": "잔류물 스킬의 점유 효율 %1% 증가",
+"n": 2
+},
+"#%increasedReservationEfficiencyofSkillswhichcreateUndeadMinions": {
+"kr": "언데드 소환수를 생성하는 스킬의 점유 효율 %1% 증가",
+"n": 2
+},
+"#%increasedRunicWard": {
+"kr": "룬 수호 %1% 증가",
+"n": 2
+},
+"#%increasedRunicWardRegenerationRate": {
+"kr": "룬 수호 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedRunicWardRegenerationRateifyou'vedealtaCriticalHitRecently": {
+"kr": "최근 4초 이내 치명타 명중 시 룬 수호 재생 속도 %1% 증가",
+"n": 2
+},
+"#%increasedSkillEffectDuration": {
+"kr": "스킬 효과 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedSkillEffectDurationwithPlantSkills": {
+"kr": "식물 스킬의 스킬 효과 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedSkillSpeed": {
+"kr": "스킬 속도 %1% 증가",
+"n": 2
+},
+"#%increasedSkillSpeedwhileShapeshifted": {
+"kr": "형태 변환 상태일 때 스킬 속도 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamage": {
+"kr": "주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamage#tomaximumMana": {
+"kr": "주문 피해 %1% 증가마나 최대치 %2",
+"n": 3
+},
+"#%increasedSpellDamageMinionsdeal#%increasedDamage": {
+"kr": "주문 피해 %1% 증가소환수가 주는 피해 %2% 증가",
+"n": 4
+},
+"#%increasedSpellDamageduringanyFlaskEffect": {
+"kr": "아무 플라스크나 효과를 받는 동안 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamageper#Intelligence": {
+"kr": "지능 10당 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamageper#MaximumLife": {
+"kr": "생명력 최대치 100당 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamageper#Spirit": {
+"kr": "정신력 10당 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamageper#maximumMana": {
+"kr": "최대 마나 100당 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamagewhileonFullEnergyShield": {
+"kr": "에너지 보호막이 최대일 때 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamagewhilewieldingaMeleeWeapon": {
+"kr": "근접 무기 장착 시 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamagewhileyourCompanionisinyourPresence": {
+"kr": "반려수가 접근해 있는 동안 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellDamagewithSpellsthatcostLife": {
+"kr": "생명력을 소모하는 주문의 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpellPhysicalDamage": {
+"kr": "주문 물리 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpelldamageforeach#totalManayouhaveSpentRecently": {
+"kr": "최근 4초 이내 사용한 마나 200당 주문 피해 %1% 증가",
+"n": 2
+},
+"#%increasedSpirit": {
+"kr": "정신력 %1% 증가",
+"n": 2
+},
+"#%increasedSpirit#tomaximumMana": {
+"kr": "정신력 %1% 증가마나 최대치 %2",
+"n": 3
+},
+"#%increasedSpiritReservationEfficiencyofBuffSkillsper#MaximumLife": {
+"kr": "생명력 최대치 100당 버프 스킬의 정신력 점유 효율 %1% 증가",
+"n": 2
+},
+"#%increasedSpiritReservationEfficiencyofSkills": {
+"kr": "스킬의 정신력 점유 효율 %1% 증가",
+"n": 2
+},
+"#%increasedStrength": {
+"kr": "힘 %1% 증가",
+"n": 2
+},
+"#%increasedStrength,DexterityorIntelligence": {
+"kr": "힘, 민첩 또는 지능 %1% 증가",
+"n": 2
+},
+"#%increasedStrengthRequirement": {
+"kr": "힘 요구사항 %1% 증가",
+"n": 2
+},
+"#%increasedStunBuildup": {
+"kr": "기절 축적 %1% 증가",
+"n": 2
+},
+"#%increasedStunDuration": {
+"kr": "기절 지속시간 %1% 증가",
+"n": 2
+},
+"#%increasedStunRecovery": {
+"kr": "기절 회복 %1% 증가",
+"n": 2
+},
+"#%increasedStunThreshold": {
+"kr": "기절 한계치 %1% 증가",
+"n": 2
+},
+"#%increasedStunbuildupwhileShapeshifted": {
+"kr": "형태 변환 상태일 때 기절 축적 %1% 증가",
+"n": 2
+},
+"#%increasedThornsdamage": {
+"kr": "가시 피해 %1% 증가",
+"n": 2
+},
+"#%increasedTotemPlacementspeed": {
+"kr": "토템 설치 속도 %1% 증가",
+"n": 2
+},
+"#%increasedTrapDamage": {
+"kr": "덫 피해 %1% 증가",
+"n": 2
+},
+"#%increasedTrapDamage#tomaximumMana": {
+"kr": "덫 피해 %1% 증가마나 최대치 %2",
+"n": 3
+},
+"#%increasedWarcryCooldownRecoveryRate": {
+"kr": "함성 재사용 대기시간 회복 속도 %1% 증가",
+"n": 2
+},
+"#%increasedWarcrySpeed": {
+"kr": "함성 속도 %1% 증가",
+"n": 2
+},
+"#%increasedWeaponDamageper#Strength": {
+"kr": "힘 10당 무기 피해 %1% 증가",
+"n": 2
+},
+"#%increasedWitheredMagnitude": {
+"kr": "위축 강도 %1% 증가",
+"n": 2
+},
+"#%increasedamountofLifeLeeched": {
+"kr": "생명력 흡수량 %1% 증가",
+"n": 2
+},
+"#%increasedamountofManaLeeched": {
+"kr": "마나 흡수량 %1% 증가",
+"n": 2
+},
+"#%increasedbonusesgainedfromEquippedQuiver": {
+"kr": "장착 중인 화살통으로 받는 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedbonusesgainedfromleftEquippedRing": {
+"kr": "장착 중인 왼쪽 반지로 받는 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedbonusesgainedfromrightEquippedRing": {
+"kr": "장착 중인 오른쪽 반지로 받는 보너스 %1% 증가",
+"n": 2
+},
+"#%increasedchancetoShock": {
+"kr": "감전 확률 %1% 증가",
+"n": 2
+},
+"#%increasedeffectofArcaneSurgeonyou": {
+"kr": "플레이어에게 적용되는 비전 쇄도 효과 %1% 증가",
+"n": 2
+},
+"#%increasedeffectofArchonBuffsonyou": {
+"kr": "플레이어에게 적용되는 집정관 버프의 효과 %1% 증가",
+"n": 2
+},
+"#%increasedeffectofFullyBrokenArmour": {
+"kr": "완전히 파괴된 방어구의 효과 %1% 증가",
+"n": 2
+},
+"#%increasedeffectofSocketedAugmentItems": {
+"kr": "장착된 아이템의 효과 %1% 증가",
+"n": 2
+},
+"#%increasedeffectofSocketedRunes": {
+"kr": "장착된 룬의 효과 %1% 증가",
+"n": 2
+},
+"#%increasedeffectofSocketedSoulCores": {
+"kr": "장착된 영혼 핵의 효과 %1% 증가",
+"n": 2
+},
+"#%increasedmaximumDivinity": {
+"kr": "신성 최대치 %1% 증가",
+"n": 2
+},
+"#%increasedmaximumEnergyShield": {
+"kr": "에너지 보호막 최대치 %1% 증가",
+"n": 2
+},
+"#%increasedmaximumEnergyShieldifyou'veconsumedaPowerChargeRecently": {
+"kr": "최근 4초 이내 권능 충전을 소모한 경우 에너지 보호막 최대치 %1% 증가",
+"n": 2
+},
+"#%increasedmaximumLife": {
+"kr": "최대 생명력 %1% 증가",
+"n": 2
+},
+"#%increasedmaximumMana": {
+"kr": "최대 마나 %1% 증가",
+"n": 2
+},
+"#%increasedmaximumRunicWard": {
+"kr": "최대 룬 수호 %1% 증가",
+"n": 2
+},
+"#%lessAttackDamage": {
+"kr": "공격 피해 %1% 감폭",
+"n": 2
+},
+"#%lessDamagetakenifyouhavenotbeenHitRecently": {
+"kr": "최근 4초 이내 명중당하지 않은 경우 받는 피해 %1% 감폭",
+"n": 2
+},
+"#%lessLifeFlaskRecovery": {
+"kr": "생명력 플라스크 회복 %1% 감폭",
+"n": 2
+},
+"#%lessLifeRecovered": {
+"kr": "회복하는 생명력 %1% 감폭",
+"n": 2
+},
+"#%lessManaRegenerationRateManaRecoveryfromRegenerationisalsoappliedtoRunicWard": {
+"kr": "마나 재생 속도 %1% 감폭재생으로 인한 마나 회복이 룬 수호에도 적용됨",
+"n": 2
+},
+"#%lessminimumPhysicalAttackDamage": {
+"kr": "최소 물리 공격 피해 %1% 감폭",
+"n": 2
+},
+"#%moreRecoveryifusedwhileonLowLife": {
+"kr": "낮은 생명력 상태일 때 사용 시 회복 %1% 증폭",
+"n": 2
+},
+"#%moreRecoveryifusedwhileonLowMana": {
+"kr": "낮은 마나 상태일 때 사용 시 회복 %1% 증폭",
+"n": 2
+},
+"#%moreUnarmedDamageper#Strength": {
+"kr": "힘 %1당 비무장 피해 1% 증폭",
+"n": 2
+},
+"#%moremaximumPhysicalAttackDamage": {
+"kr": "최대 물리 공격 피해 %1% 증폭",
+"n": 2
+},
+"#%ofArmouralsoappliestoChaosDamage": {
+"kr": "방어도의 %1%가 카오스 피해에도 적용",
+"n": 2
+},
+"#%ofArmouralsoappliestoElementalDamage": {
+"kr": "방어도의 %1%가 원소 피해에도 적용",
+"n": 2
+},
+"#%ofArmouralsoappliestoElementalDamagewhileShapeshifted": {
+"kr": "형태 변환 상태일 때 방어도의 %1%가 원소 피해에도 적용",
+"n": 2
+},
+"#%ofChaosdamageyoupreventwhenHitRecoupedasLifeandManaduringeffect": {
+"kr": "효과를 받는 동안 명중으로부터 예방한 카오스 피해의 %1%를 생명력 및 마나로 회생",
+"n": 2
+},
+"#%ofChargesconsumedbyusedCharmsaregrantedtoyourLifeFlasks": {
+"kr": "사용한 호신부가 소모하는 충전의 %1%가 생명력 플라스크에 부여",
+"n": 2
+},
+"#%ofChargesconsumedbyusedLifeFlasksaregrantedtoyourCharms": {
+"kr": "사용한 생명력 플라스크가 소모하는 충전의 %1%가 호신부에 부여",
+"n": 2
+},
+"#%ofColdDamageConvertedtoLightningDamage": {
+"kr": "냉기 피해의 %1%를 번개 피해로 전환",
+"n": 2
+},
+"#%ofDamagefromDeflectedHitsistakenfromDamageableCompanion'sLifebeforeyou": {
+"kr": "튕겨낸 명중 피해의 %1%가 자신보다 피해를 받는 반려수의 생명력에 먼저 적용",
+"n": 2
+},
+"#%ofDamagefromHitsistakenfromyourDamageableCompanion'sLifebeforeyou": {
+"kr": "명중 피해의 %1%가 자신보다 피해를 받는 반려수의 생명력에 먼저 적용",
+"n": 2
+},
+"#%ofDamagefromHitsistakenfromyourSpectres'Lifebeforeyou": {
+"kr": "피격 시 받는 피해의 %1%를 자신보다 자신의 망령이 먼저 받음",
+"n": 2
+},
+"#%ofDamageistakenfromManabeforeLife": {
+"kr": "받는 피해의 %1%를 생명력 대신 마나로 소모",
+"n": 2
+},
+"#%ofDamagetakenRecoupedasLife": {
+"kr": "받은 피해의 %1%를 생명력으로 회생",
+"n": 2
+},
+"#%ofDamagetakenRecoupedasMana": {
+"kr": "받은 피해의 %1%를 마나로 회생",
+"n": 2
+},
+"#%ofDamagetakenbypassesEnergyShield": {
+"kr": "받는 피해의 %1%가 에너지 보호막에 막히지 않음",
+"n": 2
+},
+"#%ofDamagetakenduringeffectRecoupedasLife": {
+"kr": "효과를 받는 동안 받는 피해의 %1%를 생명력으로 회생",
+"n": 2
+},
+"#%ofDamagetakenfromHitsbypassesEnergyShieldifEnergyShieldisbelowhalf": {
+"kr": "에너지 보호막이 절반 미만일 때 명중으로 받는 피해의 %1%가 에너지 보호막에 막히지 않음",
+"n": 2
+},
+"#%ofElementalDamageConvertedtoChaosDamage": {
+"kr": "원소 피해의 %1%를 카오스 피해로 전환",
+"n": 2
+},
+"#%ofElementalDamageConvertedtoColdDamage": {
+"kr": "원소 피해의 %1%를 냉기 피해로 전환",
+"n": 2
+},
+"#%ofElementalDamageConvertedtoFireDamage": {
+"kr": "원소 피해의 %1%를 화염 피해로 전환",
+"n": 2
+},
+"#%ofElementalDamageConvertedtoLightningDamage": {
+"kr": "원소 피해의 %1%를 번개 피해로 전환",
+"n": 2
+},
+"#%ofElementaldamagefromHitstakenasChaosdamage": {
+"kr": "피격 시 원소 피해의 %1%를 카오스 피해로 받음",
+"n": 2
+},
+"#%ofFireDamagefromHitstakenasPhysicalDamage": {
+"kr": "피격 시 화염 피해의 %1%를 물리 피해로 받음",
+"n": 2
+},
+"#%ofFireDamagetakenRecoupedasLife": {
+"kr": "받은 화염 피해의 %1%를 생명력으로 회생",
+"n": 2
+},
+"#%ofFiredamageConvertedtoLightningdamage": {
+"kr": "화염 피해의 %1%를 번개 피해로 전환",
+"n": 2
+},
+"#%ofFiredamagetakenasColddamage": {
+"kr": "화염 피해의 %1%를 냉기 피해로 받음",
+"n": 2
+},
+"#%ofFlaskRecoveryappliedInstantly": {
+"kr": "플라스크 회복량의 %1%를 즉시 회복",
+"n": 2
+},
+"#%ofLightningDamageConvertedtoChaosDamage": {
+"kr": "번개 피해의 %1%를 카오스 피해로 전환",
+"n": 2
+},
+"#%ofLightningDamageConvertedtoColdDamage": {
+"kr": "번개 피해의 %1%를 냉기 피해로 전환",
+"n": 2
+},
+"#%ofLightningdamagetakenasColddamage": {
+"kr": "번개 피해의 %1%를 냉기 피해로 받음",
+"n": 2
+},
+"#%ofMaximumLifeConvertedtoEnergyShield": {
+"kr": "최대 생명력의 %1%를 에너지 보호막으로 전환",
+"n": 2
+},
+"#%ofMeleePhysicalDamagetakenreflectedtoAttacker": {
+"kr": "받은 근접 물리 피해의 %1%를 공격자에게 반사",
+"n": 2
+},
+"#%ofParryPhysicalDamageConvertedtoColdDamage": {
+"kr": "흘려보내기 물리 피해의 %1%를 냉기 피해로 전환",
+"n": 2
+},
+"#%ofPhysicalDamagepreventedRecoupedasLife": {
+"kr": "방지한 물리 피해의 %1%를 생명력으로 회생",
+"n": 2
+},
+"#%ofPhysicalDamagetakenasFireDamage": {
+"kr": "물리 피해의 %1%를 화염 피해로 받음",
+"n": 2
+},
+"#%ofPhysicaldamagedealtbyyourHitscausesBloodLoss": {
+"kr": "명중으로 준 물리 피해의 %1%가 혈액상실 유발",
+"n": 2
+},
+"#%ofPhysicaldamagefromHitstakenasLightningdamage": {
+"kr": "피격 시 물리 피해의 %1%를 번개 피해로 받음",
+"n": 2
+},
+"#%ofRecoveryappliedInstantly": {
+"kr": "회복량의 %1%를 즉시 회복",
+"n": 2
+},
+"#%ofSkillManaCostsConvertedtoLifeCosts": {
+"kr": "스킬의 마나 소모의 %1%가 생명력 소모로 전환",
+"n": 2
+},
+"#%ofSpellDamageLeechedasLife": {
+"kr": "주문 피해의 %1%를 생명력으로 흡수",
+"n": 2
+},
+"#%ofSpellManaCostConvertedtoLifeCost": {
+"kr": "주문의 마나 소모의 %1%가 생명력 소모로 전환",
+"n": 2
+},
+"#%ofdamagetakenfromenemieswithanOpenWeaknessRecoupedasLife": {
+"kr": "약점 개방을 보유한 적으로부터 받는 피해의 %1%를 생명력으로 회생",
+"n": 2
+},
+"#%ofmaximumLifeRegeneratedpersecondperFragileRegrowth": {
+"kr": "불안정한 재성장 하나당 1초마다 생명력의 %1% 재생",
+"n": 2
+},
+"#%ofyourBaseLifeRegenerationisgrantedtoAlliesinyourPresence": {
+"kr": "플레이어의 기본 생명력 재생의 %1%가 접근해 있는 동료들에게 부여됨",
+"n": 2
+},
+"#%reducedAmountRecovered": {
+"kr": "회복량 %1% 감소",
+"n": 2
+},
+"#%reducedAmountRecoveredInstantRecovery": {
+"kr": "회복량 %1% 감소즉시 회복",
+"n": 2
+},
+"#%reducedAttackSpeed": {
+"kr": "공격 속도 %1% 감소",
+"n": 2
+},
+"#%reducedAttackandCastSpeed": {
+"kr": "공격 및 시전 속도 %1% 감소",
+"n": 2
+},
+"#%reducedAttributeRequirements": {
+"kr": "능력치 요구사항 %1% 감소",
+"n": 2
+},
+"#%reducedCastSpeed": {
+"kr": "시전 속도 %1% 감소",
+"n": 2
+},
+"#%reducedCharges": {
+"kr": "충전 %1% 감소",
+"n": 2
+},
+"#%reducedChargesperuse": {
+"kr": "사용 1회당 충전 소모량 %1% 감소",
+"n": 2
+},
+"#%reducedCharmChargesused": {
+"kr": "호신부 충전 소모량 %1% 감소",
+"n": 2
+},
+"#%reducedCharmEffectDuration": {
+"kr": "호신부 효과 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedChillDurationonyou": {
+"kr": "플레이어에게 적용되는 냉각 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedColdDamage": {
+"kr": "냉기 피해 %1% 감소",
+"n": 2
+},
+"#%reducedCooldownRecoveryRate": {
+"kr": "재사용 대기시간 회복 속도 %1% 감소",
+"n": 2
+},
+"#%reducedCriticalSpellDamageBonusperCriticalHityou'vedealtwithSpellsRecently": {
+"kr": "최근 4초 이내 주문으로 가한 치명타 명중 하나당 주문 치명타 피해 보너스 %1% 감소",
+"n": 2
+},
+"#%reducedDamage": {
+"kr": "피해 %1% 감소",
+"n": 2
+},
+"#%reducedDexterity": {
+"kr": "민첩 %1% 감소",
+"n": 2
+},
+"#%reducedDurationofBleedingonYou": {
+"kr": "플레이어에게 적용되는 출혈 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedDurationofCursesonyou": {
+"kr": "플레이어에게 적용되는 저주 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedDurationofIgnite,ShockandChillonEnemies": {
+"kr": "적에게 적용되는 점화, 감전, 냉각의 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedEffectofChillonyou": {
+"kr": "플레이어에게 적용되는 냉각 효과 %1% 감소",
+"n": 2
+},
+"#%reducedEnduranceChargeDuration": {
+"kr": "인내 충전 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedEnergyShieldRechargeRate": {
+"kr": "에너지 보호막 재충전 속도 %1% 감소",
+"n": 2
+},
+"#%reducedEvasionRating": {
+"kr": "회피 %1% 감소",
+"n": 2
+},
+"#%reducedFlaskChargesused": {
+"kr": "플라스크 충전 소모량 %1% 감소",
+"n": 2
+},
+"#%reducedFlaskEffectDuration": {
+"kr": "플라스크 효과 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedFlaskLifeRecoveryrate": {
+"kr": "플라스크로 얻는 생명력 회복 속도 %1% 감소",
+"n": 2
+},
+"#%reducedFreezeDurationonyou": {
+"kr": "플레이어에게 적용되는 동결 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedGlobalArmour,EvasionandEnergyShield": {
+"kr": "일반 방어도, 회피, 에너지 보호막 %1% 감소",
+"n": 2
+},
+"#%reducedIgniteDurationonEnemies": {
+"kr": "적에게 적용되는 점화 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedIgniteDurationonyou": {
+"kr": "플레이어에게 적용되는 점화 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedIntelligence": {
+"kr": "지능 %1% 감소",
+"n": 2
+},
+"#%reducedLifeRecoveryrate": {
+"kr": "생명력 회복 속도 %1% 감소",
+"n": 2
+},
+"#%reducedLightRadius": {
+"kr": "시야 반경 %1% 감소",
+"n": 2
+},
+"#%reducedMagnitudeofIgniteonyou": {
+"kr": "플레이어에게 적용되는 점화의 효과 %1% 감소",
+"n": 2
+},
+"#%reducedManaCostEfficiency#%increasedSkillSpeedwhileonLowMana": {
+"kr": "마나 소모 효율 %1% 감소낮은 마나 상태일 때 스킬 속도 %2% 증가",
+"n": 4
+},
+"#%reducedManaCostEfficiencyofCommandSkillsMinionsdeal#%increasedDamagewithCommandSkills": {
+"kr": "명령 스킬의 마나 소모 효율 %1% 감소소환수가 명령 스킬로 주는 피해 %2% 증가",
+"n": 4
+},
+"#%reducedMovementSpeed": {
+"kr": "이동 속도 %1% 감소",
+"n": 2
+},
+"#%reducedPoisonDurationTargetscanbeaffectedby#ofyourPoisonsatthesametime": {
+"kr": "중독 지속시간 %1% 감소대상이 동시에 영향을 받을 수 있는 플레이어의 중독 효과 개수 %2",
+"n": 3
+},
+"#%reducedPoisonDurationonyou": {
+"kr": "플레이어에게 적용되는 중독 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedPresenceAreaofEffect": {
+"kr": "접근 효과 범위 %1% 감소",
+"n": 2
+},
+"#%reducedPresenceAreaofEffectAuraSkillshave#%increasedMagnitudes": {
+"kr": "접근 효과 범위 %1% 감소오라 스킬의 강도 %2% 증가",
+"n": 4
+},
+"#%reducedProjectileRange": {
+"kr": "투사체 사거리 %1% 감소",
+"n": 2
+},
+"#%reducedRecoveryrate": {
+"kr": "회복 속도 %1% 감소",
+"n": 2
+},
+"#%reducedReloadSpeed": {
+"kr": "재장전 속도 %1% 감소",
+"n": 2
+},
+"#%reducedReservationEfficiencyofMinionSkillsTemporaryMinionSkillshave#toLimitofMinionssummoned": {
+"kr": "소환수 스킬의 점유 효율 %1% 감소소환한 소환수의 일시적 소환수 스킬 제한 %2",
+"n": 3
+},
+"#%reducedRunicWardCostEfficiency": {
+"kr": "룬 수호 소모 효율 %1% 감소",
+"n": 2
+},
+"#%reducedShockdurationonyou": {
+"kr": "플레이어에게 적용되는 감전 지속시간 %1% 감소",
+"n": 2
+},
+"#%reducedSkillSpeed": {
+"kr": "스킬 속도 %1% 감소",
+"n": 2
+},
+"#%reducedSlowingPotencyofDebuffsonYouifyou'veusedaCharmRecently": {
+"kr": "최근 4초 이내 호신부를 사용한 경우 디버프의 감속 효력 %1% 감소",
+"n": 2
+},
+"#%reducedSpiritMetaSkillsgain#%increasedEnergy": {
+"kr": "정신력 %1% 감소메타 스킬의 에너지 획득 %2% 증가",
+"n": 4
+},
+"#%reducedStunThreshold": {
+"kr": "기절 한계치 %1% 감소",
+"n": 2
+},
+"#%reducedeffectofCursesonyou": {
+"kr": "플레이어에게 적용되는 저주 효과 %1% 감소",
+"n": 2
+},
+"#%reducedeffectofShockonyou": {
+"kr": "플레이어에게 적용되는 감전 효과 %1% 감소",
+"n": 2
+},
+"#%reducedmaximumDivinityperCorruptedItemEquipped": {
+"kr": "장착한 타락 아이템 하나당 신성 최대치 %1% 감소",
+"n": 2
+},
+"#%reducedmaximumLife": {
+"kr": "최대 생명력 %1% 감소",
+"n": 2
+},
+"#%reducedmaximumMana": {
+"kr": "최대 마나 %1% 감소",
+"n": 2
+},
+"#%reducedmaximumManaGain#%ofDamageasExtraPhysicalDamagepertenpercentmissingMana": {
+"kr": "최대 마나 %1% 감소잃은 마나 10%당 피해의 %2%를 추가 물리 피해로 획득",
+"n": 5
+},
+"#%slowerstartofEnergyShieldRecharge": {
+"kr": "에너지 보호막 재충전 시작 속도 %1% 감속",
+"n": 2
+},
+"#%toBlockChancewhileholdingaFocus": {
+"kr": "집중구를 들고 있는 동안 막기 확률 %1%",
+"n": 2
+},
+"#%toBlockchance": {
+"kr": "막기 확률 %1%",
+"n": 2
+},
+"#%toChaosResistance": {
+"kr": "카오스 저항 %1%",
+"n": 2
+},
+"#%toChaosResistanceGain#%ofDamageasExtraChaosDamage": {
+"kr": "카오스 저항 %1%피해의 %2%를 추가 카오스 피해로 획득",
+"n": 4
+},
+"#%toColdResistance": {
+"kr": "냉기 저항 %1%",
+"n": 2
+},
+"#%toColdandChaosResistances": {
+"kr": "냉기 및 카오스 저항 %1%",
+"n": 2
+},
+"#%toColdandLightningResistances": {
+"kr": "냉기 및 번개 저항 %1%",
+"n": 2
+},
+"#%toColdandLightningResistancesperEquippedItemwithaFireResistanceModifier": {
+"kr": "화염 저항 속성이 있는 장착한 아이템 하나당 냉기 및 번개 저항 %1%",
+"n": 2
+},
+"#%toCriticalDamageBonus": {
+"kr": "치명타 피해 보너스 %1%",
+"n": 2
+},
+"#%toCriticalDamageBonuswithTraps": {
+"kr": "덫 사용 시 치명타 피해 보너스 %1%",
+"n": 2
+},
+"#%toCriticalHitChance": {
+"kr": "치명타 확률 %1%",
+"n": 2
+},
+"#%toCriticalHitChanceMaimonCriticalHit": {
+"kr": "치명타 확률 %1%치명타 명중 시 힘줄 절단 유발",
+"n": 2
+},
+"#%toFireResistance": {
+"kr": "화염 저항 %1%",
+"n": 2
+},
+"#%toFireResistancewhileonLowLife": {
+"kr": "낮은 생명력 상태일 때 화염 저항 %1%",
+"n": 2
+},
+"#%toFireSpellCriticalHitChance": {
+"kr": "화염 주문 치명타 명중 확률 %1%",
+"n": 2
+},
+"#%toFireandChaosResistances": {
+"kr": "화염 및 카오스 저항 %1%",
+"n": 2
+},
+"#%toFireandColdResistances": {
+"kr": "화염 및 냉기 저항 %1%",
+"n": 2
+},
+"#%toFireandColdResistancesperEquippedItemwithaLightningResistanceModifier": {
+"kr": "번개 저항 속성이 있는 장착한 아이템 하나당 화염 및 냉기 저항 %1%",
+"n": 2
+},
+"#%toFireandLightningResistances": {
+"kr": "화염 및 번개 저항 %1%",
+"n": 2
+},
+"#%toFireandLightningResistancesperEquippedItemwithaColdResistanceModifier": {
+"kr": "냉기 저항 속성이 있는 장착한 아이템 하나당 화염 및 번개 저항 %1%",
+"n": 2
+},
+"#%toLightningResistance": {
+"kr": "번개 저항 %1%",
+"n": 2
+},
+"#%toLightningandChaosResistances": {
+"kr": "번개 및 카오스 저항 %1%",
+"n": 2
+},
+"#%toMaximumChaosResistance": {
+"kr": "카오스 저항 최대치 %1%",
+"n": 2
+},
+"#%toMaximumColdResistance": {
+"kr": "냉기 저항 최대치 %1%",
+"n": 2
+},
+"#%toMaximumFireResistance": {
+"kr": "화염 저항 최대치 %1%",
+"n": 2
+},
+"#%toMaximumLightningResistance": {
+"kr": "번개 저항 최대치 %1%",
+"n": 2
+},
+"#%toMaximumQuality": {
+"kr": "최대 퀄리티 %1%",
+"n": 2
+},
+"#%toQualityofallSkills": {
+"kr": "모든 스킬의 퀄리티 %1%",
+"n": 2
+},
+"#%toThornsCriticalHitChance": {
+"kr": "가시 치명타 명중 확률 %1%",
+"n": 2
+},
+"#%toUnarmedMeleeAttackCriticalHitChance": {
+"kr": "비무장 근접 공격 치명타 명중 확률 %1%",
+"n": 2
+},
+"#%toallElementalResistances": {
+"kr": "모든 원소 저항 %1%",
+"n": 2
+},
+"#%toallElementalResistancesGain#%ofDamageasExtraDamageofarandomElement": {
+"kr": "모든 원소 저항 %1%피해의 %2%를 무작위 원소 추가 피해로 획득",
+"n": 4
+},
+"#%toallElementalResistancesperPowerCharge": {
+"kr": "권능 충전 하나당 모든 원소 저항 %1%",
+"n": 2
+},
+"#%toallMaximumElementalResistances": {
+"kr": "모든 원소 저항 최대치 %1%",
+"n": 2
+},
+"#%toallMaximumElementalResistanceswhileonfullRunicWard": {
+"kr": "최대 룬 수호 상태일 때 모든 원소 저항 최대치 %1%",
+"n": 2
+},
+"#%toallmaximumResistances": {
+"kr": "모든 저항 최대치 %1%",
+"n": 2
+},
+"#%togainArchonofUndeathwhenyoucreateanOffering": {
+"kr": "공물 생성 시 %1% 확률로 불사의 집정관 획득",
+"n": 2
+},
+"#%tomaximumBlockchance": {
+"kr": "최대 막기 확률 %1%",
+"n": 2
+},
+"#AddedAttackFireDamageper#Strength": {
+"kr": "힘 25당 공격 화염 피해 %1~%2 추가",
+"n": 2
+},
+"#CharmSlots": {
+"kr": "호신부 슬롯 %1개",
+"n": 1
+},
+"#ColdThornsdamage": {
+"kr": "%1~%2 냉기 가시 피해",
+"n": 2
+},
+"#DexterityRequirement": {
+"kr": "민첩 요구사항 %1",
+"n": 1
+},
+"#FireThornsdamage": {
+"kr": "%1~%2 화염 가시 피해",
+"n": 2
+},
+"#FireThornsdamageper#maximumLife": {
+"kr": "생명력 최대치 100당 화염 가시 피해 %1~%2",
+"n": 2
+},
+"#IntelligenceRequirement": {
+"kr": "지능 요구사항 %1",
+"n": 1
+},
+"#IntelligenceRequirement#toLevelofallLightningSkills": {
+"kr": "지능 요구사항 %1모든 번개 스킬 레벨 %2",
+"n": 2
+},
+"#LifeRegenerationpersecond": {
+"kr": "1초마다 생명력 %1 재생",
+"n": 1
+},
+"#LifegainedwhenyouBlock": {
+"kr": "막아낼 시 생명력 %1 획득",
+"n": 1
+},
+"#LightningThornsdamage": {
+"kr": "%1~%2 번개 가시 피해",
+"n": 2
+},
+"#ManagainedwhenyouBlock": {
+"kr": "막아낼 시 마나 %1 획득",
+"n": 1
+},
+"#PhysicalDamagetakenfromAttackHits": {
+"kr": "공격 명중 시 받는 물리 피해 %1",
+"n": 1
+},
+"#PhysicalDamagetakenfromHits": {
+"kr": "피격 시 받는 물리 피해 %1",
+"n": 1
+},
+"#PhysicalDamagetakenonMinionDeath": {
+"kr": "소환수 사망 시 받는 물리 피해 %1",
+"n": 1
+},
+"#PhysicalThornsdamage": {
+"kr": "%1~%2 물리 가시 피해",
+"n": 2
+},
+"#PhysicaldamagetakenfromProjectileAttacks": {
+"kr": "투사체 공격으로 받는 물리 피해 %1",
+"n": 1
+},
+"#StrengthRequirement": {
+"kr": "힘 요구사항 %1",
+"n": 1
+},
+"#SuffixModifierallowedlocalmaximummodsallowed+[#]": {
+"kr": "접미어 속성 부여의 최대 개수 %1개local maximum mods allowed + [1]",
+"n": 1
+},
+"#maximumstacksofPuppetMaster": {
+"kr": "인형사 최대 중첩 +%1",
+"n": 1
+},
+"#metrestoDodgeRolldistanceifyouhaven'tDodgeRolledRecently": {
+"kr": "최근 4초 이내 회피 구르기를 사용하지 않은 경우 회피 구르기 거리 %1미터",
+"n": 1
+},
+"#metrestoMeleeStrikeRangewhileUnarmed": {
+"kr": "비무장 상태일 때 근접 타격 범위 %1미터",
+"n": 1
+},
+"#metretoDodgeRolldistance": {
+"kr": "회피 구르기 거리 %1미터",
+"n": 1
+},
+"#metretoDodgeRolldistanceifyou'veDodgeRolledRecently": {
+"kr": "최근 4초 이내 회피 구르기를 사용한 경우 회피 구르기 거리 %1미터",
+"n": 1
+},
+"#to#PhysicalThornsdamage": {
+"kr": "%1~%2 물리 가시 피해",
+"n": 2
+},
+"#to#addedPhysicalThornsdamageperRunicPlate": {
+"kr": "룬 판금 하나당 물리 가시 피해 %1~%2 추가",
+"n": 2
+},
+"#toAccuracyRating": {
+"kr": "정확도 %1",
+"n": 1
+},
+"#toAccuracyRating#%increasedAttackSpeed": {
+"kr": "정확도 %1공격 속도 %2% 증가",
+"n": 3
+},
+"#toAccuracyRating#%increasedLightRadius": {
+"kr": "정확도 %1시야 반경 %2% 증가",
+"n": 3
+},
+"#toAilmentThreshold": {
+"kr": "상태 이상 한계치 %1",
+"n": 1
+},
+"#toArmour": {
+"kr": "방어도 %1",
+"n": 1
+},
+"#toDeflectionRatingper#missingEnergyShield": {
+"kr": "상실한 에너지 보호막 50당 튕겨내기 평점 %1",
+"n": 1
+},
+"#toDexterity": {
+"kr": "민첩 %1",
+"n": 1
+},
+"#toDexterityandIntelligence": {
+"kr": "민첩 및 지능 %1",
+"n": 1
+},
+"#toEvasionRating": {
+"kr": "회피 %1",
+"n": 1
+},
+"#toIntelligence": {
+"kr": "지능 %1",
+"n": 1
+},
+"#toLevelofallAttackSkills": {
+"kr": "모든 공격 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallChaosSpellSkills": {
+"kr": "모든 카오스 주문 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallColdSkills": {
+"kr": "모든 냉기 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallColdSpellSkills": {
+"kr": "모든 냉기 주문 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallCorruptedSkillGems": {
+"kr": "모든 타락한 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallCorruptedSpellSkillGems": {
+"kr": "모든 타락한 주문 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallCurseSkills": {
+"kr": "모든 저주 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallElementalSkills": {
+"kr": "모든 원소 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallFireSkills": {
+"kr": "모든 화염 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallFireSpellSkills": {
+"kr": "모든 화염 주문 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallGrenadeSkillGems": {
+"kr": "모든 유탄 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallHazardSkillGems": {
+"kr": "모든 위해 요소 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallHeraldSkillGems": {
+"kr": "모든 전령 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallLightningSkills": {
+"kr": "모든 번개 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallLightningSpellSkills": {
+"kr": "모든 번개 주문 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallMarkSkills": {
+"kr": "모든 징표 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallMeleeSkills": {
+"kr": "모든 근접 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallMinionSkills": {
+"kr": "모든 소환수 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallNovaSkillGems": {
+"kr": "모든 폭발 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallPhysicalSpellSkills": {
+"kr": "모든 물리 주문 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallPlantSkillGems": {
+"kr": "모든 식물 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallProjectileSkills": {
+"kr": "모든 투사체 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallSkills": {
+"kr": "모든 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallSlamSkillGems": {
+"kr": "모든 강타 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallSpecificSkillSkills": {
+"kr": "모든 %2 스킬 레벨 +%1",
+"n": 2
+},
+"#toLevelofallSpellSkills": {
+"kr": "모든 주문 스킬 레벨 %1",
+"n": 1
+},
+"#toLevelofallStormSkillGems": {
+"kr": "모든 폭풍 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallStrikeSkillGems": {
+"kr": "모든 타격 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallTotemSkillGems": {
+"kr": "모든 토템 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallTrapSkillGems": {
+"kr": "모든 덫 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallWarcrySkillGems": {
+"kr": "모든 함성 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLevelofallWindSkillGems": {
+"kr": "모든 바람 스킬 젬 레벨 %1",
+"n": 1
+},
+"#toLimitforElementalSkills": {
+"kr": "원소 스킬 제한 %1",
+"n": 1
+},
+"#toMaximumEnduranceCharges": {
+"kr": "인내 충전 최대치 %1",
+"n": 1
+},
+"#toMaximumFrenzyCharges": {
+"kr": "격분 충전 최대치 %1",
+"n": 1
+},
+"#toMaximumPowerCharges": {
+"kr": "권능 충전 최대치 %1",
+"n": 1
+},
+"#toSpirit": {
+"kr": "정신력 %1",
+"n": 1
+},
+"#toStrength": {
+"kr": "힘 %1",
+"n": 1
+},
+"#toStrength,DexterityorIntelligence": {
+"kr": "힘, 민첩 또는 지능 %1",
+"n": 1
+},
+"#toStrengthandDexterity": {
+"kr": "힘 및 민첩 %1",
+"n": 1
+},
+"#toStrengthandIntelligence": {
+"kr": "힘 및 지능 %1",
+"n": 1
+},
+"#toStunThreshold": {
+"kr": "기절 한계치 %1",
+"n": 1
+},
+"#toStunThresholdper#maximumRunicWard": {
+"kr": "룬 수호 최대치 10당 기절 한계치 +%1",
+"n": 1
+},
+"#toWeaponRange": {
+"kr": "무기 공격 범위 %1",
+"n": 1
+},
+"#toallAttributes": {
+"kr": "모든 능력치 %1",
+"n": 1
+},
+"#toallAttributesperLevel": {
+"kr": "1레벨당 모든 능력치 %1",
+"n": 1
+},
+"#tomaximumEnergyShield": {
+"kr": "에너지 보호막 최대치 %1",
+"n": 1
+},
+"#tomaximumLife": {
+"kr": "생명력 최대치 %1",
+"n": 1
+},
+"#tomaximumLife#tomaximumMana": {
+"kr": "생명력 최대치 %1마나 최대치 %2",
+"n": 2
+},
+"#tomaximumMana": {
+"kr": "마나 최대치 %1",
+"n": 1
+},
+"#tomaximumMana#toLevelofallSpellSkills": {
+"kr": "마나 최대치 %1모든 주문 스킬 레벨 %2",
+"n": 2
+},
+"#tomaximumRunicWard": {
+"kr": "최대 룬 수호 %1",
+"n": 1
+},
+"#tomaximumnumberofElementalInfusions": {
+"kr": "원소 주입 수치 최대치 %1",
+"n": 1
+},
+"#tomaximumnumberofSummonedBallistaTotems": {
+"kr": "소환 가능한 쇠뇌 토템 최대 개수 %1",
+"n": 1
+},
+"#tomaximumnumberofSummonedTotems": {
+"kr": "소환 가능한 토템 최대치 %1",
+"n": 1
+},
+"(#%reducedCharmChargesgained": {
+"kr": "호신부 충전량 %1% 감소",
+"n": 2
+},
+"(#%reducedCharmChargesused": {
+"kr": "호신부 충전 소모량 %1% 감소",
+"n": 2
+},
+"(#%reducedLifeRegenerationrate": {
+"kr": "생명력 재생 속도 %1% 감소",
+"n": 2
+},
+"(#%reducedManaRegenerationRate": {
+"kr": "마나 재생 속도 %1% 감소",
+"n": 2
+},
+"(#%reducedRarityofItemsfound": {
+"kr": "발견하는 아이템 희귀도 %1% 감소",
+"n": 2
+},
+"(#%reducedSkillEffectDuration": {
+"kr": "스킬 효과 지속시간 %1% 감소",
+"n": 2
+},
+"(#%toColdResistance": {
+"kr": "냉기 저항 %1%",
+"n": 2
+},
+"(#%toFireResistance": {
+"kr": "화염 저항 %1%",
+"n": 2
+},
+"(#%toLightningResistance": {
+"kr": "번개 저항 %1%",
+"n": 2
+},
+"(#-#%toColdResistance": {
+"kr": "냉기 저항 %1%",
+"n": 2
+},
+"(#-#%toFireResistance": {
+"kr": "화염 저항 %1%",
+"n": 2
+},
+"(#-#%toLightningResistance": {
+"kr": "번개 저항 %1%",
+"n": 2
+},
+"(#-#%toallElementalResistances": {
+"kr": "모든 원소 저항 %1%",
+"n": 2
+},
+"(#-#%toallMaximumElementalResistances": {
+"kr": "모든 원소 저항 최대치 %1%",
+"n": 2
+},
+"(#-#%toamountofDamagePreventedbyDeflection": {
+"kr": "튕겨내기로 방지하는 피해량 %1%",
+"n": 2
+},
+"(#-#toAccuracyRating": {
+"kr": "정확도 %1",
+"n": 1
+},
+"(#-#toStrength": {
+"kr": "힘 %1",
+"n": 1
+},
+"(#toMaximumPowerCharges": {
+"kr": "권능 충전 최대치 %1",
+"n": 1
+},
+"(#toMaximumRage": {
+"kr": "격노 최대치 %1",
+"n": 1
+},
+"Adds#Chaosdamage": {
+"kr": "카오스 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#ColdDamage": {
+"kr": "냉기 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#ColdDamageagainstChilledEnemies": {
+"kr": "냉각된 적에게 냉기 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#FireDamage": {
+"kr": "화염 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#FireDamage#%ofSkillManaCostsConvertedtoLifeCosts": {
+"kr": "화염 피해 %1~%2 추가스킬의 마나 소모의 %3%가 생명력 소모로 전환",
+"n": 4
+},
+"Adds#FireDamagetoAttacksagainstIgnitedEnemies": {
+"kr": "점화된 적 공격에 대한 화염 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#FiredamagetoAttacks": {
+"kr": "공격 시 화염 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#FiredamagetoAttacks#%increasedFlammabilityMagnitude": {
+"kr": "공격 시 화염 피해 %1~%2 추가인화성 강도 %3% 증가",
+"n": 4
+},
+"Adds#LightningDamage": {
+"kr": "번개 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#LightningDamageagainstShockedEnemies": {
+"kr": "감전된 적에게 번개 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#LightningDamagetoAttacksper#Intelligence": {
+"kr": "지능 20당 공격 시 번개 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#PhysicalDamage": {
+"kr": "물리 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#PhysicalDamageCausesBleedingonHit": {
+"kr": "물리 피해 %1~%2 추가명중 시 출혈 유발",
+"n": 2
+},
+"Adds#PhysicalDamagetoAttacks": {
+"kr": "공격 시 물리 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#PhysicalDamagetoAttacksAdds#ColddamagetoAttacks": {
+"kr": "공격 시 물리 피해 %1~%2 추가공격 시 냉기 피해 %3~%4 추가",
+"n": 4
+},
+"Adds#PhysicalDamagetoAttacksAdds#FiredamagetoAttacks": {
+"kr": "공격 시 물리 피해 %1~%2 추가공격 시 화염 피해 %3~%4 추가",
+"n": 4
+},
+"Adds#PhysicalDamagetoAttacksAdds#LightningdamagetoAttacks": {
+"kr": "공격 시 물리 피해 %1~%2 추가공격 시 번개 피해 %3~%4 추가",
+"n": 4
+},
+"Adds#to#ChaosDamagetoAttacks": {
+"kr": "공격 시 카오스 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#Chaosdamage": {
+"kr": "카오스 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#ColdDamage": {
+"kr": "냉기 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#ColddamagetoAttacks": {
+"kr": "공격 시 냉기 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#FireDamage": {
+"kr": "화염 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#FiredamagetoAttacks": {
+"kr": "공격 시 화염 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#LightningDamage": {
+"kr": "번개 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#LightningDamagetoUnarmedMeleeHits": {
+"kr": "비무장 근접 명중 시 번개 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#LightningdamagetoAttacks": {
+"kr": "공격 시 번개 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#PhysicalDamage": {
+"kr": "물리 피해 %1~%2 추가",
+"n": 2
+},
+"Adds#to#PhysicalDamagetoAttacks": {
+"kr": "공격 시 물리 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresenceGain#%ofDamageasExtraChaosDamage": {
+"kr": "플레이어에게 접근해 있는 동료들이 피해의 %1%를 추가 카오스 피해로 획득",
+"n": 2
+},
+"AlliesinyourPresenceGain#%ofDamageasExtraChaosDamageCompanionsinyourPresencehave#%toChaosResistance": {
+"kr": "플레이어에게 접근해 있는 동료들이 피해의 %1%를 추가 카오스 피해로 획득플레이어에게 접근해 있는 반려수들의 카오스 저항 %2%",
+"n": 4
+},
+"AlliesinyourPresenceGain#%ofDamageasExtraFireDamage": {
+"kr": "플레이어에게 접근해 있는 동료들이 피해의 %1%를 추가 화염 피해로 획득",
+"n": 2
+},
+"AlliesinyourPresenceRegenerate#%oftheirMaximumLifepersecond": {
+"kr": "접근해 있는 동료들이 1초마다 플레이어의 최대 생명력의 %1% 재생",
+"n": 2
+},
+"AlliesinyourPresenceRegenerate#%ofyourMaximumLifepersecond": {
+"kr": "접근해 있는 동료들이 1초마다 플레이어의 최대 생명력의 %1% 재생",
+"n": 2
+},
+"AlliesinyourPresenceRegenerate#%ofyourMaximumLifepersecond#%reducedLifeRegenerationrate": {
+"kr": "접근해 있는 동료들이 1초마다 플레이어의 최대 생명력의 %1% 재생생명력 재생 속도 %2% 감소",
+"n": 4
+},
+"AlliesinyourPresenceRegenerate#Lifepersecond": {
+"kr": "접근해 있는 동료들이 1초마다 생명력 %1 재생",
+"n": 1
+},
+"AlliesinyourPresencedeal#%increasedDamage": {
+"kr": "접근해 있는 동료가 주는 피해 %1% 증가",
+"n": 2
+},
+"AlliesinyourPresencedeal#addedAttackChaosDamage": {
+"kr": "접근해 있는 동료들이 주는 카오스 공격 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencedeal#addedAttackLightningDamage": {
+"kr": "접근해 있는 동료들이 주는 공격 번개 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencedeal#addedAttackPhysicalDamage": {
+"kr": "접근해 있는 동료들이 주는 공격 물리 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencedeal#to#addedAttackChaosDamage": {
+"kr": "접근해 있는 동료들이 주는 카오스 공격 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencedeal#to#addedAttackColdDamage": {
+"kr": "접근해 있는 동료들이 주는 공격 냉기 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencedeal#to#addedAttackFireDamage": {
+"kr": "접근해 있는 동료들이 주는 공격 화염 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencedeal#to#addedAttackLightningDamage": {
+"kr": "접근해 있는 동료들이 주는 공격 번개 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencedeal#to#addedAttackPhysicalDamage": {
+"kr": "접근해 있는 동료들이 주는 공격 물리 피해 %1~%2 추가",
+"n": 2
+},
+"AlliesinyourPresencehave#%increasedAttackSpeed": {
+"kr": "접근해 있는 동료들의 공격 속도 %1% 증가",
+"n": 2
+},
+"AlliesinyourPresencehave#%increasedCastSpeed": {
+"kr": "접근해 있는 동료들의 시전 속도 %1% 증가",
+"n": 2
+},
+"AlliesinyourPresencehave#%increasedCriticalDamageBonus": {
+"kr": "접근해 있는 동료들의 치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"AlliesinyourPresencehave#%increasedCriticalHitChance": {
+"kr": "접근해 있는 동료들의 치명타 확률 %1% 증가",
+"n": 2
+},
+"AlliesinyourPresencehave#%increasedMovementSpeed": {
+"kr": "접근해 있는 동료들의 이동 속도 %1% 증가",
+"n": 2
+},
+"AlliesinyourPresencehave#%toallElementalResistances": {
+"kr": "접근해 있는 동료들의 모든 원소 저항 %1%",
+"n": 2
+},
+"Allocates#SinisterJewelsockets": {
+"kr": "험악한 주얼 홈 %1개 할당",
+"n": 1
+},
+"Alsogrants#Guard": {
+"kr": "가호도 %1 부여",
+"n": 1
+},
+"Alternatingevery#seconds:Take#%lessDamagefromHitsTake#%lessDamageovertime": {
+"kr": "5초마다 번갈아 적용:명중으로 받는 피해 %1% 감폭받는 지속 피해 %2% 감폭",
+"n": 4
+},
+"Archonrecoveryperiodexpires#%faster": {
+"kr": "집정관 회복 시간이 %1% 빠르게 만료",
+"n": 2
+},
+"AttackHitsinflictSpectralFirefor#seconds": {
+"kr": "공격 명중 시 %1초 동안 유령불꽃 유발",
+"n": 1
+},
+"AttackProjectilesReturniftheyPiercedatleast#times": {
+"kr": "공격 투사체가 %1번 이상 관통하면 돌아옴",
+"n": 1
+},
+"AttacksBreakArmourequalto#%ofmaximumRunicWard": {
+"kr": "공격이 룬 수호 최대치의 %1%와 동일한 방어구 파괴",
+"n": 2
+},
+"AttacksChain#additionaltimes": {
+"kr": "연쇄 공격 %1회 추가",
+"n": 1
+},
+"AttacksGain#%ofDamageasExtraColdDamage": {
+"kr": "공격이 피해의 %1%를 추가 냉기 피해로 획득",
+"n": 2
+},
+"AttacksGain#%ofDamageasExtraFireDamage": {
+"kr": "공격이 피해의 %1%를 추가 화염 피해로 획득",
+"n": 2
+},
+"AttacksGain#%ofPhysicalDamageasextraChaosDamage": {
+"kr": "공격이 물리 피해의 %1%를 카오스 피해로 획득",
+"n": 2
+},
+"Attackscostanadditional#%ofyourmaximumMana": {
+"kr": "공격이 최대 마나의 %1% 추가 소모",
+"n": 2
+},
+"Attackshave#%chancetocauseBleeding": {
+"kr": "공격 시 %1%의 확률로 출혈 유발",
+"n": 2
+},
+"Attackshave#%toCriticalHitChance": {
+"kr": "공격의 치명타 명중 확률 %1%",
+"n": 2
+},
+"AttackshaveAddedmaximumLightningDamageequalto#%ofmaximumMana": {
+"kr": "공격이 최대 마나의 %1%와 동일한 추가 최대 번개 피해 보유",
+"n": 2
+},
+"AttackshaveaddedPhysicaldamageequalto#%ofmaximumLife": {
+"kr": "공격이 최대 생명력의 %1%와 동일한 추가 물리 피해 보유",
+"n": 2
+},
+"Attacksspend#%ofyourmaximumRunicWardifpossibletogainthatmuchaddedPhysicaldamage": {
+"kr": "공격이 가능한 경우 룬 수호 최대치의 %1%를 사용하여 그와 동일한 수치의 추가 물리 피해 획득",
+"n": 2
+},
+"AttackswiththisWeaponPenetrate#%ColdResistance": {
+"kr": "이 무기로 공격 시 %1%의 냉기 저항 관통",
+"n": 2
+},
+"AttackswiththisWeaponPenetrate#%ElementalResistances": {
+"kr": "이 무기로 공격 시 %1%의 원소 저항 관통",
+"n": 2
+},
+"AttackswiththisWeaponPenetrate#%FireResistance": {
+"kr": "이 무기로 공격 시 %1%의 화염 저항 관통",
+"n": 2
+},
+"AttackswiththisWeaponPenetrate#%LightningResistance": {
+"kr": "이 무기로 공격 시 %1%의 번개 저항 관통",
+"n": 2
+},
+"AttackswiththisWeapongain#%ofPhysicaldamageasExtradamageofeachElement": {
+"kr": "이 무기로 공격 시 물리 피해의 %1%를 각 원소의 추가 피해로 획득",
+"n": 2
+},
+"AttackswiththisWeaponhave#%chancetoinflictExposure": {
+"kr": "이 무기로 공격 시 %1%의 확률로 노출 유발",
+"n": 2
+},
+"AttackswiththisWeaponhaveAddedColdDamageequalto#%to#%ofmaximumMana": {
+"kr": "이 무기로 공격 시 마나 최대치의 %1%~%2%와 동일한 냉기 피해 추가",
+"n": 4
+},
+"AuraSkillshave#%increasedMagnitudes": {
+"kr": "오라 스킬의 강도 %1% 증가",
+"n": 2
+},
+"BaseCriticalHitChanceforAttackswithWeaponsis#%": {
+"kr": "무기 공격의 기본 치명타 명중 확률 %1%",
+"n": 2
+},
+"BearSkillsConvert#%ofPhysicalDamagetoFireDamage": {
+"kr": "곰 스킬이 물리 피해의 %1%를 화염 피해로 전환",
+"n": 2
+},
+"BleedingyouinflictdealsDamage#%faster": {
+"kr": "플레이어가 유발한 출혈이 피해 %1% 가속",
+"n": 2
+},
+"BlockingDamagePoisonstheEnemyasthoughdealing#BaseChaosDamage": {
+"kr": "피해를 막아낼 시 기본 카오스 피해를 %1 준 것처럼 적에게 중독 유발",
+"n": 1
+},
+"BoltsfiredbyCrossbowAttackshave#%chancetonotexpendAmmunitionifyou'veReloadedRecently": {
+"kr": "최근 4초 이내 재장전한 경우 석궁 공격으로발사된 볼트가 %1%의 확률로 탄약을 소모하지 않음",
+"n": 2
+},
+"BowAttacksconsume#%ofyourmaximumLifeFlaskChargesifpossibletodealaddedPhysicaldamageequalto#%ofFlask'sLifeRecoveryamount": {
+"kr": "활 공격이 가능하면 생명력 플라스크 충전 최대치의 %1%를 소모하여 플라스크의 생명력 회복량의 %2%와 동일한 추가 물리 피해를 줌",
+"n": 4
+},
+"BowAttacksfire#additionalArrows": {
+"kr": "활 공격 시 화살 %1개 추가 발사",
+"n": 1
+},
+"Break#%increasedArmour": {
+"kr": "파괴되는 방어구 %1% 증가",
+"n": 2
+},
+"BreakArmourequalto#%ofPhysicalDamagedealt": {
+"kr": "준 물리 피해의 %1%와 동일한 방어구 파괴",
+"n": 2
+},
+"BreakArmouronCriticalHitwithSpellsequalto#%ofPhysicalDamagedealt": {
+"kr": "주문 치명타 명중 시 준 물리 피해의 %1%와 동일한 방어구 파괴",
+"n": 2
+},
+"BreaksArmourequalto#%ofdamagefromHitswiththisweapon": {
+"kr": "이 무기 명중으로 준 피해의 %1%와 동일한 방어구 파괴",
+"n": 2
+},
+"Canhave#additionalCraftedModifiers": {
+"kr": "제작 속성 부여 추가 %1개 보유 가능",
+"n": 1
+},
+"Canhave#additionalInstilledModifiers": {
+"kr": "추가 속성 주입 %1회 가능",
+"n": 1
+},
+"Causes#%increasedStunBuildup": {
+"kr": "유발하는 기절 축적 %1% 증가",
+"n": 2
+},
+"CausesEnemiestoExplodeonCriticalkill,for#%oftheirLifeasPhysicalDamage": {
+"kr": "치명타 처치 시 적이 폭발하여 생명력의 %1%를 물리 피해로 줌",
+"n": 2
+},
+"Charmsgain#chargeperSecond": {
+"kr": "호신부가 1초마다 충전 %1 획득",
+"n": 1
+},
+"Charmsgain#chargesperSecond": {
+"kr": "호신부가 1초마다 충전 %1 획득",
+"n": 1
+},
+"Companionsdeal#%increasedDamage": {
+"kr": "반려수가 주는 피해 %1% 증가",
+"n": 2
+},
+"Companionsdeal#%increasedDamage#%increasedDamagewhileyourCompanionisinyourPresence": {
+"kr": "반려수가 주는 피해 %1% 증가반려수가 접근해 있는 동안 피해 %2% 증가",
+"n": 4
+},
+"Companionsdeal#%increaseddamagetoyourMarkedtargets": {
+"kr": "반려수가 플레이어의 징표가 찍힌 대상에게 주는 피해 %1% 증가",
+"n": 2
+},
+"Companionsdeal#%moreDamageforeachdifferenttypeofdeadCompanionyouhave": {
+"kr": "죽은 보유 반려수의 각기 다른 유형 하나당 반려수가 주는 피해 %1% 증폭",
+"n": 2
+},
+"Companionshave#%increasedAreaofEffect": {
+"kr": "반려수의 효과 범위 %1% 증가",
+"n": 2
+},
+"Companionshave#%increasedAttackSpeed": {
+"kr": "반려수의 공격 속도 %1% 증가",
+"n": 2
+},
+"Companionshave#%increasedmaximumLife": {
+"kr": "반려수의 최대 생명력 %1% 증가",
+"n": 2
+},
+"CompanionsinyourPresencegain#Rageonhit": {
+"kr": "플레이어에게 접근해 있는 반려수가 명중 시 격노 %1 획득",
+"n": 1
+},
+"CompanionsinyourPresencehave#%toallElementalResistancesCompanionsinyourPresenceGain#%ofDamageasExtraDamageofarandomElement": {
+"kr": "플레이어에게 접근해 있는 반려수들의 모든 원소 저항 %1%플레이어에게 접근해 있는 반려수들이 피해의 %2%를 무작위 원소 추가 피해로 획득",
+"n": 4
+},
+"Convert#%ofFireDamagewithMaceSkillstoColdDamage": {
+"kr": "철퇴 스킬로 주는 화염 피해의 %1%를 냉기 피해로 전환",
+"n": 2
+},
+"Convert#%ofRequirementstoDexterity": {
+"kr": "요구사항의 %1%를 민첩으로 전환",
+"n": 2
+},
+"Convert#%ofRequirementstoIntelligence": {
+"kr": "요구사항의 %1%를 지능으로 전환",
+"n": 2
+},
+"Convert#%ofRequirementstoStrength": {
+"kr": "요구사항의 %1%를 힘으로 전환",
+"n": 2
+},
+"Convert#%ofmaximumLifetotwiceasmuchArmourper#%ChaosResistanceabove#%": {
+"kr": "0%를 넘는 카오스 저항 1%당 생명력 최대치의 %1%를 2배에 해당하는 방어도로 전환",
+"n": 4
+},
+"CopyarandomModifierfromeachenemyinyourPresencewhenyouShapeshifttoanAnimalformModifiersgainedthiswayarelostafter#secondsorwhenyounextShapeshift": {
+"kr": "동물 형상으로 형태 변환 시 접근해 있는 적 하나당무작위 속성 1개 복제이 방식으로 얻은 속성은 %1초 후 또는 다음 형태 변환 시 사라짐",
+"n": 1
+},
+"CreatesIgnitedGroundfor#secondswhenused,IgnitingenemiesasthoughdealingFiredamageequalto#%ofyourmaximumLife": {
+"kr": "사용 시 4초 동안 플레이어의 생명력 최대치의 %1%와 동일한 화염 피해를 준 것처럼 적을 점화시키는 점화 지대 생성",
+"n": 2
+},
+"CriticalHitswithSpellsapply#StacksofCriticalWeakness": {
+"kr": "주문으로 치명타 명중 시 치명타 약화 %1중첩 적용",
+"n": 1
+},
+"CurseSkillshave#%increasedCastSpeed": {
+"kr": "저주 스킬의 시전 속도 %1% 증가",
+"n": 2
+},
+"Cursezoneseruptafter#%reduceddelay": {
+"kr": "저주 지대가 폭발하기 전의 지연시간 %1% 감소",
+"n": 2
+},
+"DamagePenetrates#%ColdResistance": {
+"kr": "피해가 냉기 저항 %1% 관통",
+"n": 2
+},
+"DamagePenetrates#%ElementalResistances": {
+"kr": "피해가 %1%의 원소 저항 관통",
+"n": 2
+},
+"DamagePenetrates#%LightningResistance": {
+"kr": "피해가 번개 저항 %1% 관통",
+"n": 2
+},
+"DamageoverTimebypassesyourEnergyShieldWhilenotonFullLife,Sacrifice#%ofmaximumManaperSecondtoRecoverthatmuchLife": {
+"kr": "지속 피해가 에너지 보호막에 막히지 않음생명력이 최대가 아닐 때, 1초마다 마나의 %1%를 희생하여 동일한 양의 생명력 회복",
+"n": 2
+},
+"Deal#%increasedDamagewithHitstoRareorUniqueEnemiesforeachsecondthey'veeverbeeninyourPresence,uptoamaximumof#%": {
+"kr": "희귀 및 고유 적이 접근해 있던 시간 1초당 해당 적에게 주는 명중 피해 %1% 증가, 최대 200% 증가",
+"n": 3
+},
+"Deal#%ofOverkilldamagetoenemieswithin#metresoftheenemykilled": {
+"kr": "처치한 적의 2미터 내에 있는 적들에게 과잉살상 피해의 %1%를 줌",
+"n": 2
+},
+"Deals#%ofcurrentManaasChaosDamagetoyouwhenEffectends": {
+"kr": "효과 만료 시 현재 마나의 %1%를 카오스 피해로 줌",
+"n": 2
+},
+"Debuffsonyouexpire#%faster": {
+"kr": "플레이어에게 적용되는 디버프가 %1% 더 빠르게 만료됨",
+"n": 2
+},
+"Debuffsyouinflicthave#%increasedSlowMagnitude": {
+"kr": "플레이어가 유발하는 디버프의 감속 강도 %1% 증가",
+"n": 2
+},
+"DefendagainstHitsasthoughyouhad#%moreArmourper#%currentEnergyShield": {
+"kr": "현재 에너지 보호막 1%당 방어도가 %1% 증폭된 것처럼 명중 방어",
+"n": 3
+},
+"Defendwith#%ofArmourwhileyouhaveEnergyShield": {
+"kr": "에너지 보호막이 있는 동안 방어도의 %1%로 방어",
+"n": 2
+},
+"DropIgnitedGroundwhilemoving,whichlasts#secondsandIgnitesasthoughdealingFireDamageequalto#%ofyourmaximumLife": {
+"kr": "8초 동안 지속되고 자기 최대 생명력의 %1%와 동일한 화염 피해를 준 것처럼 점화시키는 점화 지대를 이동 중 떨어뜨림",
+"n": 2
+},
+"EmpoweredAttacksdeal#%increasedDamage": {
+"kr": "강화된 공격이 주는 피해 %1% 증가",
+"n": 2
+},
+"EnemiesFrozenbyyoutake#%increasedDamage": {
+"kr": "플레이어가 동결시킨 적이 받는 피해 %1% 증가",
+"n": 2
+},
+"EnemiesHinderedbyyoutake#%increasedChaosDamage": {
+"kr": "플레이어에 의해 이동 방해를 받는 적에 대한 카오스 피해 %1% 증가",
+"n": 2
+},
+"EnemiesHinderedbyyoutake#%increasedElementalDamage": {
+"kr": "플레이어에 의해 이동 방해를 받는 적이 받는 원소 피해 %1% 증가",
+"n": 2
+},
+"EnemiesHinderedbyyoutake#%increasedPhysicalDamage": {
+"kr": "플레이어에 의해 이동 방해를 받는 적이 받는 물리 피해 %1% 증가",
+"n": 2
+},
+"EnemiesinyourPresenceGain#%ofDamageasExtraChaosDamage": {
+"kr": "플레이어에게 접근해 있는 적들이 피해의 %1%를 추가 카오스 피해로 획득",
+"n": 2
+},
+"EnemiesinyourPresencehaveatleast#%ofLifeReserved": {
+"kr": "플레이어에게 접근해 있는 적들이 최소 %1%의 생명력 점유",
+"n": 2
+},
+"Enemiestake#%increasedDamageforeachElementalAilmenttypeamongyourAilmentsonthem": {
+"kr": "적에게 걸린 플레이어의 상태 이상 중 원소 상태 이상 유형 하나당적이 받는 피해 %1% 증가",
+"n": 2
+},
+"EquipmentandSkillGemshave#%increasedAttributeRequirements": {
+"kr": "장비 및 스킬 젬의 능력치 요구사항 %1% 증가",
+"n": 2
+},
+"EquipmentandSkillGemshave#%reducedAttributeRequirements": {
+"kr": "장비 및 스킬 젬의 능력치 요구사항 %1% 감소",
+"n": 2
+},
+"Every#Ragealsogrants#%ofDamagetakenRecoupedasLife": {
+"kr": "격노 5당 받는 피해의 %1%를 생명력으로 회생하는 효과도 부여",
+"n": 2
+},
+"Every#seconds,ConsumeanearbyCorpsetoRecover#%ofmaximumLife": {
+"kr": "3초마다 주변의 시체 1구를 소모해 생명력의 %1% 회복",
+"n": 2
+},
+"Every#seconds,Recover#Lifeforevery#LifeRecoverypersecondfromRegeneration": {
+"kr": "4초마다 재생으로 인한 초당 생명력 회복 %1당 생명력 1 회복",
+"n": 1
+},
+"Every#seconds,gainGuardequalto#%ofmaximumRunicWardfor#seconds": {
+"kr": "4초마다 2초 동안 룬 수호 최대치의 %1%와 동일한 가호 획득",
+"n": 2
+},
+"Every#secondsduringEffect,deal#%ofManaspentinthosesecondsasChaosDamagetoEnemieswithin#metres": {
+"kr": "효과를 받는 동안 3초마다 해당 시간 내에 소모한 마나의 %1%에 해당하는 카오스 피해를 3미터 내의 적들에게 줌",
+"n": 2
+},
+"EveryRagealsogrants#%increasedArmour": {
+"kr": "격노마다 방어도 %1% 증가",
+"n": 2
+},
+"EveryRagealsogrants#%increasedSpellDamage": {
+"kr": "격노마다 주문 피해도 %1% 증가",
+"n": 2
+},
+"EveryRagealsogrants#%increasedStunThreshold": {
+"kr": "격노마다 기절 한계치 %1% 증가",
+"n": 2
+},
+"Everysecond,inflictsCriticalWeaknessonenemiesinyourPresencefor#seconds": {
+"kr": "매초, 접근해 있는 적들에게 %1초 동안 치명타 약화 유발",
+"n": 1
+},
+"Flasksgain#chargesperSecond": {
+"kr": "플라스크가 1초마다 충전 %1 획득",
+"n": 1
+},
+"Gain#%ofColddamageasExtraFiredamageper#%ChillMagnitudeonenemy": {
+"kr": "적에게 적용된 냉각 강도 1%당 냉기 피해의 %1%를 추가 화염 피해로 획득",
+"n": 3
+},
+"Gain#%ofDamageasChaosDamageperUndeadMinion": {
+"kr": "언데드 소환수 하나당 피해의 %1%를 카오스 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraChaosDamage": {
+"kr": "피해의 %1%를 추가 카오스 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraColdDamage": {
+"kr": "피해의 %1%를 추가 냉기 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraColdDamagewithSpells": {
+"kr": "주문 피해의 %1%를 추가 냉기 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraDamageofallElements": {
+"kr": "피해의 %1%를 모든 원소의 추가 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraFireDamage": {
+"kr": "피해의 %1%를 추가 화염 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraFireDamagewhileyouaremissingRunicWard": {
+"kr": "룬 수호가 없을 때 피해의 %1%를 추가 화염 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraFireDamagewithSpells": {
+"kr": "주문 피해의 %1%를 추가 화염 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraLightningDamage": {
+"kr": "피해의 %1%를 추가 번개 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraLightningDamagewithSpells": {
+"kr": "주문 피해의 %1%를 추가 번개 피해로 획득",
+"n": 2
+},
+"Gain#%ofDamageasExtraPhysicalDamage": {
+"kr": "피해의 %1%를 추가 물리 피해로 획득",
+"n": 2
+},
+"Gain#%ofElementalDamageasExtraColdDamage": {
+"kr": "원소 피해의 %1%를 추가 냉기 피해로 획득",
+"n": 2
+},
+"Gain#%ofElementalDamageasExtraFireDamage": {
+"kr": "원소 피해의 %1%를 추가 화염 피해로 획득",
+"n": 2
+},
+"Gain#%ofElementalDamageasExtraLightningDamage": {
+"kr": "원소 피해의 %1%를 추가 번개 피해로 획득",
+"n": 2
+},
+"Gain#%ofEvasionRatingasextraArmour": {
+"kr": "회피의 %1%를 추가 방어도로 획득",
+"n": 2
+},
+"Gain#%ofMaximumManaasArmour": {
+"kr": "최대 마나의 %1%를 방어도로 획득",
+"n": 2
+},
+"Gain#%ofPhysicalDamageasExtraColdDamage": {
+"kr": "물리 피해의 %1%를 추가 냉기 피해로 획득",
+"n": 2
+},
+"Gain#%ofPhysicalDamageasExtraFireDamage": {
+"kr": "물리 피해의 %1%를 추가 화염 피해로 획득",
+"n": 2
+},
+"Gain#%ofPhysicalDamageasextraChaosDamage": {
+"kr": "물리 피해의 %1%를 카오스 피해로 획득",
+"n": 2
+},
+"Gain#%ofdamageasFiredamageper#%ChancetoBlock": {
+"kr": "막기 확률 1%당 피해의 %1%를 화염으로 획득",
+"n": 3
+},
+"Gain#%ofmaximumLifeasExtramaximumEnergyShield": {
+"kr": "최대 생명력의 %1%를 추가 에너지 보호막 최대치로 획득",
+"n": 2
+},
+"Gain#%ofmaximumLifeasExtramaximumRunicWard": {
+"kr": "생명력 최대치의 %1%를 추가 룬 수호 최대치로 획득",
+"n": 2
+},
+"Gain#%ofmaximumLifeasExtramaximumRunicWard#%lessmaximumLife": {
+"kr": "생명력 최대치의 %1%를 추가 룬 수호 최대치로 획득생명력 최대치 %2% 감폭",
+"n": 4
+},
+"Gain#%to#%increasedMovementSpeedatrandomwhenHit,untilHitagain": {
+"kr": "명중당하면 다시 명중당할 때까지 이동 속도가 0%-%1% 중 무작위로 증가",
+"n": 3
+},
+"Gain#DruidicProwesswhenyouHeavyStunaRareorUniqueEnemy": {
+"kr": "희귀 또는 고유 적 강력 기절 시 드루이드의 기량 %1 획득",
+"n": 1
+},
+"Gain#ExplosiveRhythmevery#timesyouuseaGrenadeSkillRemoveallExplosiveRhythmonreaching#togainExplosiveFervourfor#Seconds": {
+"kr": "유탄 스킬을 %1번 사용할 때마다 폭발적인 리듬 1 획득10에 도달하면 모든 폭발적인 리듬을 제거하고 10초 동안 폭발적인 열정 획득",
+"n": 1
+},
+"Gain#FragileRegrowtheachsecond": {
+"kr": "1초마다 불안정한 재성장 %1 획득",
+"n": 1
+},
+"Gain#Guardfor#secondsperComboexpendedwhenusingSkills": {
+"kr": "스킬 사용 시 소모한 연계 하나당 0.5초 동안 가호 %1 획득",
+"n": 1
+},
+"Gain#LifeperEnemyHitwithAttacks": {
+"kr": "플레이어의 공격으로 명중하는 적 하나당 획득하는 생명력 %1",
+"n": 1
+},
+"Gain#Lifeperenemykilled": {
+"kr": "처치한 적 하나당 생명력 %1 획득",
+"n": 1
+},
+"Gain#ManaperEnemyHitwithAttacks": {
+"kr": "공격으로 명중한 적 하나당 마나 %1 획득",
+"n": 1
+},
+"Gain#Manaperenemykilled": {
+"kr": "처치한 적 하나당 마나 %1 획득",
+"n": 1
+},
+"Gain#RageonHit": {
+"kr": "명중 시 격노 %1 획득",
+"n": 1
+},
+"Gain#RageonMeleeHit": {
+"kr": "근접 명중 시 격노 %1 획득",
+"n": 1
+},
+"Gain#RageonMeleeHit#toMaximumRage": {
+"kr": "근접 명중 시 격노 %1 획득격노 최대치 %2",
+"n": 2
+},
+"Gain#RagewhenCriticallyHitbyanEnemy": {
+"kr": "적에게 치명타를 받으면 격노 %1 획득",
+"n": 1
+},
+"Gain#RagewhenHitbyanEnemy": {
+"kr": "적에게 명중당하면 격노 %1 획득",
+"n": 1
+},
+"Gain#RagewhenHitbyanEnemyduringeffect": {
+"kr": "효과를 받는 동안 적에게 명중당하면 격노 %1 획득",
+"n": 1
+},
+"GainColdThornsDamageequalto#%ofyourmaximumMana": {
+"kr": "마나 최대치의 %1%와 동일한 냉기 가시 피해 획득",
+"n": 2
+},
+"GainDeflectionRatingequalto#%ofArmour": {
+"kr": "방어도의 %1%와 동일한 튕겨내기 획득",
+"n": 2
+},
+"GainDeflectionRatingequalto#%ofEvasionRating": {
+"kr": "회피의 %1%와 동일한 튕겨내기 평점 획득",
+"n": 2
+},
+"GainFinalityfor#secondsperComboexpendedwhenusingSkills": {
+"kr": "스킬 사용 시 소모한 연계 하나당 %1초 동안 최후 획득",
+"n": 1
+},
+"GainGuardequalto#%ofmissingEnergyShieldfor#secondswhenyouDodgeRoll": {
+"kr": "회피 구르기를 사용하면 4초 동안 잃은 에너지 보호막의 %1%와 동일한 가호 획득",
+"n": 2
+},
+"GainGuardequaltoCurrentRunicWardfor#secondswhenEffectends": {
+"kr": "효과 만료 시 %1초 동안 현재 룬 수호와 동일한 가호 획득",
+"n": 1
+},
+"GainPhysicalThornsdamageequalto#%-#%ofmaximumLife": {
+"kr": "생명력 최대치의 %1%-%2%와 동일한 물리 가시 피해 획득",
+"n": 4
+},
+"GainadditionalStunThresholdequalto#%ofmaximumEnergyShield": {
+"kr": "최대 에너지 보호막의 %1%와 동일한 추가 기절 한계치 획득",
+"n": 2
+},
+"GainarandomChargeonreachingMaximumRage,nomorethanonceevery#seconds": {
+"kr": "격노 최대치 도달 시 무작위 충전 획득, %1초마다 최대 1번 획득",
+"n": 1
+},
+"GainmaximumRunicWardequalto#%ofthisWeapon'smaximumdamage": {
+"kr": "이 무기의 최대 피해의 %1%와 동일한 룬 수호 획득",
+"n": 2
+},
+"Gains#ChargesperSecond": {
+"kr": "1초마다 충전 %1 획득",
+"n": 1
+},
+"Glorifyingthedefilementof#soulsintributetoAmanamuPassivesinradiusareConqueredbytheAbyssalsDesecrationmakesthisitemunstable": {
+"kr": "아마나무에게 바치는 영혼 %1개를 더럽힌 것을 찬미함반경 내 패시브 스킬이 심연의 존재들에게 정복됨훼손 시 이 아이템이 불안정해짐",
+"n": 1
+},
+"Grants#%ofLifeRecoverytoMinions": {
+"kr": "소환수의 생명력 회복 %1%",
+"n": 2
+},
+"Grants#LifeperEnemyHit": {
+"kr": "명중한 적 하나당 생명력 %1 획득",
+"n": 1
+},
+"Grants#RageonHit": {
+"kr": "명중 시 격노 %1 획득",
+"n": 1
+},
+"Grants#additionalSkillSlots": {
+"kr": "스킬 슬롯 %1개 추가",
+"n": 1
+},
+"GrenadeSkillshave#CooldownUses": {
+"kr": "유탄 스킬의 재사용 횟수 +%1회",
+"n": 1
+},
+"Grenadeshave#%chancetoactivateasecondtime": {
+"kr": "유탄이 %1%의 확률로 한 번 더 작동",
+"n": 2
+},
+"Has#CharmSlots": {
+"kr": "호신부 슬롯 %1개 보유",
+"n": 1
+},
+"Has#Physicaldamage,#to#perBoss'sFaceBroken": {
+"kr": "물리 피해 %1~%2 보유, 보스의 부서진 얼굴 하나당 %3~%4",
+"n": 4
+},
+"Has#Sockets": {
+"kr": "홈 %1개",
+"n": 1
+},
+"HeraldSkillsdeal#%increasedDamage": {
+"kr": "전령 스킬로 주는 피해 %1% 증가",
+"n": 2
+},
+"Hitsagainstyouhave#%reducedCriticalDamageBonus": {
+"kr": "플레이어에 대한 명중의 치명타 피해 보너스 %1% 감소",
+"n": 2
+},
+"Hitsagainstyouhave#%reducedCriticalHitChancewhileyouareChilled": {
+"kr": "냉각 상태일 때 플레이어에 대한 명중의 치명타 명중 확률 %1% 감소",
+"n": 2
+},
+"Hitshave#%reducedCriticalHitChanceagainstyou": {
+"kr": "플레이어에 대한 명중의 치명타 명중 확률 %1% 감소",
+"n": 2
+},
+"HitswiththisWeaponhave#%chancetoTriggerMoltenShowerper#Strength": {
+"kr": "이 무기로 명중 시 힘 25당 %1% 확률로 녹아내린 소나기 발동",
+"n": 2
+},
+"HitswiththisWeaponinflict#GruellingMadness": {
+"kr": "이 무기로 명중 시 가혹한 광기 %1 유발",
+"n": 1
+},
+"Hitswiththisweaponhave#AddedPhysicalDamageper#%BlockChance": {
+"kr": "이 무기로 명중 시 막기 확률 1%당 물리 피해 %1~%2 추가",
+"n": 3
+},
+"Hitswiththisweaponhave#to#AddedPhysicalDamageper#%BlockChance": {
+"kr": "이 무기로 명중 시 막기 확률 1%당 물리 피해 %1~%2 추가",
+"n": 3
+},
+"IceCrystalshave(#%reducedmaximumLifeper#%ColdResistanceyouhave": {
+"kr": "플레이어의 냉기 저항 5%당 얼음 결정의 최대 생명력 %1% 감소",
+"n": 3
+},
+"Immobiliseenemiesat#%buildupinsteadof#%": {
+"kr": "100% 대신 %1% 축적 시 적의 이동 불가 유발",
+"n": 3
+},
+"IncreasesMovementSpeedby#%,plus#%per#EvasionRating,uptoamaximumof#%OtherModifierstoMovementSpeedexceptforSprintingdonotapply": {
+"kr": "이동 속도 25% 증가 및 추가로 회피 %1당 이동 속도 1% 증가, 최대 75%달리기 속성을 제외한 이동 속도 속성이 적용되지 않음",
+"n": 4
+},
+"InflictAnaemiaonHitAnaemiaallows#CorruptedBlooddebuffstobeinflictedonenemies": {
+"kr": "명중 시 빈혈 유발빈혈은 적들에게 타락한 피 디버프를 %1회 추가로 유발할 수 있게 해줌",
+"n": 1
+},
+"InflictCorruptedBloodfor#secondsonBlock,dealing#%ofyourmaximumLifeasPhysicaldamagepersecond": {
+"kr": "막아낼 시 %1초 동안 타락한 피를 유발하여 1초마다 최대 생명력의 %2%를물리 피해로 줌",
+"n": 3
+},
+"InflictElementalExposureonHit,loweringTotalElementalResistancesby#%": {
+"kr": "명중 시 원소 노출을 유발하여, 총 원소 저항을 %1% 낮춤",
+"n": 2
+},
+"IntimidateEnemiesonBlockfor#seconds": {
+"kr": "막아낼 시 %1초 동안 적 위협",
+"n": 1
+},
+"InvocatedSpellsdeal#%increasedDamage": {
+"kr": "기원 주문으로 주는 피해 %1% 증가",
+"n": 2
+},
+"InvocatedSpellshave#%chancetoconsumehalfasmuchEnergy": {
+"kr": "기원 주문이 %1% 확률로 절반의 에너지 소모",
+"n": 2
+},
+"Invocatedskillshave#%increasedMaximumEnergy": {
+"kr": "기원 스킬의 에너지 최대치 %1% 증가",
+"n": 2
+},
+"Invocatedskillshave#%increasedMaximumEnergyMetaSkillshave#%reducedReservationEfficiency": {
+"kr": "기원 스킬의 에너지 최대치 %1% 증가메타 스킬의 점유 효율 %2% 감소",
+"n": 4
+},
+"Leech#%ofPhysicalAttackDamageasLife": {
+"kr": "물리 공격 피해의 %1%를 생명력으로 흡수",
+"n": 2
+},
+"Leech#%ofPhysicalAttackDamageasMana": {
+"kr": "물리 공격 피해의 %1%를 마나로 흡수",
+"n": 2
+},
+"Leeches#%ofPhysicalDamageasLife": {
+"kr": "물리 공격 피해의 %1%를 생명력으로 흡수",
+"n": 2
+},
+"Leeches#%ofPhysicalDamageasMana": {
+"kr": "물리 공격 피해의 %1%를 마나로 흡수",
+"n": 2
+},
+"Leeches#%ofmaximumLifewhenyouCastaSpell": {
+"kr": "주문 시전 시 최대 생명력의 %1% 흡수",
+"n": 2
+},
+"LifeFlasksgain#chargesperSecond": {
+"kr": "생명력 플라스크가 1초마다 충전 %1 획득",
+"n": 1
+},
+"LifethatwouldbelostbytakingDamageisinsteadReserveduntilyoutakenoDamagetoLifefor#seconds": {
+"kr": "생명력이 피해를 받으면 상실되지 않고 점유됨해당 효과는 %1초 동안 생명력 피해를 받지 않을 때까지 지속됨",
+"n": 1
+},
+"LightningSkillsChain#times": {
+"kr": "번개 스킬 연쇄 %1회",
+"n": 1
+},
+"Loads#additionalbolts": {
+"kr": "볼트 %1개 추가 장전",
+"n": 1
+},
+"Lose#%ofmaximumLifeonKill": {
+"kr": "처치 시 생명력의 %1% 상실",
+"n": 2
+},
+"Lose#%ofmaximumLifepersecond": {
+"kr": "1초마다 생명력의 %1% 상실",
+"n": 2
+},
+"Lose#%ofmaximumManaonKill": {
+"kr": "처치 시 마나의 %1% 상실",
+"n": 2
+},
+"Lose#Lifeperenemykilled": {
+"kr": "처치한 적 하나당 생명력 %1 상실",
+"n": 1
+},
+"Lose#LifewhenyouuseaSkill": {
+"kr": "스킬 사용 시 생명력 %1 상실",
+"n": 1
+},
+"ManaFlasksgain#chargesperSecond": {
+"kr": "마나 플라스크가 1초마다 충전 %1 획득",
+"n": 1
+},
+"Maximum#FragileRegrowth": {
+"kr": "최대 %1 불안정한 재성장",
+"n": 1
+},
+"MaximumQualityis#%": {
+"kr": "최대 퀄리티 %1%",
+"n": 2
+},
+"MeleeAttackSkillshave#tomaximumnumberofSummonedTotems": {
+"kr": "근접 공격 스킬의 소환 가능한 토템 최대치 %1",
+"n": 1
+},
+"MetaSkillsgain#%increasedEnergy": {
+"kr": "메타 스킬의 에너지 획득 %1% 증가",
+"n": 2
+},
+"MinionsBreakArmourequalto#%ofPhysicaldamagedealt": {
+"kr": "준 물리 피해의 %1%와 동일하게 소환수의 방어구 파괴",
+"n": 2
+},
+"MinionsRevive#%faster": {
+"kr": "소환수의 부활 속도 %1% 가속",
+"n": 2
+},
+"Minionsdeal#%increasedDamage": {
+"kr": "소환수가 주는 피해 %1% 증가",
+"n": 2
+},
+"Minionsdeal#%increasedDamageifyou'veHitRecently": {
+"kr": "최근 4초 이내 플레이어가 명중한 경우 소환수가 주는 피해 %1% 증가",
+"n": 2
+},
+"Minionsdeal#%increasedDamagewithCommandSkills": {
+"kr": "소환수가 명령 스킬로 주는 피해 %1% 증가",
+"n": 2
+},
+"Minionsgain#%oftheirPhysicalDamageasExtraLightningDamage": {
+"kr": "소환수가 자신의 물리 피해의 %1%를 추가 번개 피해로 획득",
+"n": 2
+},
+"Minionsgain#%oftheirmaximumLifeasExtramaximumEnergyShield": {
+"kr": "소환수가 자신의 최대 생명력의 %1%를 추가 에너지 보호막 최대치로 획득",
+"n": 2
+},
+"Minionshave#%SurpassingchancetofireanadditionalProjectile": {
+"kr": "소환수가 %1%의 초과 확률로 추가 투사체 발사",
+"n": 2
+},
+"Minionshave#%additionalPhysicalDamageReduction": {
+"kr": "소환수가 받는 물리 피해 %1% 추가 감소",
+"n": 2
+},
+"Minionshave#%chancetoinflictGruellingMadnessonHit": {
+"kr": "소환수가 명중 시 %1%의 확률로 가혹한 광기 유발",
+"n": 2
+},
+"Minionshave#%increasedAreaofEffect": {
+"kr": "소환수 효과 범위 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedAttackandCastSpeed": {
+"kr": "소환수의 공격 및 시전 속도 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedCooldownRecoveryRate": {
+"kr": "소환수의 재사용 대기시간 회복 속도 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedCooldownRecoveryRateforCommandSkills": {
+"kr": "소환수의 명령 스킬 재사용 대기시간 회복 속도 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedCriticalDamageBonus": {
+"kr": "소환수의 치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedCriticalHitChance": {
+"kr": "소환수의 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedImmobilisationbuildup": {
+"kr": "소환수의 이동 불가 축적 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedMagnitudeofDamagingAilments": {
+"kr": "소환수의 피해를 주는 상태 이상의 강도 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedMovementSpeed": {
+"kr": "소환수 이동 속도 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedSkillSpeedwithCommandSkills": {
+"kr": "소환수의 명령 스킬의 스킬 속도 %1% 증가",
+"n": 2
+},
+"Minionshave#%increasedmaximumLife": {
+"kr": "소환수 최대 생명력 %1% 증가",
+"n": 2
+},
+"Minionshave#%reducedmaximumLife": {
+"kr": "소환수 최대 생명력 %1% 감소",
+"n": 2
+},
+"Minionshave#%toChaosResistance": {
+"kr": "소환수의 카오스 저항 %1%",
+"n": 2
+},
+"Minionshave#%toallElementalResistances": {
+"kr": "소환수 모든 원소 저항 %1%",
+"n": 2
+},
+"Minionstake#%ofPhysicalDamageasLightningDamage": {
+"kr": "소환수가 물리 피해의 %1%를 번개 피해로 받음",
+"n": 2
+},
+"Non-ChannellingSpellscostanadditional#%ofyourmaximumLife": {
+"kr": "비-집중 유지 주문이 최대 생명력의 %1% 추가 소모",
+"n": 2
+},
+"Non-ChannellingSpellsdeal#%increasedDamageper#maximumLife": {
+"kr": "최대 생명력 100당 비-집중 유지 주문의 피해 %1% 증가",
+"n": 2
+},
+"Non-ChannellingSpellshave#%increasedCriticalHitChanceper#maximumLife": {
+"kr": "최대 생명력 100당 비-집중 유지 주문의 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"OfferingSkillshave#%increasedBuffeffect": {
+"kr": "공물 스킬의 버프 효과 %1% 증가",
+"n": 2
+},
+"OfferingSkillshave#%increasedDuration": {
+"kr": "공물 스킬의 지속시간 %1% 증가",
+"n": 2
+},
+"OnHittinganenemy,gainsmaximumaddedColddamageequaltotheenemy'sPowerfor#seconds,uptoatotalof#": {
+"kr": "적 명중 시 20초 동안 적의 위세와 동일한 추가 냉기 피해 최대치 획득, 최대 총 %1",
+"n": 1
+},
+"OnHittinganenemy,gainsmaximumaddedLightningdamageequaltotheenemy'sPowerfor#seconds,uptoatotalof#": {
+"kr": "적 명중 시 20초 동안 적의 위세와 동일한 최대 추가 번개 피해 획득, 최대 총 %1",
+"n": 1
+},
+"Parryingapplies#StacksofCriticalWeakness": {
+"kr": "흘려보낼 시 치명타 약화 %1중첩 적용",
+"n": 1
+},
+"Plantshavea#%chancetoimmediatelyOvergrowwhentheyenteryourPresenceforthefirsttime": {
+"kr": "식물이 처음으로 플레이어의 접근거리에 들어오면 %1% 확률로 즉시 과성장",
+"n": 2
+},
+"ProjectileAttackshavea#%chancetofiretwoadditionalProjectileswhilemoving": {
+"kr": "이동 중 투사체 공격 시 %1% 확률로 투사체 2개 추가 발사",
+"n": 2
+},
+"ProjectilesSplittowards#targets": {
+"kr": "투사체가 대상 %1개를 향해 분할",
+"n": 1
+},
+"Projectilesdeal#%increasedDamagewithHitsagainstEnemiesfurtherthan#m": {
+"kr": "투사체가 6미터보다 멀리 있는 적에게 주는 명중 피해 %1% 증가",
+"n": 2
+},
+"Projectilesdeal#%increasedDamagewithHitsagainstEnemieswithin#m": {
+"kr": "투사체가 2미터 내에 있는 적에게 주는 명중 피해 %1% 증가",
+"n": 2
+},
+"Projectilesdeal#%increasedDamagewithHitsforeachtimetheyhavePierced": {
+"kr": "투사체가 관통한 횟수 하나당 해당 투사체의 명중 피해 %1% 증가",
+"n": 2
+},
+"Projectileshave#%chancetoChainanadditionaltimefromterrain": {
+"kr": "투사체가 %1%의 확률로 지형으로 인해 1회 추가 연쇄",
+"n": 2
+},
+"Projectileshave#%increasedCriticalDamageBonusagainstEnemieswithin#m": {
+"kr": "2미터 내의 적들에 대한 투사체의 치명타 피해 보너스 %1% 증가",
+"n": 2
+},
+"Projectileshave#%increasedCriticalHitChanceagainstEnemiesfurtherthan#m": {
+"kr": "6미터보다 멀리 있는 적에 대한 투사체의 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"Projectileshave#%increasedCriticalHitchanceforeachtimetheyhavePierced": {
+"kr": "투사체가 관통한 횟수 하나당 치명타 명중 확률 %1% 증가",
+"n": 2
+},
+"Recover#%ofMaximumLifewhenyouexpendatleast#Combo": {
+"kr": "연계 10 이상 소진 시 생명력 최대치의 %1% 회복",
+"n": 2
+},
+"Recover#%ofMaximumManawhenyouexpendatleast#Combo": {
+"kr": "연계 10 이상 소진 시 마나 최대치의 %1% 회복",
+"n": 2
+},
+"Recover#%ofMissingLifebeforebeingHitbyanEnemy": {
+"kr": "적에게 명중당하기 전, 상실한 생명력의 %1% 회복",
+"n": 2
+},
+"Recover#%ofmaximumLifeforeachEnduranceChargeconsumed": {
+"kr": "소모한 인내 충전 하나당 생명력의 %1% 회복",
+"n": 2
+},
+"Recover#%ofmaximumLifeonKill": {
+"kr": "처치 시 생명력의 %1% 회복",
+"n": 2
+},
+"Recover#%ofmaximumLifewhenoneofyourMinionsisRevived": {
+"kr": "플레이어의 소환수가 부활하면 플레이어가 최대 생명력의 %1% 회복",
+"n": 2
+},
+"Recover#%ofmaximumLifewhenyouBlock": {
+"kr": "막아낼 시 생명력 최대치의 %1% 회복",
+"n": 2
+},
+"Recover#%ofmaximumManaonKill": {
+"kr": "처치 시 마나의 %1% 회복",
+"n": 2
+},
+"Recover#%ofmaximumRunicWardwhenoneofyourRevivingMinionsisKilled": {
+"kr": "플레이어의 부활 소환수가 사망하면 플레이어가 룬 수호 최대치의 %1% 회복",
+"n": 2
+},
+"Recover#LifewhenUsed": {
+"kr": "사용 시 생명력 %1 회복",
+"n": 1
+},
+"Recover#LifewhenyouBlock": {
+"kr": "막아낼 시 생명력 %1 회복",
+"n": 1
+},
+"Recover#ManawhenUsed": {
+"kr": "사용 시 마나 %1 회복",
+"n": 1
+},
+"Recover#RunicWardwhenaCharmisused": {
+"kr": "호신부 사용 시 룬 수호 %1% 회복",
+"n": 2
+},
+"Recover#RunicWardwhenyouBlock": {
+"kr": "막아낼 시 룬 수호 %1 회복",
+"n": 1
+},
+"RecoverLifeequalto#%ofManaFlask'sRecoveryAmountwhenused": {
+"kr": "사용될 시 마나 플라스크 회복량의 %1%와 동일한 생명력 회복",
+"n": 2
+},
+"RecoverManaequalto#%ofLifeFlask'sRecoveryAmountwhenused": {
+"kr": "사용될 시 생명력 플라스크 회복량의 %1%와 동일한 마나 회복",
+"n": 2
+},
+"Regenerate#%ofmaximumLifepersecond": {
+"kr": "1초마다 생명력의 %1% 재생",
+"n": 2
+},
+"Regenerate#%ofmaximumLifepersecondifyouhavebeenHitRecently": {
+"kr": "최근 4초 이내 피격된 경우 1초마다 생명력의 %1% 재생",
+"n": 2
+},
+"Regenerate#%ofmaximumLifepersecondwhileIgnited": {
+"kr": "점화 상태에서 1초마다 생명력 최대치의 %1% 재생",
+"n": 2
+},
+"Regenerate#%ofmaximumLifepersecondwhileSurrounded": {
+"kr": "포위당한 동안 1초마다 생명력의 %1% 재생",
+"n": 2
+},
+"Regenerate#%ofmaximumLifepersecondwhileonLowLife": {
+"kr": "낮은 생명력 상태일 때 1초마다 생명력의 %1% 재생",
+"n": 2
+},
+"Regenerate#%ofmaximumRunicWardpersecondduringEffect": {
+"kr": "효과를 받는 동안 1초마다 최대 룬 수호의 %1% 재생",
+"n": 2
+},
+"Regenerate#Lifepersecondforevery#Intelligence": {
+"kr": "지능 10당 1초마다 생명력 %1 재생",
+"n": 1
+},
+"Regenerate#LifepersecondperMaximumEnergyShield": {
+"kr": "최대 에너지 보호막 1당 1초마다 생명력 %1 재생",
+"n": 1
+},
+"Regenerate#Ragepersecond": {
+"kr": "1초마다 격노 %1 재생",
+"n": 1
+},
+"Regenerate#RunicWardpersecond": {
+"kr": "1초마다 룬 수호 %1 재생",
+"n": 1
+},
+"Remembrancing#songworthydeedsbythelineofVoranaPassivesinradiusareConqueredbytheKalguur": {
+"kr": "보라나의 핏줄이 행한 노래로 남을 공적 %1개 추모반경 내 패시브 스킬이 칼구르의 지배를 받음",
+"n": 1
+},
+"Remnantscanbecollectedfrom#%furtheraway": {
+"kr": "잔류물을 %1% 더 먼 곳에서 획득 가능",
+"n": 2
+},
+"Remnantscanbecollectedfrom#%furtherawayRemnantsyoucreatehave#%reducedeffect": {
+"kr": "잔류물을 %1% 더 먼 곳에서 획득 가능플레이어가 생성하는 잔류물의 효과 %2% 감소",
+"n": 4
+},
+"Remnantsyoucreatehave#%increasedeffect": {
+"kr": "플레이어가 생성하는 잔류물의 효과 %1% 증가",
+"n": 2
+},
+"RepeatableAttackswiththisBowRepeat#timesifnoenemiesareinyourPresence": {
+"kr": "접근해 있는 적이 없을 경우 이 활의 반복 가능 공격의 반복 횟수 %1",
+"n": 1
+},
+"Require#fewerenemiestobeSurrounded": {
+"kr": "포위된 것으로 간주되는 데 필요한 적의 수 %1마리 감소",
+"n": 1
+},
+"Rightringslot:ProjectilesfromSpellsChain#times": {
+"kr": "오른쪽 반지 슬롯: 주문의 투사체 연쇄 +%1회",
+"n": 1
+},
+"Sacrifice#%ofmaximumLifetogainthatmuchEnergyShieldwhenyouCastaSpell": {
+"kr": "주문 시전 시 생명력 %1%를 희생하여 같은 값의 에너지 보호막 획득",
+"n": 2
+},
+"Sacrifice#Lifetonotconsumethelastboltwhenfiring": {
+"kr": "사격 시 생명력을 %1 희생하여 마지막 볼트를 소모하지 않음",
+"n": 1
+},
+"SealedSkillshave#%increasedSealgainfrequency": {
+"kr": "봉인된 스킬의 봉인 획득 빈도 %1% 증가",
+"n": 2
+},
+"SealedSkillshave#tomaximumSeals": {
+"kr": "봉인된 스킬의 봉인 최대치 %1",
+"n": 1
+},
+"SkillsGain#%ofManaCostasExtraLifeCost": {
+"kr": "스킬이 마나 소모의 %1%를 추가 생명력 소모로 획득",
+"n": 2
+},
+"SkillsfromCorruptedGemshave#%increasedCostEfficiencyduringanyFlaskEffect": {
+"kr": "아무 플라스크나 효과를 받는 동안 타락한 젬 스킬의 소모 효율 %1% 증가",
+"n": 2
+},
+"SkillsfromCorruptedGemshave#%ofManaCostsConvertedtoLifeCosts": {
+"kr": "타락한 젬 스킬의 마나 소모의 %1%가 생명력 소모로 전환",
+"n": 2
+},
+"Skillsgain#%ofDamageasChaosDamageper#LifeCost": {
+"kr": "생명력 소모 3당 스킬이 피해의 %1%를 카오스 피해로 획득",
+"n": 2
+},
+"Skillshave#%chancetonotremoveElementalInfusionsbutstillcountasconsumingthemifyou'velostanArchonBuffinthepast#seconds": {
+"kr": "지난 6초 이내 집정관 버프를 상실한 경우 스킬이 %1% 확률로 원소 주입을 제거하지 않고도 소모한 것으로 간주",
+"n": 2
+},
+"Skillshave#%longerPerfectTimingwindowduringeffect": {
+"kr": "효과를 받는 동안 스킬의 완벽한 타이밍 기간이 %1% 길어짐",
+"n": 2
+},
+"Skillshave#toLimit": {
+"kr": "스킬의 제한 +%1",
+"n": 1
+},
+"Skillshave(#-#secondstoCooldown": {
+"kr": "스킬의 재사용 대기시간 %1초",
+"n": 1
+},
+"Skillshavea#%longerPerfectTimingwindow": {
+"kr": "스킬의 완벽한 타이밍 기간이 %1% 길어짐",
+"n": 2
+},
+"SkillswhichEmpoweranAttackhave#%chancetonotcountthatAttack": {
+"kr": "공격을 강화하는 스킬이 %1%의 확률로 해당 공격이 강화 횟수를 소모하지 않게 함",
+"n": 2
+},
+"SkillswhichcreateFissureshavea#%chancetocreateanadditionalFissure": {
+"kr": "균열을 생성하는 스킬이 %1%의 확률로 균열 1개 추가 생성",
+"n": 2
+},
+"SkillswhichrequireGlorygenerate#Gloryevery#seconds": {
+"kr": "영광이 필요한 스킬이 2초마다 영광 %1 획득",
+"n": 1
+},
+"SpellHitsGain#%ofDamageasExtraChaosDamageperCurseontarget": {
+"kr": "주문 명중이 대상에게 걸린 저주 하나당 피해의 %1%를 추가 카오스 피해로 획득",
+"n": 2
+},
+"SpellHitsGain#%ofDamageasExtraPhysicalDamageperCurseontarget": {
+"kr": "주문 명중이 대상에게 걸린 저주 하나당 피해의 %1%를 추가 물리 피해로 획득",
+"n": 2
+},
+"SpellSkillshave#%increasedAreaofEffect": {
+"kr": "주문 스킬의 효과 범위 %1% 증가",
+"n": 2
+},
+"SpellSkillshave#tomaximumnumberofSummonedTotems": {
+"kr": "주문 스킬의 소환 가능한 토템 최대치 %1",
+"n": 1
+},
+"SpelldamagePenetrates#%ofenemyElementalResistanceswhileonLowRunicWard": {
+"kr": "낮은 룬 수호 상태일 때 주문 피해가 적 원소 저항의 %1%를 관통",
+"n": 2
+},
+"SpellsGain#%ofDamageasextraChaosDamage": {
+"kr": "주문이 피해의 %1%를 카오스 피해로 획득",
+"n": 2
+},
+"Spellsfire#additionalProjectilesSpellsfireProjectilesinacircle": {
+"kr": "주문이 추가 투사체 %1개 발사주문이 원형으로 투사체 발사",
+"n": 1
+},
+"Spellshave#%increasedCooldownRecoveryRate": {
+"kr": "주문의 재사용 대기시간 회복 속도 %1% 증가",
+"n": 2
+},
+"Spellshavea#%chancetoinflictWitheredfor#secondsonHit": {
+"kr": "명중 시 주문이 %1%의 확률로 4초 동안 위축 유발",
+"n": 2
+},
+"SpellswhichcostLifeGain#%ofDamageasExtraPhysicalDamage": {
+"kr": "생명력을 소모하는 주문이 피해의 %1%를 추가 물리 피해로 획득",
+"n": 2
+},
+"Take#%ofManaCostsyoupayforSkillsasPhysicalDamage": {
+"kr": "스킬에 사용하는 마나 소모의 %1%를 물리 피해로 받음",
+"n": 2
+},
+"Take#ChaosdamagepersecondperEnduranceCharge": {
+"kr": "인내 충전 하나당 1초마다 %1의 카오스 피해 받음",
+"n": 1
+},
+"Take#FireDamagewhenyouIgniteanEnemy": {
+"kr": "적 점화 시 %1 화염 피해를 받음",
+"n": 1
+},
+"Targetscanbeaffectedby#ofyourPoisonsatthesametime": {
+"kr": "대상이 동시에 영향을 받을 수 있는 플레이어의 중독 효과 개수 %1",
+"n": 1
+},
+"TempestBellsaredestroyedafteranadditional#Hits": {
+"kr": "폭풍의 종이 추가 %1회 명중 후 파괴됨",
+"n": 1
+},
+"TemporaryMinionSkillshave#toLimitofMinionssummoned": {
+"kr": "소환한 소환수의 일시적 소환수 스킬 제한 %1",
+"n": 1
+},
+"ThisWeapon'sCriticalHitChanceis#%": {
+"kr": "이 무기의 치명타 명중 확률 %1%",
+"n": 2
+},
+"TriggeredSpellsdeal#%increasedSpellDamage": {
+"kr": "발동형 주문으로 주는 주문 피해 %1% 증가",
+"n": 2
+},
+"UsingaManaFlaskgrantsGuardequalto#%ofFlask'srecoveryamountfor#seconds": {
+"kr": "마나 플라스크 사용 시 4초 동안 해당 플라스크의 회복량의 %1%와 동일한 가호 부여",
+"n": 2
+},
+"WarcriesEmpower#additionalAttacks": {
+"kr": "함성이 공격 %1회 추가로 강화",
+"n": 1
+},
+"WarcriesExplodeCorpsesdealing#%oftheirLifeasPhysicalDamage": {
+"kr": "함성이 시신을 폭발시켜 시신의 생명력의 %1%를 물리 피해로 줌",
+"n": 2
+},
+"WarcrySkillshave#%increasedAreaofEffect": {
+"kr": "함성 스킬의 효과 범위 %1% 증가",
+"n": 2
+},
+"WhenaPartyMemberinyourPresenceCastsaSpell,youSacrifice#%ofManaandtheyLeechthatMana": {
+"kr": "접근해 있는 파티원이 주문을 시전하면, 플레이어가 마나의 %1%를희생하고 파티원이 그 마나를 흡수함",
+"n": 2
+},
+"WhenyouConsumeaChargeTriggerChaoticSurgetogain#ChaosSurges": {
+"kr": "충전 소모 시 혼돈의 쇄도가 발동하여 카오스 쇄도 %1 획득",
+"n": 1
+},
+"Whenyoureload,triggersGeminiSurgetoalternatelygain#ColdSurgesor#FireSurges": {
+"kr": "재장전할 때, 쌍둥이자리 쇄도를 발동시켜 번갈아 가며냉기 쇄도 %1 또는 화염 쇄도 %2 획득",
+"n": 2
+},
+"YouareconsideredonLowLifewhileat#%ofmaximumLifeorbelowinstead": {
+"kr": "생명력 최대치의 %1% 이하일 때 낮은 생명력 상태로 간주",
+"n": 2
+},
+"YoucanSocket#additionalcopiesofeachLineageSupportGem,indifferentSkills": {
+"kr": "여러 스킬에 각각의 혈통 보조 젬을 %1개 추가 장착 가능",
+"n": 1
+},
+"YoucannotbeChilledfor#secondsafterbeingChilled": {
+"kr": "냉각된 후 %1초 동안 냉각 면역",
+"n": 1
+},
+"YoucannotbeFrozenfor#secondsafterbeingFrozen": {
+"kr": "동결된 후 %1초 동안 동결 면역",
+"n": 1
+},
+"YoucannotbeIgnitedfor#secondsafterbeingIgnited": {
+"kr": "점화된 후 %1초 동안 점화 면역",
+"n": 1
+},
+"YoucannotbeShockedfor#secondsafterbeingShocked": {
+"kr": "감전된 후 %1초 동안 감전 면역",
+"n": 1
+},
+"YoucountasonFullManawhileat#%ofmaximumManaorabove": {
+"kr": "마나 최대치의 %1% 이상일 때 최대 마나 상태로 간주",
+"n": 2
+},
+"YoucountasonLowLifewhileat#%ofmaximumManaorbelow": {
+"kr": "마나 최대치의 %1% 이하일 때 낮은 생명력 상태로 간주",
+"n": 2
+},
+"YoucountasonLowManawhileat#%ofmaximumLifeorbelow": {
+"kr": "최대 생명력의 %1% 이하일 때 낮은 마나 상태로 간주",
+"n": 2
+},
+"YougainOnslaughtfor#secondsonKill": {
+"kr": "처치 시 %1초 동안 맹공 획득",
+"n": 1
+},
+"Youlose#%ofmaximumEnergyShieldpersecond": {
+"kr": "1초마다 에너지 보호막 %1% 상실",
+"n": 2
+},
+"YourMaximumResistancesare#%": {
+"kr": "자신의 저항 최대치 %1%",
+"n": 2
+},
+"YourbaseEnergyShieldRechargeDelayis#seconds": {
+"kr": "플레이어의 기본 에너지 보호막 재충전 지연시간 %1초로 변경",
+"n": 1
+},
+"YourmaximumEnergyShieldisequalto#%ofyourStrength": {
+"kr": "플레이어의 에너지 보호막 최대치가 플레이어의 힘의 %1%와 동일",
+"n": 2
+},
+"Youtake#%ofdamagefromBlockedHits": {
+"kr": "피격을 막아낼 시 피해의 %1%를 받음",
+"n": 2
+}
+}

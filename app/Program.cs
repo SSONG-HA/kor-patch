@@ -31,8 +31,12 @@ namespace PoBKR
             var initialTarget = "";
             if (args != null && args.Length > 0)
             {
+                for (var i = 0; i < args.Length; i++)
+                {
+                    if (IsLaunchMode((args[i] ?? "").Trim()))
+                        return Launcher.Run(args);
+                }
                 var first = (args[0] ?? "").Trim().Trim('"');
-                if (IsLaunchMode(first)) return Launcher.Run(args);
                 if (first.StartsWith("--", StringComparison.Ordinal) || first.StartsWith("/?", StringComparison.Ordinal))
                     return Cli.Run(args);
                 if (Directory.Exists(first)) initialTarget = first;

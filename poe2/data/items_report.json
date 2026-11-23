@@ -1,0 +1,209 @@
+{
+"classes": [
+{
+"bases": 13,
+"class": "Claws",
+"mods": 103,
+"uniques": 0
+},
+{
+"bases": 14,
+"class": "Daggers",
+"mods": 13,
+"uniques": 0
+},
+{
+"bases": 16,
+"class": "Wands",
+"mods": 100,
+"uniques": 8
+},
+{
+"bases": 15,
+"class": "One_Hand_Swords",
+"mods": 1,
+"uniques": 0
+},
+{
+"bases": 13,
+"class": "One_Hand_Axes",
+"mods": 0,
+"uniques": 0
+},
+{
+"bases": 36,
+"class": "One_Hand_Maces",
+"mods": 29,
+"uniques": 11
+},
+{
+"bases": 13,
+"class": "Sceptres",
+"mods": 77,
+"uniques": 8
+},
+{
+"bases": 36,
+"class": "Spears",
+"mods": 21,
+"uniques": 10
+},
+{
+"bases": 13,
+"class": "Flails",
+"mods": 0,
+"uniques": 0
+},
+{
+"bases": 35,
+"class": "Bows",
+"mods": 26,
+"uniques": 12
+},
+{
+"bases": 17,
+"class": "Staves",
+"mods": 19,
+"uniques": 10
+},
+{
+"bases": 13,
+"class": "Two_Hand_Swords",
+"mods": 0,
+"uniques": 0
+},
+{
+"bases": 13,
+"class": "Two_Hand_Axes",
+"mods": 0,
+"uniques": 0
+},
+{
+"bases": 40,
+"class": "Two_Hand_Maces",
+"mods": 12,
+"uniques": 12
+},
+{
+"bases": 36,
+"class": "Quarterstaves",
+"mods": 17,
+"uniques": 7
+},
+{
+"bases": 35,
+"class": "Crossbows",
+"mods": 20,
+"uniques": 5
+},
+{
+"bases": 13,
+"class": "Traps",
+"mods": 5,
+"uniques": 0
+},
+{
+"bases": 31,
+"class": "Talismans",
+"mods": 15,
+"uniques": 6
+},
+{
+"bases": 10,
+"class": "Quivers",
+"mods": 19,
+"uniques": 7
+},
+{
+"bases": 146,
+"class": "Shields",
+"mods": 22,
+"uniques": 20
+},
+{
+"bases": 49,
+"class": "Bucklers",
+"mods": 56,
+"uniques": 8
+},
+{
+"bases": 53,
+"class": "Foci",
+"mods": 23,
+"uniques": 9
+},
+{
+"bases": 204,
+"class": "Gloves",
+"mods": 47,
+"uniques": 37
+},
+{
+"bases": 192,
+"class": "Boots",
+"mods": 23,
+"uniques": 23
+},
+{
+"bases": 348,
+"class": "Body_Armours",
+"mods": 77,
+"uniques": 69
+},
+{
+"bases": 257,
+"class": "Helmets",
+"mods": 43,
+"uniques": 49
+},
+{
+"bases": 22,
+"class": "Amulets",
+"mods": 36,
+"uniques": 23
+},
+{
+"bases": 27,
+"class": "Rings",
+"mods": 52,
+"uniques": 39
+},
+{
+"bases": 17,
+"class": "Belts",
+"mods": 54,
+"uniques": 19
+},
+{
+"bases": 9,
+"class": "Life_Flasks",
+"mods": 21,
+"uniques": 3
+},
+{
+"bases": 9,
+"class": "Mana_Flasks",
+"mods": 6,
+"uniques": 3
+},
+{
+"bases": 18,
+"class": "Charms",
+"mods": 7,
+"uniques": 13
+},
+{
+"bases": 10,
+"class": "Jewels",
+"mods": 7,
+"uniques": 13
+},
+{
+"bases": 294,
+"class": "Augment",
+"mods": 0,
+"uniques": 0
+}
+],
+"conflicts": {}
+}

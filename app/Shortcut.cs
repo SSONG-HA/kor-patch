@@ -46,25 +46,40 @@ namespace PoBKR
 
         public static string DesktopLinkPath()
         {
+            return DesktopLinkPath(Targets.Poe1);
+        }
+
+        public static string DesktopLinkPath(GameTarget target)
+        {
             var desktop = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             if (string.IsNullOrEmpty(desktop))
                 desktop = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Desktop");
-            return Path.Combine(desktop, DisplayName + ".lnk");
+            return Path.Combine(desktop, (target ?? Targets.Poe1).ShortcutName + ".lnk");
         }
 
         public static string StartMenuLinkPath()
+        {
+            return StartMenuLinkPath(Targets.Poe1);
+        }
+
+        public static string StartMenuLinkPath(GameTarget target)
         {
             var programs = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
             if (string.IsNullOrEmpty(programs))
                 programs = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     @"Microsoft\Windows\Start Menu\Programs");
-            return Path.Combine(programs, DisplayName + ".lnk");
+            return Path.Combine(programs, (target ?? Targets.Poe1).ShortcutName + ".lnk");
         }
 
         public static string PoBFolderLinkPath(string pobDir)
         {
+            return PoBFolderLinkPath(pobDir, Targets.Poe1);
+        }
+
+        public static string PoBFolderLinkPath(string pobDir, GameTarget target)
+        {
             if (string.IsNullOrEmpty(pobDir)) return "";
-            return Path.Combine(pobDir, DisplayName + ".lnk");
+            return Path.Combine(pobDir, (target ?? Targets.Poe1).ShortcutName + ".lnk");
         }
 
         /// <summary>현재 실행 중인 exe 경로.</summary>
@@ -117,6 +132,12 @@ namespace PoBKR
         /// </summary>
         public static ShortcutResult Create(string pobDir, bool desktop)
         {
+            return Create(pobDir, desktop, Targets.Poe1);
+        }
+
+        public static ShortcutResult Create(string pobDir, bool desktop, GameTarget target)
+        {
+            target = target ?? Targets.Poe1;
             var result = new ShortcutResult();
             try
             {
@@ -127,19 +148,20 @@ namespace PoBKR
                     return result;
                 }
 
-                var target = string.IsNullOrEmpty(pobDir) ? "" : pobDir.TrimEnd(Path.DirectorySeparatorChar);
-                var exe = Installer.FindPoBExe(target);
+                var targetDir = string.IsNullOrEmpty(pobDir) ? "" : pobDir.TrimEnd(Path.DirectorySeparatorChar);
+                var exe = Installer.FindPoBExe(targetDir, target);
                 result.TargetExe = launcher;
-                result.Arguments = target.Length == 0 ? "--launch" : "--launch \"" + target + "\"";
+                var gameArg = target.IsPoe2 ? " --game poe2" : "";
+                result.Arguments = (targetDir.Length == 0 ? "--launch" : "--launch \"" + targetDir + "\"") + gameArg;
                 result.IconPath = string.IsNullOrEmpty(exe) ? launcher : exe;
                 var workDir = Path.GetDirectoryName(launcher);
-                var description = "Path of Building (한글) — 실행할 때마다 한글 패치를 확인·적용한 뒤 PoB 를 엽니다.";
+                var description = target.ShortcutName + " — 실행할 때마다 한글 패치를 확인·적용한 뒤 PoB 를 엽니다.";
 
                 var wanted = new List<string>();
-                var inFolder = PoBFolderLinkPath(target);
+                var inFolder = PoBFolderLinkPath(targetDir, target);
                 if (inFolder.Length > 0) wanted.Add(inFolder);
-                wanted.Add(StartMenuLinkPath());
-                if (desktop) wanted.Add(DesktopLinkPath());
+                wanted.Add(StartMenuLinkPath(target));
+                if (desktop) wanted.Add(DesktopLinkPath(target));
 
                 var errors = new List<string>();
                 foreach (var link in wanted)

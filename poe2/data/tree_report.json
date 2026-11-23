@@ -1,0 +1,338 @@
+{
+"missing_in_db": [],
+"name_add": 1994,
+"nodes": 4912,
+"papered": 4912,
+"stat_add": 2570,
+"stat_line_mismatch": [
+{
+"en": [
+"15% increased Area of Effect",
+"Burning Enemies you kill have a 5% chance to Explode, dealing a",
+"tenth of their maximum Life as Fire Damage"
+],
+"id": "21206",
+"ko": [
+"효과 범위 15% 증가",
+"플레이어가 처치한 화상 상태의 적이 5%의 확률로 폭발하여, 최대 생명력의 1/10을 화염 피해로 줌"
+]
+},
+{
+"en": [
+"25% more Skill Speed while Off Hand is empty and you have",
+"a One-Handed Martial Weapon equipped in your Main Hand"
+],
+"id": "14226",
+"ko": [
+"보조 장비가 없고 주 무기로 한손 무기를 장착했을 때 스킬 속도 25% 증폭"
+]
+},
+{
+"en": [
+"+1% to all Maximum Elemental Resistances if you have at",
+"least 5 Red, Green and Blue Support Gems Socketed"
+],
+"id": "32151",
+"ko": [
+"빨간색, 초록색, 파란색 보조 젬을 5개 이상 장착한 경우 모든 원소 저항 최대치 +1%"
+]
+}
+],
+"stat_number_mismatch": [
+{
+"en": "additional Elemental Infusion of the same type",
+"id": "12324",
+"ko": "같은 유형의 원소 주입 1개를 추가로 획득"
+},
+{
+"en": "When you gain Combo, gain an additional Combo",
+"id": "41751",
+"ko": "연계 획득 시 연계 1 추가 획득"
+},
+{
+"en": "-20% increased Spirit Reservation Efficiency",
+"id": "37778",
+"ko": "스킬의 정신력 점유 효율 20% 감소"
+},
+{
+"en": "Gain 4% of Damage as Extra Fire Damage for",
+"id": "38570",
+"ko": "지난 8초 이내 발사한 각기 다른 유탄 하나당"
+},
+{
+"en": "every different Grenade fired in the past 8 seconds",
+"id": "38570",
+"ko": "피해의 4%를 추가 화염 피해로 획득"
+},
+{
+"en": "2% chance that if you would gain Power Charges, you instead gain up to",
+"id": "39102",
+"ko": "권능 충전 획득 시"
+},
+{
+"en": "your maximum number of Power Charges",
+"id": "39102",
+"ko": "2%의 확률로 권능 충전 최대치 획득"
+},
+{
+"en": "Remove a Curse when you use a Mana Flask",
+"id": "47418",
+"ko": "마나 플라스크 사용 시 저주 1개 제거"
+},
+{
+"en": "additional Elemental Infusion of the same type",
+"id": "24764",
+"ko": "같은 유형의 원소 주입 1개를 추가로 획득"
+},
+{
+"en": "You can apply an additional Curse",
+"id": "59",
+"ko": "추가 저주 1개 적용 가능"
+},
+{
+"en": "Gem Quality grants Socketed Skills an additional effect",
+"id": "14429",
+"ko": "젬 퀄리티가 장착된 스킬에 추가 효과 1개 부여"
+},
+{
+"en": "When collecting an Elemental Infusion, gain another different Elemental Infusion",
+"id": "42522",
+"ko": "원소 주입 획득 시 다른 원소 주입 1개를 추가로 획득"
+},
+{
+"en": "Maximum Mana is replaced by twice as much Maximum Infernal Flame",
+"id": "13174",
+"ko": "최대 마나가 최대 지옥불 화염의 2배로 대체"
+},
+{
+"en": "Can have up to one Unique Tamed Beast summoned",
+"id": "39887",
+"ko": "고유 길들인 야수는 최대 1마리까지 소환해 둘 수 있음"
+},
+{
+"en": "2% chance that if you would gain Power Charges, you instead gain up to",
+"id": "54289",
+"ko": "권능 충전 획득 시"
+},
+{
+"en": "your maximum number of Power Charges",
+"id": "54289",
+"ko": "2%의 확률로 권능 충전 최대치 획득"
+},
+{
+"en": "Gain a stack of Jade every second",
+"id": "6127",
+"ko": "1초마다 비취 중첩 획득"
+},
+{
+"en": "Grenade Skills Fire an additional Projectile",
+"id": "29514",
+"ko": "유탄 스킬이 투사체 1개 추가 발사"
+},
+{
+"en": "Quarterstaff Skills that consume Power Charges count as consuming an additional Power Charge",
+"id": "9444",
+"ko": "권능 충전을 소모하는 육척봉 스킬이 권능 충전을 추가로 1개 소모하는 것으로 간주됨"
+},
+{
+"en": "You cannot be Light Stunned if you've been Stunned Recently",
+"id": "26479",
+"ko": "최근 4초 이내 기절한 경우 기절할 수 없음"
+},
+{
+"en": "Bolts fired by Crossbow Attacks have 30% chance to not",
+"id": "7062",
+"ko": "최근 4초 이내 재장전한 경우 석궁 공격으로"
+},
+{
+"en": "expend Ammunition if you've Reloaded Recently",
+"id": "7062",
+"ko": "발사된 볼트가 30%의 확률로 탄약을 소모하지 않음"
+},
+{
+"en": "Immune to Exposure",
+"id": "58894",
+"ko": "플레이어에게 적용되는 저주 효과 30% 감소"
+},
+{
+"en": "15% increased Area of Effect for Attacks",
+"id": "20397",
+"ko": "재사용 대기시간 회복 속도 10% 증가"
+},
+{
+"en": "10% increased Cooldown Recovery Rate",
+"id": "20397",
+"ko": "공격 효과 범위 15% 증가"
+},
+{
+"en": "of their maximum Life as Physical Damage",
+"id": "37078",
+"ko": "최대 생명력의 100%를 물리 피해로 줌"
+},
+{
+"en": "Chance is doubled against Undead and Demons",
+"id": "37078",
+"ko": "언데드 및 악마를 상대로는 확률 2배"
+},
+{
+"en": "Offerings cannot be damaged if they have been created Recently",
+"id": "41033",
+"ko": "최근 4초 이내 생성한 공물이 피해를 받지 않음"
+},
+{
+"en": "Consuming Glory grants you 3% increased Attack damage per Glory consumed for 6 seconds, up to 60%",
+"id": "15606",
+"ko": "영광을 소모하면 소모한 영광 하나당 6초 동안 공격 피해 3% 증가, 최대 100% 증가"
+},
+{
+"en": "You can apply an additional Curse",
+"id": "47759",
+"ko": "추가 저주 1개 적용 가능"
+},
+{
+"en": "Double Activation Delay of Curses",
+"id": "47759",
+"ko": "저주 활성화 지연시간 2배"
+},
+{
+"en": "Inherent bonuses gained from Attributes are doubled",
+"id": "58591",
+"ko": "능력치로 획득하는 기본 보너스 2배"
+},
+{
+"en": "2% chance that if you would gain Power Charges, you instead gain up to",
+"id": "13228",
+"ko": "권능 충전 획득 시"
+},
+{
+"en": "your maximum number of Power Charges",
+"id": "13228",
+"ko": "2%의 확률로 권능 충전 최대치 획득"
+},
+{
+"en": "Skills fire an additional Projectile",
+"id": "12033",
+"ko": "스킬이 투사체 1개 추가 발사"
+},
+{
+"en": "Gain a Vivid Wisp when Vivid Stampede ends",
+"id": "27773",
+"ko": "혈기 쇄도 종료 시 혈기 도깨비불 1마리 획득"
+},
+{
+"en": "Attacks using your Weapons have Added Physical Damage equal",
+"id": "41008",
+"ko": "무기를 사용하여 공격 시 무기 정확도의 25%와 동일한"
+},
+{
+"en": "to 25% of the Accuracy Rating on the Weapon",
+"id": "41008",
+"ko": "추가 물리 피해 획득"
+},
+{
+"en": "Can Socket a non-Unique Basic Jewel into the Phylactery",
+"id": "17788",
+"ko": "비-고유 기본 주얼 1개 장착 가능"
+},
+{
+"en": "Dodging can expend up to 2 Owl Feathers, granting Primal Bounty 100% more",
+"id": "4367",
+"ko": "회피 시 올빼미 깃털을 최대 3개 소모하여 원시 하사품 100% 증폭"
+},
+{
+"en": "Cannot be Light Stunned if you haven't been Hit Recently",
+"id": "64650",
+"ko": "최근 4초 이내 피격되지 않은 경우 기절할 수 없음"
+},
+{
+"en": "Chaos Resistance is doubled",
+"id": "59759",
+"ko": "카오스 저항 2배"
+},
+{
+"en": "Evasion Rating from Equipped Helmet, Gloves and Boots is doubled",
+"id": "63254",
+"ko": "장착한 투구, 장갑, 장화가 제공하는 회피 2배"
+},
+{
+"en": "Mana Costs are Doubled",
+"id": "57513",
+"ko": "마나 소모량 2배"
+},
+{
+"en": "Lose a Mountain's Teaching when you are Hit, or when you use or Sustain an Attack that benefits from Mountain's Teachings",
+"id": "51546",
+"ko": "명중당하거나, 산의 가르침의 효과를 받는 공격을 사용하거나 지속하면 산의 가르침 1 상실"
+},
+{
+"en": "Double the number of your Poisons that targets can be affected by at the same time",
+"id": "29074",
+"ko": "대상이 동시에 영향을 받을 수 있는 플레이어의 중독 효과 개수 2배"
+},
+{
+"en": "Your Totem Limit is doubled",
+"id": "45202",
+"ko": "토템 제한 2배"
+},
+{
+"en": "2% chance that if you would gain Power Charges, you instead gain up to",
+"id": "43486",
+"ko": "권능 충전 획득 시"
+},
+{
+"en": "your maximum number of Power Charges",
+"id": "43486",
+"ko": "2%의 확률로 권능 충전 최대치 획득"
+},
+{
+"en": "Targets can be affected by two of your Chills at the same time",
+"id": "61985",
+"ko": "대상이 플레이어의 냉각 2개에 동시에 영향을 받을 수 있음"
+},
+{
+"en": "Accuracy Rating is Doubled",
+"id": "44017",
+"ko": "정확도 2배"
+},
+{
+"en": "35% increased Critical Hit Chance against Enemies that are affected",
+"id": "24483",
+"ko": "원소 상태 이상이 유발되지 않은 적에 대한"
+},
+{
+"en": "by no Elemental Ailments",
+"id": "24483",
+"ko": "치명타 명중 확률 35% 증가"
+},
+{
+"en": "Double Adaptation Effect",
+"id": "61983",
+"ko": "적응 효과 2배"
+},
+{
+"en": "additional Elemental Infusion of the same type",
+"id": "30985",
+"ko": "같은 유형의 원소 주입 1개를 추가로 획득"
+},
+{
+"en": "Warcries Empower an additional Attack",
+"id": "31373",
+"ko": "함성이 공격 1회 추가로 강화"
+},
+{
+"en": "Gain Arcane Surge when you Shapeshift to Human form after",
+"id": "29881",
+"ko": "8초 이상 형태 변환 상태였다가 인간 형상으로 형태 변환하면"
+},
+{
+"en": "being Shapeshifted for at least 8 seconds",
+"id": "29881",
+"ko": "비전 쇄도 획득"
+},
+{
+"en": "Targets can be affected by two of your Shocks at the same time",
+"id": "2857",
+"ko": "대상이 플레이어의 감전 2개에 동시에 영향을 받을 수 있음"
+}
+]
+}

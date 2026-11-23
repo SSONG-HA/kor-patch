@@ -1,0 +1,366 @@
+{
+ "strings": 2856,
+ "hit": 998,
+ "miss": 1858,
+ "rate": 34.9,
+ "by_area": {
+  "gem": {
+   "total": 1897,
+   "hit": 326,
+   "miss": 1571,
+   "rate": 17.2
+  },
+  "screen": {
+   "total": 592,
+   "hit": 352,
+   "miss": 240,
+   "rate": 59.5
+  },
+  "item": {
+   "total": 176,
+   "hit": 161,
+   "miss": 15,
+   "rate": 91.5
+  },
+  "config": {
+   "total": 109,
+   "hit": 79,
+   "miss": 30,
+   "rate": 72.5
+  },
+  "node": {
+   "total": 82,
+   "hit": 80,
+   "miss": 2,
+   "rate": 97.6
+  }
+ },
+ "reasons": {
+  "기타 문구": 1392,
+  "능력치 비교 줄(라벨 사전 밖)": 81,
+  "PoB 미지원 꼬리표": 246,
+  "숫자·기호만 있는 줄": 139
+ },
+ "top_missing": [
+  {
+   "tag": "screen",
+   "text": ""
+  },
+  {
+   "tag": "gem",
+   "text": "Attack"
+  },
+  {
+   "tag": "gem",
+   "text": "Spell"
+  },
+  {
+   "tag": "gem",
+   "text": "Mark"
+  },
+  {
+   "tag": "gem",
+   "text": "Minion"
+  },
+  {
+   "tag": "gem",
+   "text": "Ice Fragments"
+  },
+  {
+   "tag": "gem",
+   "text": "Grenade"
+  },
+  {
+   "tag": "screen",
+   "text": "121"
+  },
+  {
+   "tag": "screen",
+   "text": "163"
+  },
+  {
+   "tag": "screen",
+   "text": "115"
+  },
+  {
+   "tag": "screen",
+   "text": "1"
+  },
+  {
+   "tag": "screen",
+   "text": "0"
+  },
+  {
+   "tag": "screen",
+   "text": "0, 0, 0"
+  },
+  {
+   "tag": "screen",
+   "text": "Act 4: Eye of Hinekora"
+  },
+  {
+   "tag": "node",
+   "text": "Requires allocation of node: The Unseen Path"
+  },
+  {
+   "tag": "node",
+   "text": "SIX"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Weapon 1"
+  },
+  {
+   "tag": "item",
+   "text": "-3.2m AoE Radius"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Helmet"
+  },
+  {
+   "tag": "item",
+   "text": "Runic Ward: 240"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Body Armour"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Gloves"
+  },
+  {
+   "tag": "item",
+   "text": "Runic Ward: 120"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Boots"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Amulet"
+  },
+  {
+   "tag": "item",
+   "text": "Requires Level 50"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Ring 1"
+  },
+  {
+   "tag": "item",
+   "text": "Requires Level 52"
+  },
+  {
+   "tag": "item",
+   "text": "테스트 Belt"
+  },
+  {
+   "tag": "item",
+   "text": "Charm Slots: 0"
+  },
+  {
+   "tag": "item",
+   "text": "Requires Level 62"
+  },
+  {
+   "tag": "gem",
+   "text": "Lightning Arrow"
+  },
+  {
+   "tag": "gem",
+   "text": "Requires: Bow"
+  },
+  {
+   "tag": "gem",
+   "text": "Fire a charged arrow at the target. On hitting an enemy or wall, the arrow will fire Chaining Lightning beams at nearby enemies."
+  },
+  {
+   "tag": "gem",
+   "text": "Beam"
+  },
+  {
+   "tag": "gem",
+   "text": "Jagged Ground II"
+  },
+  {
+   "tag": "gem",
+   "text": "Support"
+  },
+  {
+   "tag": "gem",
+   "text": "Category: Jagged Ground"
+  },
+  {
+   "tag": "gem",
+   "text": "Supports Slam skills. Aftershocks caused by Supported Slam Skills always create patches of Jagged Ground."
+  },
+  {
+   "tag": "gem",
+   "text": "Aftershocks caused by Supported Skills create Jagged Ground (Not supported in PoB yet)"
+  },
+  {
+   "tag": "gem",
+   "text": "Jagged Ground lasts 4 seconds (Not supported in PoB yet)"
+  },
+  {
+   "tag": "gem",
+   "text": "Inexorable Critical II"
+  },
+  {
+   "tag": "gem",
+   "text": "Category: Inexorable Critical"
+  },
+  {
+   "tag": "gem",
+   "text": "Cast Time: Instant"
+  },
+  {
+   "tag": "gem",
+   "text": "Supports any skill you use yourself that Hits enemies, causing it to accumulate Critical Hit chance over time, but also reduce your Critical Damage Bonus."
+  },
+  {
+   "tag": "gem",
+   "text": "Supported Skills gain 40% increased Critical Hit Chance each second, up to 200%. This Critical Hit Chance is lost whenever a skill supported by Inexorable Critical Critically Hits"
+  },
+  {
+   "tag": "gem",
+   "text": "Supported Skills gain 10% less Critical Damage Bonus each second, up to 50%. This Critical Damage Bonus is lost whenever a skill supported by Inexorable Critical Critically Hits"
+  },
+  {
+   "tag": "gem",
+   "text": "Compressed Duration I"
+  },
+  {
+   "tag": "gem",
+   "text": "Duration"
+  },
+  {
+   "tag": "gem",
+   "text": "Category: Compressed Duration"
+  },
+  {
+   "tag": "gem",
+   "text": "Supports any skill that has a duration making that duration shorter."
+  },
+  {
+   "tag": "gem",
+   "text": "Supported Skills have 30% less Skill Effect Duration"
+  },
+  {
+   "tag": "gem",
+   "text": "Fist of War I"
+  },
+  {
+   "tag": "gem",
+   "text": "Category: Fist of War"
+  },
+  {
+   "tag": "gem",
+   "text": "Supports Slams you use yourself, providing a powerful Ancestral Boost every few seconds."
+  },
+  {
+   "tag": "gem",
+   "text": "Attacks with Supported Skill are Ancestrally Boosted, no more than once every 6 seconds"
+  },
+  {
+   "tag": "gem",
+   "text": "Morrigan's Insight"
+  },
+  {
+   "tag": "gem",
+   "text": "Category: Biting Frost"
+  },
+  {
+   "tag": "gem",
+   "text": "Supports any skill that Hits enemies, causing them to deal more damage and trigger Nature's Exchange when consuming Freeze on enemies. Cannot support skills that Consume Freeze."
+  },
+  {
+   "tag": "gem",
+   "text": "Supported Skills trigger Nature's Exchange when Consuming Freeze (Not supported in PoB yet)"
+  },
+  {
+   "tag": "gem",
+   "text": "Supported Skills cannot cause Freeze buildup"
+  },
+  {
+   "tag": "gem",
+   "text": "Supported Skills Consume Freeze on enemies to deal 50% more Damage"
+  },
+  {
+   "tag": "gem",
+   "text": "Nature's Exchange"
+  },
+  {
+   "tag": "gem",
+   "text": "Cost: 0 Ward"
+  },
+  {
+   "tag": "gem",
+   "text": "Cooldown Time: 8.00 sec"
+  },
+  {
+   "tag": "gem",
+   "text": "Buff duration is 8 seconds"
+  },
+  {
+   "tag": "gem",
+   "text": "Grants 531 Guard (Not supported in PoB yet)"
+  },
+  {
+   "tag": "gem",
+   "text": "Grants 106 to 159 Cold Thorns damage"
+  },
+  {
+   "tag": "gem",
+   "text": "\"Wild energy is as misunderstood as the Mórrigan"
+  },
+  {
+   "tag": "gem",
+   "text": "itself. Many revere life, yet revile death. What is dead"
+  },
+  {
+   "tag": "gem",
+   "text": "feeds the living. Death is but one aspect of the whole.\""
+  },
+  {
+   "tag": "gem",
+   "text": "Virtuous Barrier"
+  },
+  {
+   "tag": "gem",
+   "text": "Buff"
+  },
+  {
+   "tag": "gem",
+   "text": "Persistent"
+  },
+  {
+   "tag": "gem",
+   "text": "While active, conjures a glittering barrier that accumulates protective gemstone Motes of each Attribute type over time, but loses a random Mote when you are Hit."
+  },
+  {
+   "tag": "gem",
+   "text": "Gains a random Mote every 1.53 seconds (Not supported in PoB yet)"
+  },
+  {
+   "tag": "gem",
+   "text": "Maximum of each Attribute of Mote is 3 plus the number of Skills you have which require that Attribute"
+  },
+  {
+   "tag": "gem",
+   "text": "Single-Attribute Skills grant twice as many maximum Motes"
+  },
+  {
+   "tag": "gem",
+   "text": "2% increased maximum Life per Strength Mote"
+  },
+  {
+   "tag": "gem",
+   "text": "5% increased Armour, Evasion and"
+  }
+ ]
+}

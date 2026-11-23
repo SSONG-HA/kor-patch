@@ -52,7 +52,13 @@ namespace PoBKR
 
         public static string KrDir(string pobDir)
         {
-            return Path.Combine(pobDir, "KR");
+            return DataDir(pobDir, Targets.Poe1);
+        }
+
+        /// <summary>게임별 데이터 폴더 (PoE1: KR, PoE2: KR2).</summary>
+        public static string DataDir(string pobDir, GameTarget target)
+        {
+            return Path.Combine(pobDir, (target ?? Targets.Poe1).DataDir);
         }
 
         private static string ParentOrNull(string dir)
@@ -72,6 +78,16 @@ namespace PoBKR
         /// <summary>설치 폴더 자동 탐색. 찾지 못하면 null.</summary>
         public static string FindPoB(string startTarget)
         {
+            return FindPoB(startTarget, Targets.Poe1);
+        }
+
+        public static string FindPoB(string startTarget, GameTarget target)
+        {
+            if (target != null && target.IsPoe2)
+            {
+                var foundPoe2 = FindPoe2(startTarget);
+                if (foundPoe2 != null) return foundPoe2;
+            }
             var exeDir = AppInfo.ExeDir;
             var p1 = ParentOrNull(exeDir);
             var p2 = ParentOrNull(p1);
@@ -122,6 +138,92 @@ namespace PoBKR
             return null;
         }
 
+        /// <summary>PoE2 PoB 폴더 탐색 (폴더 이름·실행 파일 이름이 다르다).</summary>
+        private static string FindPoe2(string startTarget)
+        {
+            var local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var roaming = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var candidates = new List<string>();
+            if (!string.IsNullOrEmpty(startTarget))
+            {
+                candidates.Add(startTarget);
+                candidates.Add(Path.Combine(startTarget, "lua"));
+            }
+            candidates.AddRange(new[]
+            {
+                AppInfo.ExeDir,
+                ParentOrNull(AppInfo.ExeDir),
+                Environment.CurrentDirectory,
+                Path.Combine(local, "Programs", "Path of Building Community (PoE2)"),
+                Path.Combine(local, "Programs", "Path of Building PoE2"),
+                Path.Combine(local, "Programs", "Path of Building Community"),
+                Path.Combine(local, "Programs", "Path of Building"),
+                @"C:\Program Files\Path of Building Community (PoE2)",
+                @"C:\Program Files\Path of Building PoE2",
+                @"C:\Program Files (x86)\Path of Building Community (PoE2)",
+                Path.Combine(roaming, "Path of Building PoE2")
+            });
+            foreach (var c in candidates)
+            {
+                if (IsPoB(c) && HasPoe2Exe(c)) return Clean(c);
+            }
+            var bases = new List<string>
+            {
+                ParentOrNull(AppInfo.ExeDir),
+                Environment.CurrentDirectory,
+                Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
+            };
+            foreach (var b in bases)
+            {
+                if (string.IsNullOrEmpty(b)) continue;
+                var found = ScanChildrenPoe2(b, 3);
+                if (found != null) return found;
+            }
+            return null;
+        }
+
+        private static bool HasPoe2Exe(string dir)
+        {
+            foreach (var name in Targets.Poe2.ExeNames)
+            {
+                if (name.IndexOf("PoE2", StringComparison.OrdinalIgnoreCase) < 0) continue;
+                try
+                {
+                    if (File.Exists(Path.Combine(dir, name))) return true;
+                }
+                catch
+                {
+                }
+            }
+            return false;
+        }
+
+        private static string ScanChildrenPoe2(string baseDir, int depth)
+        {
+            if (string.IsNullOrEmpty(baseDir) || depth <= 0) return null;
+            string[] subs;
+            try
+            {
+                if (!Directory.Exists(baseDir)) return null;
+                subs = Directory.GetDirectories(baseDir);
+            }
+            catch
+            {
+                return null;
+            }
+            foreach (var s in subs)
+            {
+                if (IsPoB(s) && HasPoe2Exe(s)) return Clean(s);
+            }
+            foreach (var s in subs)
+            {
+                var deeper = ScanChildrenPoe2(s, depth - 1);
+                if (deeper != null) return deeper;
+            }
+            return null;
+        }
+
         public static string Clean(string dir)
         {
             try
@@ -137,19 +239,16 @@ namespace PoBKR
         /// <summary>PoB 폴더의 실행 파일 (Path of Building.exe / PathOfBuildingCommunity.exe 등).</summary>
         public static string FindPoBExe(string pobDir)
         {
+            return FindPoBExe(pobDir, Targets.Poe1);
+        }
+
+        public static string FindPoBExe(string pobDir, GameTarget target)
+        {
             if (string.IsNullOrEmpty(pobDir)) return null;
             try
             {
                 if (!Directory.Exists(pobDir)) return null;
-                var names = new[]
-                {
-                    "Path of Building.exe",
-                    "PathOfBuilding.exe",
-                    "Path of Building Community.exe",
-                    "PathOfBuildingCommunity.exe",
-                    "Path of Building (Community Fork).exe"
-                };
-                foreach (var name in names)
+                foreach (var name in (target ?? Targets.Poe1).ExeNames)
                 {
                     var p = Path.Combine(pobDir, name);
                     if (File.Exists(p)) return p;
@@ -369,11 +468,22 @@ namespace PoBKR
 
         public static bool HasMarker(string pobDir)
         {
+            return HasMarker(pobDir, Targets.Poe1);
+        }
+
+        public static bool HasMarker(string pobDir, GameTarget target)
+        {
             try
             {
                 var path = MainLuaPath(pobDir);
                 if (!File.Exists(path)) return false;
-                return ReadText(path).IndexOf(AppInfo.Marker, StringComparison.Ordinal) >= 0;
+                var marker = (target ?? Targets.Poe1).Marker;
+                if (target != null && target.IsPoe2)
+                {
+                    // "-- [PoB-KR]" 는 "-- [PoB-KR2]" 의 앞부분이므로 정확히 비교한다
+                    return ReadText(path).IndexOf(marker, StringComparison.Ordinal) >= 0;
+                }
+                return ReadText(path).IndexOf(marker, StringComparison.Ordinal) >= 0;
             }
             catch
             {
@@ -384,10 +494,15 @@ namespace PoBKR
         /// <summary>설치된 데이터 버전(KR\version.txt 첫 토큰). 없으면 null.</summary>
         public static string InstalledVersion(string pobDir)
         {
+            return InstalledVersion(pobDir, Targets.Poe1);
+        }
+
+        public static string InstalledVersion(string pobDir, GameTarget target)
+        {
             try
             {
-                var path = Path.Combine(KrDir(pobDir), "version.txt");
-                if (!File.Exists(path)) return HasMarker(pobDir) ? "0.0.0" : null;
+                var path = Path.Combine(DataDir(pobDir, target), "version.txt");
+                if (!File.Exists(path)) return HasMarker(pobDir, target) ? "0.0.0" : null;
                 var text = ReadText(path).Trim();
                 if (text.Length == 0) return "0.0.0";
                 var i = text.IndexOf(' ');
@@ -401,9 +516,14 @@ namespace PoBKR
 
         public static bool HasData(string pobDir)
         {
+            return HasData(pobDir, Targets.Poe1);
+        }
+
+        public static bool HasData(string pobDir, GameTarget target)
+        {
             try
             {
-                return File.Exists(Path.Combine(KrDir(pobDir), "init.lua"));
+                return File.Exists(Path.Combine(DataDir(pobDir, target), "init.lua"));
             }
             catch
             {
@@ -414,9 +534,14 @@ namespace PoBKR
         /// <summary>KR 폴더에 payload zip 을 푼다 (기존 파일 덮어쓰기).</summary>
         public static int ExtractPayload(byte[] zip, string pobDir)
         {
-            var kr = KrDir(pobDir);
-            Directory.CreateDirectory(kr);
-            return ExtractZipTo(zip, kr);
+            return ExtractPayload(zip, pobDir, Targets.Poe1);
+        }
+
+        public static int ExtractPayload(byte[] zip, string pobDir, GameTarget target)
+        {
+            var data = DataDir(pobDir, target);
+            Directory.CreateDirectory(data);
+            return ExtractZipTo(zip, data);
         }
 
         /// <summary>zip 을 지정한 폴더에 푼다.</summary>
@@ -446,6 +571,12 @@ namespace PoBKR
 
         public static ApplyResult Apply(string pobDir, byte[] payload, BuildInfo data)
         {
+            return Apply(pobDir, payload, data, Targets.Poe1);
+        }
+
+        public static ApplyResult Apply(string pobDir, byte[] payload, BuildInfo data, GameTarget target)
+        {
+            target = target ?? Targets.Poe1;
             var result = new ApplyResult { Target = pobDir, VersionText = AppInfo.VersionLine(data) };
             try
             {
@@ -455,16 +586,16 @@ namespace PoBKR
                     return result;
                 }
 
-                ExtractPayload(payload, pobDir);
-                File.WriteAllText(Path.Combine(KrDir(pobDir), "version.txt"),
+                ExtractPayload(payload, pobDir, target);
+                File.WriteAllText(Path.Combine(DataDir(pobDir, target), "version.txt"),
                     AppInfo.VersionLine(data) + "\r\n", AppInfo.Utf8NoBom);
 
                 var mainPath = MainLuaPath(pobDir);
-                var backupDir = Path.Combine(KrDir(pobDir), "_설치기록");
+                var backupDir = Path.Combine(DataDir(pobDir, target), "_설치기록");
                 var backupPath = Path.Combine(backupDir, "Main.lua.orig");
 
                 var content = ReadText(mainPath);
-                if (content.IndexOf(AppInfo.Marker, StringComparison.Ordinal) < 0)
+                if (content.IndexOf(target.Marker, StringComparison.Ordinal) < 0)
                 {
                     Directory.CreateDirectory(backupDir);
                     if (!File.Exists(backupPath))
@@ -472,16 +603,16 @@ namespace PoBKR
                         File.Copy(mainPath, backupPath, true);
                         result.BackedUp = true;
                     }
-                    WriteText(mainPath, AppInfo.Loader + content);
+                    WriteText(mainPath, target.Loader + content);
                 }
                 else
                 {
                     result.AlreadyPatched = true;
                 }
 
-                result.Ok = HasMarker(pobDir);
+                result.Ok = HasMarker(pobDir, target);
                 if (!result.Ok) result.Error = "Modules\\Main.lua 수정을 확인하지 못했습니다.";
-                if (result.Ok) OnPatched(pobDir, AppInfo.VersionLine(data));
+                if (result.Ok) OnPatched(pobDir, AppInfo.VersionLine(data), target);
                 return result;
             }
             catch (UnauthorizedAccessException ex)
@@ -502,14 +633,15 @@ namespace PoBKR
         }
 
         /// <summary>패치 성공 후: 마지막 폴더 저장, 런처 사본 준비(자동 업데이트용), 미리 받아 둔 업데이트 정리.</summary>
-        private static void OnPatched(string pobDir, string versionLine)
+        private static void OnPatched(string pobDir, string versionLine, GameTarget target)
         {
+            target = target ?? Targets.Poe1;
             try
             {
                 var settings = Settings.Load();
-                if (!string.Equals(settings.LastTarget, pobDir, StringComparison.OrdinalIgnoreCase))
+                if (!string.Equals(settings.GetLastTarget(target.Id), pobDir, StringComparison.OrdinalIgnoreCase))
                 {
-                    settings.LastTarget = pobDir;
+                    settings.SetLastTarget(target.Id, pobDir);
                     settings.Save();
                 }
             }
@@ -518,25 +650,31 @@ namespace PoBKR
             }
             // KR\init.lua 가 자동 업데이트를 부를 때 쓰는 고정 경로 확보
             Shortcut.EnsureLauncherCopy();
-            ClearStaged(pobDir);
+            ClearStaged(pobDir, target);
         }
 
         /// <summary>Modules\Main.lua 가 PoB 업데이트로 덮어써졌을 때 로더만 다시 넣는다 (KR 데이터는 그대로).</summary>
         public static bool EnsureLoader(string pobDir)
         {
+            return EnsureLoader(pobDir, Targets.Poe1);
+        }
+
+        public static bool EnsureLoader(string pobDir, GameTarget target)
+        {
+            target = target ?? Targets.Poe1;
             try
             {
                 if (!IsPoB(pobDir)) return false;
                 var mainPath = MainLuaPath(pobDir);
                 var content = ReadText(mainPath);
-                if (content.IndexOf(AppInfo.Marker, StringComparison.Ordinal) >= 0) return true;
+                if (content.IndexOf(target.Marker, StringComparison.Ordinal) >= 0) return true;
 
-                var backupDir = Path.Combine(KrDir(pobDir), "_설치기록");
+                var backupDir = Path.Combine(DataDir(pobDir, target), "_설치기록");
                 var backupPath = Path.Combine(backupDir, "Main.lua.orig");
                 Directory.CreateDirectory(backupDir);
                 if (!File.Exists(backupPath)) File.Copy(mainPath, backupPath, true);
-                WriteText(mainPath, AppInfo.Loader + content);
-                return HasMarker(pobDir);
+                WriteText(mainPath, target.Loader + content);
+                return HasMarker(pobDir, target);
             }
             catch
             {
@@ -550,19 +688,34 @@ namespace PoBKR
 
         public static string UpdateDir(string pobDir)
         {
-            return Path.Combine(KrDir(pobDir), "_update");
+            return UpdateDir(pobDir, Targets.Poe1);
+        }
+
+        public static string UpdateDir(string pobDir, GameTarget target)
+        {
+            return Path.Combine(DataDir(pobDir, target), "_update");
         }
 
         private static string PendingFile(string pobDir)
         {
-            return Path.Combine(UpdateDir(pobDir), "pending.txt");
+            return PendingFile(pobDir, Targets.Poe1);
+        }
+
+        private static string PendingFile(string pobDir, GameTarget target)
+        {
+            return Path.Combine(UpdateDir(pobDir, target), "pending.txt");
         }
 
         public static bool HasPending(string pobDir)
         {
+            return HasPending(pobDir, Targets.Poe1);
+        }
+
+        public static bool HasPending(string pobDir, GameTarget target)
+        {
             try
             {
-                return File.Exists(PendingFile(pobDir));
+                return File.Exists(PendingFile(pobDir, target));
             }
             catch
             {
@@ -573,14 +726,20 @@ namespace PoBKR
         /// <summary>내려받은 payload 를 KR\_update\data 에 풀고 pending.txt 를 남긴다.</summary>
         public static bool Stage(string pobDir, byte[] payload, string versionLine)
         {
+            return Stage(pobDir, payload, versionLine, Targets.Poe1);
+        }
+
+        public static bool Stage(string pobDir, byte[] payload, string versionLine, GameTarget target)
+        {
+            target = target ?? Targets.Poe1;
             try
             {
                 if (!IsPoB(pobDir)) return false;
-                ClearStaged(pobDir);
-                var stageRoot = Path.Combine(UpdateDir(pobDir), "data");
+                ClearStaged(pobDir, target);
+                var stageRoot = Path.Combine(UpdateDir(pobDir, target), "data");
                 ExtractZipTo(payload, stageRoot);
-                File.WriteAllText(PendingFile(pobDir), versionLine + "\r\n", AppInfo.Utf8NoBom);
-                return HasPending(pobDir);
+                File.WriteAllText(PendingFile(pobDir, target), versionLine + "\r\n", AppInfo.Utf8NoBom);
+                return HasPending(pobDir, target);
             }
             catch
             {
@@ -591,17 +750,23 @@ namespace PoBKR
         /// <summary>KR\_update\data 를 KR 로 옮긴다. PoB 가 실행 중이 아니거나, 시작 직후(데이터 로드 전)에만 호출한다.</summary>
         public static bool ApplyStaged(string pobDir, out string versionLine)
         {
+            return ApplyStaged(pobDir, out versionLine, Targets.Poe1);
+        }
+
+        public static bool ApplyStaged(string pobDir, out string versionLine, GameTarget target)
+        {
+            target = target ?? Targets.Poe1;
             versionLine = "";
             try
             {
-                if (!IsPoB(pobDir) || !HasPending(pobDir)) return false;
-                var pending = File.ReadAllText(PendingFile(pobDir), Encoding.UTF8).Trim();
-                var stageRoot = Path.Combine(UpdateDir(pobDir), "data");
-                var kr = KrDir(pobDir);
+                if (!IsPoB(pobDir) || !HasPending(pobDir, target)) return false;
+                var pending = File.ReadAllText(PendingFile(pobDir, target), Encoding.UTF8).Trim();
+                var stageRoot = Path.Combine(UpdateDir(pobDir, target), "data");
+                var kr = DataDir(pobDir, target);
                 if (!Directory.Exists(stageRoot))
                 {
                     // 받아 둔 파일이 없으면 pending 만 남기지 않는다 (다음에 다시 받는다).
-                    ClearStaged(pobDir);
+                    ClearStaged(pobDir, target);
                     return false;
                 }
                 var count = 0;
@@ -618,7 +783,7 @@ namespace PoBKR
                 if (pending.Length > 0)
                     File.WriteAllText(Path.Combine(kr, "version.txt"), pending + "\r\n", AppInfo.Utf8NoBom);
                 versionLine = pending;
-                ClearStaged(pobDir);
+                ClearStaged(pobDir, target);
                 return true;
             }
             catch
@@ -630,13 +795,18 @@ namespace PoBKR
         /// <summary>스테이징 폴더를 비운다 (lastcheck.txt 는 남긴다).</summary>
         public static void ClearStaged(string pobDir)
         {
+            ClearStaged(pobDir, Targets.Poe1);
+        }
+
+        public static void ClearStaged(string pobDir, GameTarget target)
+        {
             try
             {
-                var dir = UpdateDir(pobDir);
+                var dir = UpdateDir(pobDir, target);
                 if (!Directory.Exists(dir)) return;
                 var data = Path.Combine(dir, "data");
                 if (Directory.Exists(data)) Directory.Delete(data, true);
-                var pending = PendingFile(pobDir);
+                var pending = PendingFile(pobDir, target);
                 if (File.Exists(pending)) File.Delete(pending);
             }
             catch
@@ -644,17 +814,22 @@ namespace PoBKR
             }
         }
 
-        private static string LastCheckFile(string pobDir)
+        private static string LastCheckFile(string pobDir, GameTarget target)
         {
-            return Path.Combine(UpdateDir(pobDir), "lastcheck.txt");
+            return Path.Combine(UpdateDir(pobDir, target), "lastcheck.txt");
         }
 
         public static void WriteLastCheck(string pobDir, long unixSeconds)
         {
+            WriteLastCheck(pobDir, unixSeconds, Targets.Poe1);
+        }
+
+        public static void WriteLastCheck(string pobDir, long unixSeconds, GameTarget target)
+        {
             try
             {
-                Directory.CreateDirectory(UpdateDir(pobDir));
-                File.WriteAllText(LastCheckFile(pobDir), unixSeconds.ToString(CultureInfo.InvariantCulture) + "\r\n", AppInfo.Utf8NoBom);
+                Directory.CreateDirectory(UpdateDir(pobDir, target));
+                File.WriteAllText(LastCheckFile(pobDir, target), unixSeconds.ToString(CultureInfo.InvariantCulture) + "\r\n", AppInfo.Utf8NoBom);
             }
             catch
             {
@@ -668,6 +843,12 @@ namespace PoBKR
 
         public static RestoreResult Restore(string pobDir)
         {
+            return Restore(pobDir, Targets.Poe1);
+        }
+
+        public static RestoreResult Restore(string pobDir, GameTarget target)
+        {
+            target = target ?? Targets.Poe1;
             var result = new RestoreResult();
             try
             {
@@ -677,9 +858,9 @@ namespace PoBKR
                     return result;
                 }
                 var mainPath = MainLuaPath(pobDir);
-                var kr = KrDir(pobDir);
+                var kr = DataDir(pobDir, target);
                 var backupPath = Path.Combine(kr, "_설치기록", "Main.lua.orig");
-                result.WasPatched = HasMarker(pobDir);
+                result.WasPatched = HasMarker(pobDir, target);
 
                 if (File.Exists(backupPath))
                 {
@@ -690,8 +871,9 @@ namespace PoBKR
                 {
                     var content = ReadText(mainPath);
                     var lines = content.Replace("\r\n", "\n").Split('\n')
-                        .Where(l => l.IndexOf(AppInfo.Marker, StringComparison.Ordinal) < 0
-                                    && l.IndexOf("KR/init.lua", StringComparison.Ordinal) < 0)
+                        .Where(l => l.IndexOf(target.Marker, StringComparison.Ordinal) < 0
+                                    && l.IndexOf(target.DataDir + "/init.lua", StringComparison.Ordinal) < 0
+                                    && l.IndexOf("KR_ROOT", StringComparison.Ordinal) < 0)
                         .ToArray();
                     WriteText(mainPath, string.Join("\r\n", lines));
                     result.RemovedLoader = true;
@@ -702,7 +884,7 @@ namespace PoBKR
                     Directory.Delete(kr, true);
                     result.KrRemoved = true;
                 }
-                result.Ok = !HasMarker(pobDir) && !Directory.Exists(kr);
+                result.Ok = !HasMarker(pobDir, target) && !Directory.Exists(kr);
                 return result;
             }
             catch (Exception ex)

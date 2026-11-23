@@ -17,6 +17,9 @@ namespace PoBKR
         public bool NoUpdate;
         public bool Force;
         public string Dir = "";
+        public string GameId = "poe1";
+
+        public GameTarget Game { get { return Targets.ById(GameId); } }
 
         public bool IsCommand
         {
@@ -51,9 +54,14 @@ namespace PoBKR
                     case "--dir":
                         if (i + 1 < args.Length) o.Dir = args[++i];
                         break;
+                    case "--game":
+                        if (i + 1 < args.Length) o.GameId = args[++i].ToLowerInvariant() == "poe2" ? "poe2" : "poe1";
+                        break;
                     default:
                         if (a.StartsWith("--dir=", StringComparison.OrdinalIgnoreCase))
                             o.Dir = a.Substring(6).Trim('"');
+                        else if (a.StartsWith("--game=", StringComparison.OrdinalIgnoreCase))
+                            o.GameId = a.Substring(7).Trim('"').ToLowerInvariant() == "poe2" ? "poe2" : "poe1";
                         break;
                 }
             }
@@ -66,6 +74,7 @@ namespace PoBKR
             Console.WriteLine();
             Console.WriteLine("  (인수 없이 실행)      화면(GUI)으로 실행 — 더블클릭과 같습니다");
             Console.WriteLine("  --launch [폴더]       한글 패치를 확인·적용한 뒤 Path of Building 실행 (창 없음)");
+            Console.WriteLine("  --game poe1|poe2     대상 게임 (기본 poe1)");
             Console.WriteLine("  --apply [--dir 폴더]  한글 패치 적용/재적용");
             Console.WriteLine("  --restore [--dir 폴더] 영문 원본으로 복구");
             Console.WriteLine("  --shortcut [--desktop] 시작 메뉴·PoB 폴더(+바탕화면)에 'Path of Building (한글)' 바로가기 생성");
@@ -95,7 +104,7 @@ namespace PoBKR
             var o = Parse(args);
             if (o.Help) { PrintHelp(); return 0; }
             if (o.Info) return Info(o);
-            if (o.Check) return Check();
+            if (o.Check) return Check(o);
             if (o.Shortcut) return MakeShortcut(o);
             if (o.Restore) return Restore(o);
             if (o.Apply) return Apply(o);
@@ -116,7 +125,7 @@ namespace PoBKR
                 target = o.Dir;
                 return true;
             }
-            target = Installer.FindPoB(null);
+            target = Installer.FindPoB(null, o.Game);
             if (target == null)
             {
                 Say("[실패] Path of Building 폴더를 자동으로 찾지 못했습니다. --dir 로 폴더를 지정해 주세요.");
@@ -127,31 +136,34 @@ namespace PoBKR
 
         private static int Info(CliOptions o)
         {
-            var embed = AppInfo.Embedded;
-            Say("패처 버전 : " + AppInfo.AppVersion);
+            var game = o.Game;
+            var embed = AppInfo.EmbeddedFor(game);
+            Say("패처 버전 : " + AppInfo.AppVersion + " (" + game.Display + ")");
             Say("내장 데이터: " + embed.Pretty + "  (파일 " + embed.Files + "개)");
             string target;
             if (ResolveTarget(o, out target))
             {
                 Say("PoB 폴더  : " + target);
-                Say("설치 상태 : " + (Installer.HasData(target) ? "한글 데이터 있음" : "한글 데이터 없음")
-                    + (Installer.HasMarker(target) ? " / Main.lua 패치됨" : " / Main.lua 원본"));
-                Say("설치 버전 : " + (Installer.InstalledVersion(target) ?? "없음"));
+                Say("설치 상태 : " + (Installer.HasData(target, game) ? "한글 데이터 있음" : "한글 데이터 없음")
+                    + (Installer.HasMarker(target, game) ? " / Main.lua 패치됨" : " / Main.lua 원본"));
+                Say("설치 버전 : " + (Installer.InstalledVersion(target, game) ?? "없음"));
             }
             return 0;
         }
 
-        private static int Check()
+        private static int Check(CliOptions o)
         {
-            var rel = Updater.GetLatest(Say);
+            var game = o.Game;
+            var embed = AppInfo.EmbeddedFor(game);
+            var rel = Updater.GetLatest(game, Say);
             if (rel == null) return 1;
-            Say("최신 릴리스 : " + rel.Version + (string.IsNullOrEmpty(rel.Season) ? "" : " (PoE1 " + rel.Season + ")"));
+            Say("최신 릴리스 : " + rel.Version + (string.IsNullOrEmpty(rel.Season) ? "" : " (" + game.Display + " " + rel.Season + ")"));
             Say("데이터 주소 : " + rel.DataUrl);
             if (!string.IsNullOrEmpty(rel.DataSha256)) Say("sha256     : " + rel.DataSha256);
-            if (VersionUtil.IsNewer(rel.Version, AppInfo.Embedded.Version))
-                Say("→ 내장 데이터(" + AppInfo.Embedded.Version + ")보다 최신입니다.");
+            if (VersionUtil.IsNewer(rel.Version, embed.Version))
+                Say("→ 내장 데이터(" + embed.Version + ")보다 최신입니다.");
             else
-                Say("→ 내장 데이터(" + AppInfo.Embedded.Version + ")가 최신입니다.");
+                Say("→ 내장 데이터(" + embed.Version + ")가 최신입니다.");
             return 0;
         }
 
@@ -161,7 +173,7 @@ namespace PoBKR
             if (!ResolveTarget(o, out target)) return 2;
             Say("Path of Building: " + target);
 
-            var r = Shortcut.Create(target, o.Desktop);
+            var r = Shortcut.Create(target, o.Desktop, o.Game);
             if (!r.Ok)
             {
                 Say("[실패] 바로가기를 만들지 못했습니다: " + r.Error);
@@ -185,15 +197,16 @@ namespace PoBKR
             }
             Say("Path of Building: " + target);
 
-            var embed = AppInfo.Embedded;
+            var game = o.Game;
+            var embed = AppInfo.EmbeddedFor(game);
             var data = embed;
             byte[] payload = null;
-            var installed = Installer.InstalledVersion(target);
+            var installed = Installer.InstalledVersion(target, game);
             Say("내장 데이터: " + embed.Pretty + " / 설치됨: " + (installed ?? "없음"));
 
             if (!o.NoUpdate)
             {
-                var rel = Updater.GetLatest(Say);
+                var rel = Updater.GetLatest(game, Say);
                 if (rel != null && VersionUtil.IsNewer(rel.Version, embed.Version))
                 {
                     try
@@ -216,8 +229,8 @@ namespace PoBKR
                 return 0;
             }
 
-            if (payload == null) payload = AppInfo.EmbeddedPayload();
-            var r = Installer.Apply(target, payload, data);
+            if (payload == null) payload = AppInfo.EmbeddedPayloadFor(game);
+            var r = Installer.Apply(target, payload, data, game);
             if (!r.Ok)
             {
                 Say("[실패] " + r.Error);
@@ -225,7 +238,7 @@ namespace PoBKR
             }
             Say("한글 패치 적용 완료: " + r.VersionText);
             if (r.AlreadyPatched) Say("Modules\\Main.lua 는 이미 패치되어 있었습니다 (데이터만 갱신).");
-            if (r.BackedUp) Say("원본 백업: KR\\_설치기록\\Main.lua.orig");
+            if (r.BackedUp) Say("원본 백업: " + game.DataDir + "\\_설치기록\\Main.lua.orig");
             Say("Path of Building 을 실행하세요. 게임 안에서는 F2 로 한/영 전환이 됩니다.");
             return 0;
         }
@@ -240,7 +253,7 @@ namespace PoBKR
                 return 3;
             }
             Say("Path of Building: " + target);
-            var r = Installer.Restore(target);
+            var r = Installer.Restore(target, o.Game);
             if (!r.Ok)
             {
                 Say("[실패] " + (string.IsNullOrEmpty(r.Error) ? "복구를 확인하지 못했습니다." : r.Error));
@@ -249,7 +262,7 @@ namespace PoBKR
             if (r.RestoredFromBackup) Say("Modules\\Main.lua 를 백업본으로 되돌렸습니다.");
             else if (r.RemovedLoader) Say("로더 줄을 제거했습니다.");
             else Say("이미 영문 원본 상태였습니다.");
-            if (r.KrRemoved) Say("KR 폴더를 삭제했습니다.");
+            if (r.KrRemoved) Say(o.Game.DataDir + " 폴더를 삭제했습니다.");
             return 0;
         }
     }
