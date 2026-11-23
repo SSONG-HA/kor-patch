@@ -65,6 +65,7 @@ namespace PoBKR
             {
                 "Path of Building-PoE2.exe", "PathOfBuilding-PoE2.exe",
                 "Path of Building PoE2.exe", "PathOfBuildingPoE2.exe",
+                "Path of Building (PoE2).exe", "PathOfBuilding2.exe",
                 "Path of Building Community (PoE2).exe", "Path of Building.exe"
             });
 
