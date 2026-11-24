@@ -3,13 +3,13 @@
 {
 "bases": 27,
 "class": "Claws",
-"mods": 1037,
+"mods": 1038,
 "uniques": 21
 },
 {
 "bases": 13,
 "class": "Daggers",
-"mods": 1054,
+"mods": 1055,
 "uniques": 7
 },
 {
@@ -21,43 +21,43 @@
 {
 "bases": 31,
 "class": "One_Hand_Swords",
-"mods": 993,
+"mods": 1005,
 "uniques": 32
 },
 {
 "bases": 27,
 "class": "One_Hand_Axes",
-"mods": 994,
+"mods": 1001,
 "uniques": 10
 },
 {
 "bases": 27,
 "class": "One_Hand_Maces",
-"mods": 946,
+"mods": 958,
 "uniques": 13
 },
 {
 "bases": 28,
 "class": "Sceptres",
-"mods": 1352,
+"mods": 1353,
 "uniques": 27
 },
 {
 "bases": 17,
 "class": "Rune_Daggers",
-"mods": 1300,
+"mods": 1301,
 "uniques": 15
 },
 {
 "bases": 25,
 "class": "Thrusting_One_Hand_Swords",
-"mods": 989,
+"mods": 1001,
 "uniques": 8
 },
 {
 "bases": 28,
 "class": "Bows",
-"mods": 936,
+"mods": 942,
 "uniques": 31
 },
 {
@@ -69,25 +69,25 @@
 {
 "bases": 24,
 "class": "Two_Hand_Swords",
-"mods": 1022,
+"mods": 1028,
 "uniques": 20
 },
 {
 "bases": 24,
 "class": "Two_Hand_Axes",
-"mods": 1007,
+"mods": 1012,
 "uniques": 20
 },
 {
 "bases": 24,
 "class": "Two_Hand_Maces",
-"mods": 941,
+"mods": 951,
 "uniques": 16
 },
 {
 "bases": 11,
 "class": "Warstaves",
-"mods": 1177,
+"mods": 1179,
 "uniques": 23
 },
 {
@@ -129,19 +129,19 @@
 {
 "bases": 15,
 "class": "Gloves_dex",
-"mods": 1887,
+"mods": 1885,
 "uniques": 0
 },
 {
 "bases": 15,
 "class": "Gloves_int",
-"mods": 1902,
+"mods": 1906,
 "uniques": 0
 },
 {
 "bases": 10,
 "class": "Gloves_str_dex",
-"mods": 1914,
+"mods": 1913,
 "uniques": 0
 },
 {
@@ -153,7 +153,7 @@
 {
 "bases": 10,
 "class": "Gloves_dex_int",
-"mods": 1898,
+"mods": 1904,
 "uniques": 0
 },
 {
@@ -165,55 +165,55 @@
 {
 "bases": 14,
 "class": "Boots_dex",
-"mods": 1613,
+"mods": 1587,
 "uniques": 0
 },
 {
 "bases": 14,
 "class": "Boots_int",
-"mods": 1614,
+"mods": 1617,
 "uniques": 0
 },
 {
 "bases": 11,
 "class": "Boots_str_dex",
-"mods": 1637,
+"mods": 1635,
 "uniques": 0
 },
 {
 "bases": 10,
 "class": "Boots_str_int",
-"mods": 1644,
+"mods": 1647,
 "uniques": 0
 },
 {
 "bases": 12,
 "class": "Boots_dex_int",
-"mods": 1650,
+"mods": 1652,
 "uniques": 0
 },
 {
 "bases": 21,
 "class": "Body_Armours_str",
-"mods": 1758,
+"mods": 1760,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_dex",
-"mods": 1753,
+"mods": 1758,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_int",
-"mods": 1772,
+"mods": 1773,
 "uniques": 0
 },
 {
 "bases": 20,
 "class": "Body_Armours_str_dex",
-"mods": 1774,
+"mods": 1780,
 "uniques": 0
 },
 {
@@ -225,7 +225,7 @@
 {
 "bases": 20,
 "class": "Body_Armours_dex_int",
-"mods": 1802,
+"mods": 1778,
 "uniques": 0
 },
 {
@@ -243,19 +243,19 @@
 {
 "bases": 13,
 "class": "Helmets_dex",
-"mods": 1720,
+"mods": 1724,
 "uniques": 0
 },
 {
 "bases": 14,
 "class": "Helmets_int",
-"mods": 1715,
+"mods": 1726,
 "uniques": 0
 },
 {
 "bases": 16,
 "class": "Helmets_str_dex",
-"mods": 1744,
+"mods": 1753,
 "uniques": 0
 },
 {
@@ -267,37 +267,37 @@
 {
 "bases": 17,
 "class": "Helmets_dex_int",
-"mods": 1754,
+"mods": 1760,
 "uniques": 0
 },
 {
 "bases": 15,
 "class": "Quivers",
-"mods": 697,
+"mods": 698,
 "uniques": 21
 },
 {
 "bases": 19,
 "class": "Shields_str",
-"mods": 906,
+"mods": 905,
 "uniques": 0
 },
 {
 "bases": 18,
 "class": "Shields_dex",
-"mods": 898,
+"mods": 904,
 "uniques": 0
 },
 {
 "bases": 18,
 "class": "Shields_int",
-"mods": 961,
+"mods": 962,
 "uniques": 0
 },
 {
 "bases": 13,
 "class": "Shields_str_dex",
-"mods": 936,
+"mods": 934,
 "uniques": 0
 },
 {
@@ -309,7 +309,7 @@
 {
 "bases": 13,
 "class": "Shields_dex_int",
-"mods": 931,
+"mods": 934,
 "uniques": 0
 },
 {
@@ -375,7 +375,7 @@
 {
 "bases": 12,
 "class": "Mana_Flasks",
-"mods": 88,
+"mods": 89,
 "uniques": 5
 },
 {
