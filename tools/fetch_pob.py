@@ -1,6 +1,9 @@
-"""PoB 원문 데이터(Data/Gems.lua, TreeData/<ver>/tree.lua)를 내려받아 POB_SRC 트리를 만든다.
+"""PoB 원문 데이터(Data/Gems.lua, Data/ClusterJewels.lua, TreeData/<ver>/tree.lua)를
+내려받아 POB_SRC 트리를 만든다.
 
-시즌 갱신 워크플로우가 이 스크립트로 PoB 데이터를 준비한 뒤 gems.py / passives.py 를 돌린다.
+시즌 갱신 워크플로우가 이 스크립트로 PoB 데이터를 준비한 뒤 gems.py / passives.py /
+cluster.py 를 돌린다. 군주얼 인챈트(cluster.py)는 Data/ClusterJewels.lua 가 없으면
+통째로 건너뛰므로, 이 파일도 반드시 함께 받아야 한다 (v2.0.1 누락 사고).
 GitHub API 로 최근 TreeData 버전(예: 3_30)을 자동으로 찾으므로, 새 시즌이 나오면 그대로 따라간다.
 
 Usage:
@@ -76,9 +79,12 @@ def download(version: str, dest: str) -> str:
     # 군단 주얼(무궁한 주얼) 데이터: 정복된 패시브 이름·스탯과 주얼 변형 문구
     legion_dir = os.path.join(data_dir, "TimelessJewelData")
     os.makedirs(legion_dir, exist_ok=True)
+    # 클러스터 주얼(스킬 군 주얼): 인챈트 목록·소형 패시브 효과. cluster.py 가 이 파일로
+    # "Added Small Passive Skills grant: …" 61줄을 만든다. 없으면 인챈트가 통째로 빠진다.
     extra = (
         ("src/Data/TimelessJewelData/LegionPassives.lua", os.path.join(legion_dir, "LegionPassives.lua")),
         ("src/Data/Uniques/jewel.lua", os.path.join(data_dir, "Uniques", "jewel.lua")),
+        ("src/Data/ClusterJewels.lua", os.path.join(data_dir, "ClusterJewels.lua")),
     )
     for remote, local in extra:
         if os.path.exists(local) and os.path.getsize(local) > 1024:

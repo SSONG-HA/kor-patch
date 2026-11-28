@@ -20,7 +20,7 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import POB, fetch, load_json, load_lua_table, lua_to_py, norm_space, save_json  # noqa: E402
+from common import DATA, POB, fetch, load_json, load_lua_table, lua_to_py, norm_space, save_json  # noqa: E402
 from items import NUM_TOKEN_RE, shape  # noqa: E402
 from passives import _assign  # noqa: E402  (영문 줄 ↔ 한글 줄 배정 규칙을 그대로 씁니다)
 
@@ -39,6 +39,8 @@ SIZES = {
 JEWEL_SOCKET_1 = ("1 Added Passive Skill is a Jewel Socket", "주얼 슬롯 패시브 스킬 1개 추가")
 JEWEL_SOCKET_2 = ("2 Added Passive Skills are Jewel Sockets", "주얼 슬롯 패시브 스킬 2개 추가")
 ENCHANT_PREFIX = "추가된 소형 패시브 스킬 효과: "
+# "Added Small Passive Skills grant: …" 줄이 만드는 키의 앞부분 (shape() 은 공백을 지운다)
+ENCHANT_KEY = "AddedSmallPassiveSkillsgrant:"
 ALSO_PREFIX = "추가되는 소형 패시브 스킬이 "
 ALSO_SUFFIX = " 부여"
 
@@ -144,6 +146,15 @@ def main() -> None:
     templates: dict[str, str] = {}
     report: list[str] = []
 
+    # 지난번에 만든 인챈트 줄(대·중·소형 군주얼). PoB 원문이 없을 때는 이것을 그대로 쓴다.
+    prev: dict[str, str] = {}
+    prev_path = os.path.join(DATA, "cluster_templates.json")
+    if os.path.exists(prev_path):
+        try:
+            prev = load_json("cluster_templates.json")
+        except Exception:  # noqa: BLE001
+            prev = {}
+
     for en, kr in SIZES.items():
         exact[en] = kr
     exact[JEWEL_SOCKET_1[0]] = JEWEL_SOCKET_1[1]
@@ -196,32 +207,59 @@ def main() -> None:
     # ── 인챈트: PoB 가 그리는 문구를 기준으로 만듭니다 ────────────────────────
     enchants = 0
     mods = {}
-    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "mods_exact.json")
+    path = os.path.join(DATA, "mods_exact.json")
     if os.path.exists(path):
         mods = load_json("mods_exact.json")
+    # 패시브 트리 효과 문구(값이 박힌 영문 -> 한글). 아이템 속성 사전에 없는
+    # 클러스터 소형 패시브 효과(예: 12% increased Cold Damage over Time)를 마지막에 여기서 찾습니다.
+    passive_stats = {}
+    stats_path = os.path.join(DATA, "passives_stats.json")
+    if os.path.exists(stats_path):
+        passive_stats = load_json("passives_stats.json")
     if POB:
         cluster_path = os.path.join(POB, "Data", "ClusterJewels.lua")
-        if os.path.exists(cluster_path):
-            jewels = lua_to_py(load_lua_table(cluster_path)).get("jewels") or {}
-            for size, data in jewels.items():
-                for skill in ((data or {}).get("skills") or {}).values():
-                    if not isinstance(skill, dict):
+        if not os.path.exists(cluster_path):
+            # v2.0.1: 시즌 갱신이 이 파일을 받지 않아 인챈트 52줄이 조용히 사라졌습니다.
+            # 조용한 누락을 다시 만들지 않도록 여기서 멈춥니다.
+            raise SystemExit(
+                "PoB 원본 Data/ClusterJewels.lua 가 없습니다: %s\n"
+                "  먼저 tools/fetch_pob.py 를 실행해 PoB 원문 데이터를 받으세요.\n"
+                "  (이 파일이 없으면 대·중·소형 군주얼 인챈트가 통째로 빠집니다)" % cluster_path)
+        jewels = lua_to_py(load_lua_table(cluster_path)).get("jewels") or {}
+        for size, data in jewels.items():
+            for skill in ((data or {}).get("skills") or {}).values():
+                if not isinstance(skill, dict):
+                    continue
+                stats = skill.get("stats") or []
+                for line in skill.get("enchant") or []:
+                    m = re.match(r"^Added Small Passive Skills grant: (.+)$", line)
+                    if not m:
                         continue
-                    stat = next(iter(skill.get("stats") or []), "")
-                    for line in skill.get("enchant") or []:
-                        m = re.match(r"^Added Small Passive Skills grant: (.+)$", line)
-                        if not m or not stat:
-                            continue
-                        kr_stat = ko_stat(stat, mods, templates)
-                        if not kr_stat:
-                            report.append("인챈트 효과 번역 없음: %s" % stat)
-                            continue
-                        key = shape(line)
-                        if "#" in key:
-                            templates.setdefault(key, ENCHANT_PREFIX + kr_stat)
-                        else:
-                            exact.setdefault(line, ENCHANT_PREFIX + kr_stat)
-                        enchants += 1
+                    # 인챈트 줄의 효과 문구가 곧 그 소형 패시브의 효과다.
+                    # 한 스킬에 효과가 둘(예: affliction_dagger_and_claw_damage)일 때
+                    # 첫 효과를 그대로 쓰면 다른 쪽이 통째로 잘못 번역된다 (클로 ← 단검).
+                    stat = m.group(1) if m.group(1) in stats else next(iter(stats), "")
+                    if not stat:
+                        continue
+                    kr_stat = ko_stat(stat, mods, templates, passive_stats)
+                    if not kr_stat:
+                        report.append("인챈트 효과 번역 없음: %s" % stat)
+                        continue
+                    key = shape(line)
+                    if "#" in key:
+                        templates.setdefault(key, ENCHANT_PREFIX + kr_stat)
+                    else:
+                        exact.setdefault(line, ENCHANT_PREFIX + kr_stat)
+                    enchants += 1
+    else:
+        # POB_SRC 없이 돌리면 인챈트를 만들 수 없다. 그대로 비우면 v2.0.1 처럼
+        # 60줄이 조용히 사라지므로, 지난번 결과를 유지하고 크게 알린다.
+        kept = {k: v for k, v in prev.items() if k.startswith(ENCHANT_KEY)}
+        templates.update(kept)
+        print("  !! POB_SRC 가 없어 군주얼 인챈트를 새로 만들지 못했습니다 — 기존 %d줄을 그대로 둡니다." % len(kept))
+        print("     (tools/fetch_pob.py 를 실행하고 POB_SRC 를 지정하면 다시 만들어집니다)")
+        if not kept:
+            report.append("POB_SRC 없음 — 군주얼 인챈트 없음")
 
     save_json("cluster_exact.json", exact)
     save_json("cluster_templates.json", templates)
@@ -230,12 +268,16 @@ def main() -> None:
         print("  보류 %d건 (예: %s)" % (len(report), report[:3]))
 
 
-def ko_stat(stat: str, mods: dict, templates: dict | None = None) -> str | None:
+def ko_stat(stat: str, mods: dict, templates: dict | None = None,
+            passive_stats: dict | None = None) -> str | None:
     """클러스터 인챈트 효과 문구의 한글.
 
     ① 아이템 속성 사전의 "Added Small Passive Skills also grant: …" 에서 효과 부분만 뗌
     ② 같은 효과가 아이템 속성으로 따로 있을 때 그 문구
     ③ 클러스터 주요 패시브 카드에서 짝지은 효과 줄
+    ④ 패시브 트리 효과 문구 사전(passives_stats)의 같은 값 문장 → 숫자만 자리표시로
+       (3.30 에 새로 생긴 "12% increased Cold Damage over Time" 처럼
+        아이템 속성으로는 존재하지 않고 트리 효과로만 있는 문구)
     """
     key = shape("Added Small Passive Skills also grant: " + stat)
     entry = mods.get(key)
@@ -250,6 +292,12 @@ def ko_stat(stat: str, mods: dict, templates: dict | None = None) -> str | None:
         if isinstance(entry, dict):
             return entry.get("kr")
         return entry
+    if passive_stats:
+        kr = passive_stats.get(norm_space(stat))
+        if isinstance(kr, dict):
+            kr = kr.get("kr")
+        if kr:
+            return templated(stat, norm_space(kr))
     return None
 
 
